@@ -1,0 +1,614 @@
+/* EMBEDDED FONT */
+@font-face {
+  font-family: "OpenSans-Regular";
+  src: url("../fonts/OpenSans-Regular.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/OpenSans-Regular.ttf")  format("truetype");
+}
+@font-face {
+  font-family: "OpenSans-Light";
+  src: url("../fonts/OpenSans-Light.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/OpenSans-Light.ttf")  format("truetype");
+}
+@font-face {
+  font-family: "OpenSans-Semibold";
+  src: url("../fonts/OpenSans-Semibold.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/OpenSans-Semibold.ttf")  format("truetype");
+}
+@font-face {
+  font-family: "Roboto-Regular";
+  src: url("../fonts/Roboto-Regular.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/Roboto-Regular.ttf")  format("truetype");
+}
+
+
+/* USE THE EMBEDDED FONT AS DEFAULT FONT FOR THE WEBSITE */
+* {
+  font-family: "OpenSans-Light";
+}
+
+
+/* STYLE FOR BODY */
+body, html {
+  height: 100%;
+  background-color:#e5e5e5
+}
+
+body {
+  margin: 0px;
+}
+
+
+/*NAVBAR*/
+
+header {
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0), rgba(0,0,0,0), #e5e5e5), url("../images/shoe-background.jpg");
+  -webkit-background-size:cover;
+  
+  height: 100%;
+  width: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  padding-right:0;
+  padding-left:0;
+  margin-right:auto;
+  margin-left:auto;
+}
+
+.navbar-color{
+  background-color: #212529;
+  transition: 0.5s;
+}
+
+.img-brand-logo {
+  max-height: 38px;
+  color: #000;
+}
+
+.d-flex{
+  margin-top: -10px;
+}
+
+.search-container{
+  margin-top: 10px;
+  font-size: 14px;
+  color: white;
+  box-sizing: border-box;
+  border: none;
+  background: rgba(65, 64, 64, 0.664);
+  border: 1px solid white;
+  border-radius: 50px;
+  outline: none;
+  text-indent: 2mm;
+  width:100%
+}
+
+@media screen and (min-width: 1391px) {
+  .search-container {
+      width:500px;
+  }
+}
+
+.d-flex .search-btn{
+  color: white;
+  font-size: 12px;
+  margin-top: 9px;
+  padding: 3px 6px 3px 6px;
+}
+
+.d-flex .search-btn:hover{
+  color: #212529;
+  background-color: white;
+  border-radius: 25%;
+  font-size: 12px;
+}
+
+.navbar-nav li {
+  font-size: 12px;
+  
+}
+
+/*PROCESS*/
+* {
+  transition: all 500ms ease-out;
+  -webkit-transition: all 500ms ease-out;
+}
+
+section, .page {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  transition: all 1s cubic-bezier(.5, -0.005, 0.2, 1) !important;
+  -webkit-transition: all 1s cubic-bezier(.5, -0.005, 0.2, 1) !important;
+  color: #fff;
+  background: #374046;
+  overflow: hidden;
+}
+
+section {
+width:400%;  
+}
+
+.page {
+position: absolute;
+}
+
+#p1 {
+left: 0;
+}
+
+#p2 {
+left: 100%;
+background: #f7af2b;
+}
+
+#p3 {
+left: 200%;
+background: #99a306;
+}
+
+#p4 {
+left: 300%;
+background: #e5e5e5;
+}
+
+#t1:target .page#p1 {
+  transform: translateX(0);
+}
+#t2:target .page#p2 {
+  transform: translateX(-90%);
+}
+#t3:target .page#p3 {
+  transform: translateX(-190%);
+}
+#t4:target .page#p4 {
+  transform: translateX(-290%);
+}
+
+#t2:target .page#p1, 
+#t3:target .page#p1,
+#t4:target .page#p1 {
+background: #b9b9b9;
+-webkit-filter: blur(3px);
+filter: blur(3px);
+}
+
+#t2:target i, #t3:target i, #t4:target i{
+  color: #5e676d;
+  font-size: 20px;
+  transition-delay: .25s;
+}
+
+#t2:target #style, #t3:target #material, #t4:target #customize {
+  font-size: 30px !important;
+  color: #212529
+}
+
+.custom-process ul{
+  position: fixed; 
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  height: 280px;
+  width: 10%;
+  padding: 0;
+  text-align: center;
+}
+
+.custom-process li, .custom-process a {
+  list-style-type: none;
+  font-size: 30px;
+  color: white;
+  margin: 30px 0;
+}
+
+.custom-process ul i:hover {
+  opacity: 0.6;
+}
+
+.page .page-content {
+position: absolute;
+top: 0;
+bottom: 0;
+right: 0;
+left: 0;
+width: 100%;
+margin: auto;
+font-size: 80px;
+transform: translateX(400%);
+line-height: 1.3;
+}
+
+.page#p1 .page-content {
+height: 220px;
+transform: translateX(0) !important;
+}
+
+#t2:target .page#p2 .page-content, #t3:target .page#p3 .page-content, #t4:target .page#p4 .page-content {
+transform: translateX(0) !important;
+transition-delay: 1s;
+}
+
+.credit{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 10px;
+}
+
+.credit a {
+  color: #fff
+}
+
+/*P1*/
+#p1 p{
+  font-size: 30px;
+  text-align: center;
+}
+
+
+/*style*/
+.container-content {
+position: absolute;
+height: 300px;
+width: 600px;
+left: calc(50% - 300px);
+display: flex;
+}
+
+.title-page{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 200px 0 50px 0;
+  text-align: center;
+  color: white
+}
+
+.card {
+display: flex;
+height: 280px;
+width: 200px;
+background-color: white;
+border-radius: 10px;
+box-shadow: -1rem 0 3rem rgba(90, 84, 0, 0.37);
+transition: 0.4s ease-out;
+position: relative;
+left: 0px;
+cursor: pointer;
+}
+
+.card:not(:first-child) {
+  margin-left: -50px;
+}
+
+.card:hover, .style-selected{
+transform: translateY(-20px);
+transition: 0.4s ease-out;
+}
+
+.card:hover ~ .card{
+position: relative;
+left: 50px;
+transition: 0.4s ease-out;
+}
+
+.shoetype {
+color: #212529;
+font-weight: 500;
+position: absolute;
+left: 20px;
+top: 15px;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+text-align: left;
+}
+
+.bar {
+position: absolute;
+top: 100px;
+left: 20px;
+height: 5px;
+width: 150px;
+}
+
+.emptybar {
+background-color: #e5e5e5;
+width: 100%;
+height: 100%;
+}
+
+.filledbar {
+position: absolute;
+top: 0px;
+z-index: 3;
+width: 0px;
+height: 100%;
+background: rgb(0,154,217);
+background: linear-gradient(90deg, rgba(0,154,217,1) 0%, rgba(217,147,0,1) 65%, rgba(255,186,0,1) 100%);
+transition: 0.6s ease-out;
+}
+
+.card:hover .filledbar{
+width: 120px;
+transition: 0.4s ease-out;
+}
+
+.filledbar-selected{
+  width: 100%;
+}
+.shoe{
+position: absolute;
+top: 100px;
+left: calc(50% - 80px);
+}
+
+.shoepic{
+  height: 150px;
+  width: 150px;;
+}
+
+/*CUSTOMIZE*/
+.accordion {
+  display: table;
+  width: 90%;
+  height: 150px;
+}
+.accordion > input {
+  display: none;
+}
+
+.accordion__item {
+  cursor: pointer;
+  display: table-cell;
+  width: 1em;
+  transition: .25s ease;
+}
+.accordion .accordion__item:hover, .accordion > input:checked + .accordion__item {
+  display: table-cell;
+  width: 2em;
+}
+
+.accordion__item p{
+    font-size: 12px;
+    margin-top: 100px;
+    text-align: center;
+    color: white;
+}
+
+.accordion .accordion__item:hover + .accordion__item p, .accordion > input:checked + .accordion__item p {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 92px;
+}
+
+.custom-steps{
+    position: absolute;
+    display: flex;
+    width: 80%;
+    left: 5%;
+    height: 80%;
+    margin-top: 20px;
+}
+
+.bg {
+  position: absolute;
+  display: block;
+  top: 200px;
+  left: 35%;
+  width: 250px;
+  height: 250px;
+  transition: .25s;
+  border-radius: 50%;
+}
+
+.color-menu li{  
+  list-style:none;
+}
+
+.color-menu li p{ 
+  display:block;
+    float:left;
+    width:100px;
+    height: 100px;
+    background:#ccc;
+    text-decoration:none;
+    transition:.25s;}
+
+.color-menu li p:hover{
+    margin:-50px 0 0 0;
+}
+
+.color-menu{  
+width:100%;
+border-radius:10px;
+overflow:hidden;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+margin-top: 450px;
+}
+
+/*UPPERLEATHER*/
+.custom-upperleather{
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      display: none;
+  }
+  
+.UL-colors li:first-child p, .UL-colors li:first-child:hover ~ .bg{  
+  background-color:#000000 !important;
+}
+.UL-colors li:nth-child(2) p, .UL-colors li:nth-child(2):hover ~ .bg {
+  background:#141274 !important;
+}
+
+.UL-colors li:nth-child(3) p, .UL-colors li:nth-child(3):hover ~ .bg {
+  background:#643805 !important;
+}
+
+.UL-colors li:nth-child(4) p, .UL-colors li:nth-child(4):hover ~ .bg {  
+  background:#361e02 !important;
+}
+
+/*SHOELACE*/
+.custom-shoelace{
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  display: none;
+  }
+
+.SL-colors li:first-child p, .SL-colors li:first-child:hover ~ .bg{  
+  background-color:#ffffff !important;
+}
+.SL-colors li:nth-child(2) p, .SL-colors li:nth-child(2):hover ~ .bg {
+  background:#000000 !important;
+}
+
+.SL-colors li:nth-child(3) p, .SL-colors li:nth-child(3):hover ~ .bg {
+  background:#643805 !important;
+}
+
+.SL-colors li:nth-child(4) p, .SL-colors li:nth-child(4):hover ~ .bg {  
+  background:#361e02 !important;
+}
+
+/*EYELET*/
+.custom-eyelet{
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  display: none;
+  }
+
+.EL-colors li:first-child p, .EL-colors li:first-child:hover ~ .bg{  
+  background-color:#000000 !important;
+}
+.EL-colors li:nth-child(2) p, .EL-colors li:nth-child(2):hover ~ .bg {
+  background:#ffffff !important;
+}
+
+.EL-colors li:nth-child(3) p, .EL-colors li:nth-child(3):hover ~ .bg {
+  background:#b15f02 !important;
+}
+
+.EL-colors li:nth-child(4) p, .EL-colors li:nth-child(4):hover ~ .bg {  
+  background:#5f5951 !important;
+}
+
+/*OUTSOLE*/
+.custom-outsole{
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  display: none;
+  }
+
+.OS-colors li:first-child p, .OS-colors li:first-child:hover ~ .bg{  
+  background-color:#000000 !important;
+}
+.OS-colors li:nth-child(2) p, .OS-colors li:nth-child(2):hover ~ .bg {
+  background:#ffffff !important;
+}
+
+.OS-colors li:nth-child(3) p, .OS-colors li:nth-child(3):hover ~ .bg {
+  background:#361e02 !important;
+}
+
+.OS-colors li:nth-child(4) p, .OS-colors li:nth-child(4):hover ~ .bg {  
+  background:#dadada !important;
+}
+
+/*THREAD*/
+.custom-thread{
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  display: none;
+  }
+
+.T-colors li:first-child p, .T-colors li:first-child:hover ~ .bg{  
+  background-color:#ffffff !important;
+}
+.T-colors li:nth-child(2) p, .T-colors li:nth-child(2):hover ~ .bg {
+  background:#000000 !important;
+}
+
+.T-colors li:nth-child(3) p, .T-colors li:nth-child(3):hover ~ .bg {
+  background:#643805 !important;
+}
+
+.T-colors li:nth-child(4) p, .T-colors li:nth-child(4):hover ~ .bg {  
+  background:#361e02 !important;
+}
+
+/*HEEL
+.custom-heel{
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  display: none;
+  }
+
+.H-colors li:first-child p, .H-colors li:first-child:hover ~ .bg{  
+  background-color:#ffffff !important;
+}
+.H-colors li:nth-child(2) p, .H-colors li:nth-child(2):hover ~ .bg {
+  background:#000000 !important;
+}
+
+.H-colors li:nth-child(3) p, .H-colors li:nth-child(3):hover ~ .bg {
+  background:#643805 !important;
+}
+
+.H-colors li:nth-child(4) p, .H-colors li:nth-child(4):hover ~ .bg {  
+  background:#361e02 !important;
+}
+*/
+
+
+
+/*customShoes start*/
+.parent {
+  position: absolute;
+  bottom: 500px;
+  left: 10%;
+}
+
+.outsole {
+  position: absolute;
+  height: 800px;
+  }
+
+.lowerLeather {
+  position: absolute;
+  height: 800px;
+}
+
+.upperLeather {
+  position: absolute;
+  height: 800px;
+}
+
+.eyelet {
+  position: absolute;
+  height: 800px;
+}
+
+.shoelace {
+  position: absolute;
+  height: 800px;
+}
+
+.thread{
+  position: absolute;
+  height: 800px;
+}
+
+/*customShoes end*/

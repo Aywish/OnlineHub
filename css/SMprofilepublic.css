@@ -1,0 +1,547 @@
+/* EMBEDDED FONT */
+@font-face {
+    font-family: "OpenSans-Regular";
+    src: url("../fonts/OpenSans-Regular.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/OpenSans-Regular.ttf")  format("truetype");
+}
+@font-face {
+    font-family: "OpenSans-Light";
+    src: url("../fonts/OpenSans-Light.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/OpenSans-Light.ttf")  format("truetype");
+}
+@font-face {
+    font-family: "OpenSans-Semibold";
+    src: url("../fonts/OpenSans-Semibold.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/OpenSans-Semibold.ttf")  format("truetype");
+}
+@font-face {
+    font-family: "Roboto-Regular";
+    src: url("../fonts/Roboto-Regular.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/Roboto-Regular.ttf")  format("truetype");
+}
+
+
+/* USE THE EMBEDDED FONT AS DEFAULT FONT FOR THE WEBSITE */
+* {
+    font-family: "OpenSans-Light";
+}
+
+
+/* STYLE FOR BODY */
+body, html {
+    height: 100%;
+    background-color:#e5e5e5
+}
+
+body {
+    margin: 0px;
+}
+
+
+/*NAVBAR*/
+
+header {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0), rgba(0,0,0,0), #e5e5e5), url("../images/shoe-background.jpg");
+    -webkit-background-size:cover;
+    
+    height: 100%;
+    width: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    padding-right:0;
+    padding-left:0;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+.navbar-color{
+    background-color: #212529;
+    transition: 0.5s;
+}
+
+.img-brand-logo {
+    max-height: 38px;
+    color: #000;
+}
+
+.d-flex{
+    margin-top: -10px;
+}
+
+.search-container{
+    margin-top: 10px;
+    font-size: 14px;
+    color: white;
+    box-sizing: border-box;
+    border: none;
+    background: rgba(65, 64, 64, 0.664);
+    border: 1px solid white;
+    border-radius: 50px;
+    outline: none;
+    text-indent: 2mm;
+    width:100%
+}
+
+@media screen and (min-width: 1391px) {
+    .search-container {
+        width:500px;
+    }
+  }
+
+.d-flex .search-btn{
+    color: white;
+    font-size: 12px;
+    margin-top: 9px;
+    padding: 3px 6px 3px 6px;
+}
+
+.d-flex .search-btn:hover{
+    color: #212529;
+    background-color: white;
+    border-radius: 25%;
+    font-size: 12px;
+}
+
+.navbar-nav li {
+    font-size: 12px;
+    
+  }
+  
+
+/*END OF NAVBAR*/
+
+/*PROFILE*/
+
+.account-details{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
+
+.account-details .profile-picture img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    display: flex;
+    margin: 20px;
+}
+
+.shoemaker-description h1{
+    font-weight: bold;
+}
+
+.shoemaker-description{
+    margin: 20px;
+}
+
+.button-actions-profile{
+    display: block;
+    width: 170px;
+    height: 35px;
+    margin: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid;
+}
+
+.button-actions-profile:hover{
+    background: #212529;
+    color: white; 
+}
+
+.account-details{
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    z-index: 1;
+    position: fixed;
+    background-color: #ebebeb;
+    padding: 30px;
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+}
+
+.account-details .profile-picture img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    display: flex;
+    margin: 20px;
+}
+
+.shoemaker-description h1{
+    font-weight: bold;
+}
+
+.shoemaker-description{
+    margin: 20px;
+}
+
+.button-actions{
+    display: block;
+    width: 170px;
+    height: 35px;
+    margin: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid;
+}
+
+.button-actions:hover{
+    background: #212529;
+    color: white; 
+}
+
+.profile-products{
+    margin-top: 250px;
+}
+
+.profile-products .products-sidebar{
+    top: 0;
+    background: white;
+    margin-top: 310px;
+    padding-top: 30px;
+    position: fixed;
+    right: 0;
+    width: 200px;
+    height: 100%;
+    transition: 0.5s;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.profile-products  .sidebar-title{
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    line-height: 60px;
+    text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-choices{
+    margin-top: -5px;;
+}
+
+.sidebar-choices a{
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+    font-size: 12px;
+    padding: 0;
+}
+
+.profile-products .sidebar-choices a:hover, .selected{
+    color: #aa6023;
+    margin-left: 5px;
+    transition: all .4s;
+}
+
+.profile-products .sidebar i{
+    padding-right: 10px;
+}
+
+.card-products{
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% - 200px);
+    padding: 75px;
+}
+
+.card{
+    width: 250px;
+    height: 430px;
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+    margin: 20px;
+    flex: 0 0 auto;
+}
+
+.card .product-image{
+    height: 300px;
+    position: relative;
+}
+
+.card .product-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-sizing: border-box;
+}
+
+.product-overlay{
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    background-color: #aa602380;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
+.card .product-image:hover .product-overlay{
+    visibility: visible;
+    animation: fade 0.4s;
+}
+
+@keyframes fade{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.view-product-details{
+    border: 2px solid #fff;
+    padding: 10px 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 20px;
+    display: inline-block;
+    color: #fff; 
+    margin: 20px 20px 20px 20px;
+}
+
+.view-product-details:hover{
+    background: #fff;
+    color: #212529; 
+}
+
+.card .card-content{
+    width: 100%;
+    display: absolute;
+    text-align: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card-content .shoe-name{
+    font-weight: bold;
+    margin: 0;
+}
+
+.card-content .shoe-maker{
+    font-size: 12px;
+    color: gray;
+    margin: 0;
+}
+
+.card-content .shoe-price{
+    font-weight: bold;
+    color: #aa6023;
+    margin-bottom: 8px;
+}
+
+input[type="checkbox"]{
+    -webkit-appearance: none;
+}
+
+.sizes input[type="text"]{
+    border: 2px solid;
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+    text-align: center;
+    display: inline-block;
+    transition: all .3s;
+    font-size: 15px;
+    vertical-align: top;
+    font-weight: bold;
+}
+
+input[type="checkbox"]:checked + label, input[type="checkbox"]:hover + label{
+    color: #aa6023;
+}
+
+    /*POPUP*/
+    .bgoverlay{
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 2;
+        display: none;
+    }
+
+    .popup{
+        background-color: white;
+        width: 50%;
+        min-width: 430px;
+        height: 800px;
+        position: absolute;
+        margin: auto;
+        z-index: 3;
+        left: 32%;
+        top: 12%;
+        display: none;
+    }
+
+    .popup-scrollable{
+        background-color: white;
+        height: 750px;
+        overflow-y:auto;
+        overflow-x: hidden;
+        margin: auto;
+    }
+
+    .popup-scrollable::-webkit-scrollbar
+    {
+        width: 12px;
+        background-color: #F5F5F5;
+    }
+
+    .popup-scrollable::-webkit-scrollbar-thumb
+    {
+        border-radius: 10px;
+        background-color: #212529;
+    }
+
+    .bi-x{
+        right: 10px;
+        top: 5px;
+        font-size: 30px;
+        position: sticky;
+        top: 0;
+        float: right;
+        cursor: pointer;
+    }
+
+    .popup-content{
+        margin-top: 25px;
+    }
+    .popup .product-left{
+        display: table;
+        margin-bottom: 20px;
+    }
+
+    .popup .small-img img{
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        box-sizing: border-box;
+        margin: 10px;    
+    }
+
+    .popup .big-img img{
+        width: 350px;
+        height: 350px;
+        object-fit: cover;
+        box-sizing: border-box;
+        margin: 10px;
+    }
+
+    .product-colorsize{
+        margin-right: 20px;
+        font-size: 1.5em;
+    }
+
+    .product-colorsize label{
+        border: 2px solid;
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        text-align: center;
+        transition: all .3s;
+        font-size: 1em;
+    }
+
+    .color1{
+        color: #aa6023;
+        margin-left: 10px;
+    }
+
+    .color2{
+        color: #212529;
+    }
+
+    .color3{
+        color: #aa602380;
+    }
+
+    .color4{
+        color: #8494a5;
+    }
+
+    .popup .popup-content {
+        height: 350px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .popup .popup-content .popup-section {
+        flex: 1;
+        padding: 25px; 
+    }
+
+
+    .product-right .shoe-name{
+        font-size: 1.50em;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    .product-right .shoe-maker{
+        font-size: 12px;
+        color: gray;
+        margin: 0;
+    }
+
+    .product-right .shoe-price{
+        color: #aa6023;
+        font-size: 1.45em;
+        margin: 0;
+    }
+
+    .stars{
+        font-size: 1.5em;
+        color: #e9da0f;
+    }
+
+    p{
+        text-align: justify;
+    }
+
+    .addtocart{
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background-color: #212529;    
+    }
+
+    .addtocart a{
+        text-align: center;
+        background-color: #212529;
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 14px;
+        padding: 15px;
+        margin: auto;
+    }
