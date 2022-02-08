@@ -241,3 +241,16 @@ header {
 .payment-method input[type="radio"]:checked + .payment-method label, .payment-method input[type="radio"]:hover + .payment-method label{
     color: #aa6023;
 }
+
+
+
+
+button#custlogout  {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}

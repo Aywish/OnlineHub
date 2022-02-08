@@ -50,6 +50,35 @@ function ClosePopup() {
 
 
 
+function showCart() {
+
+
+  var x = document.getElementById("showCart");
+  if (x.style.display === "none") {
+      x.style.display = "unset";
+
+      var cartReference = firebase.database().ref().child("users/" + userID + "/cart/");
+
+      cartReference.on("child_added", snap => {
+        var cProdName = snap.child("prodName").val();
+        var cProdPrice = snap.child("prodPrice").val();
+        console.log(cProdName, cProdPrice)
+
+
+      $("#cart-content").append('<tr><td><img class="cart-image" src="images/1.jpg"></td><td><p class="cart-shoename cart-col2" id="cartShoeName">' + cProdName + '</p><p class="cart-shoemaker cart-col2">Shoemaker Name</p></td><td><p class="cart-price" id="cartShoePrice">'+ cProdPrice +'</p></td></tr>');
+
+  
+      document.getElementById("prodHiddenId").innerHTML = addprodId;
+      document.getElementById("prodHiddenId").style.display = "none";      
+      });
+
+  } else {
+      x.style.display = "none";
+      $("#cart-content").html("");
+  }
+}
+
+
 addToCart.onclick = function () {
 
   var cProdName = vwProdName;
@@ -70,36 +99,22 @@ addToCart.onclick = function () {
 };
 
 
-function showCart() {
+addToFullCart.onclick = function () {
 
 
-  var x = document.getElementById("showCart");
-  if (x.style.display === "none") {
-      x.style.display = "unset";
+  var cartReference = firebase.database().ref().child("users/" + userID + "/cart/");
+  cartReference.on("child_added", snap => {
+    
+    var cProdName = snap.child("prodName").val();
+    var cProdPrice = snap.child("prodPrice").val();
+    console.log(cProdName, cProdPrice);
 
-      var cartReference = firebase.database().ref().child("users/" + userID + "/cart/");
-
-    cartReference.on("child_added", snap => {
-      var cProdName = snap.child("prodName").val();
-      var cProdPrice = snap.child("prodPrice").val();
-      console.log(cProdName, cProdPrice)
-
-
-      $("#cart-content").append('<tr><td><img class="cart-image" src="images/1.jpg"></td><td><p class="cart-shoename cart-col2" id="cartShoeName">' + cProdName + '</p><p class="cart-shoemaker cart-col2">Shoemaker Name</p></td><td><p class="cart-price" id="cartShoePrice">'+ cProdPrice +'</p></td></tr>');
-
-  
-      document.getElementById("prodHiddenId").innerHTML = addprodId;
-      document.getElementById("prodHiddenId").style.display = "none";
-
-      
-      });
-  } else {
-      x.style.display = "none";
-      $("#cart-content").html("");
-  }
-
-  
-}
+    $("cart-items").append('<tr><td class="checkbox"><input type="checkbox" name=""></td><td><img class="product-image" src="images/1.jpg"></td><td class="prod-details"><p class="shoename cart-col2">'+ cProdName +'</p><p class="shoemaker cart-col2">Shoemaker Name</p></td><td><table class="specs"><tr class="spec-row"><td class="spec-title">Color: </td><td class="spec-value">White</td></tr><tr class="spec-row"><td class="spec-title">Size: </td><td class="spec-value">39</td></tr><tr class="spec-row"><td class="spec-title">Qty: </td><td class="spec-value">1</td></tr></table></td><td><p class="price">' + cProdPrice + '</p></td></tr>');
+    
+    document.getElementById("prodHiddenId").innerHTML = addprodId;
+    document.getElementById("prodHiddenId").style.display = "none";   
+  });
+};
 
 
 

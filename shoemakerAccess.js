@@ -25,20 +25,6 @@ firebase.database()
       });
 
 
-      // addToCart.onclick = function () {
-      //   firebase.database()
-      //     .ref("products/" + addprodId)
-      //     .on("value", function (snap) {
-      //       var cProdName = snap.val().prodName;
-      //       var cProdPrice = snap.val().prodPrice;
-      
-      //       $("#cart-content").append('<tr><td><img class="cart-image" src="images/1.jpg"></td><td><p class="cart-shoename cart-col2" id="cartShoeName">' + cProdName + '</p><p class="cart-shoemaker cart-col2">Shoemaker Name</p></td><td><p class="cart-price" id="cartShoePrice">'+ cProdPrice +'</p></td></tr>');
-      
-        
-      //       document.getElementById("prodHiddenId").innerHTML = id;
-      //       document.getElementById("prodHiddenId").style.display = "none";
-      //       });
-      // };
 
 
 

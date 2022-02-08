@@ -344,6 +344,58 @@ p{
     
 }
 
+/*PROFILE*/
+.level1-contents{
+    margin-top: 50px;
+}
+
+.accordion {
+    display: table;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .accordion > input {
+    display: none;
+  }
+
+  .accordion_item {
+    cursor: pointer;
+    display: table-cell;
+    width: 150px;
+    transition: .25s ease;
+    text-align: center;
+    height: 120px;
+  }
+
+  .accordion_item p{
+    font-size: 12px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #212529;
+}
+
+.accordion_item i{
+    font-size: 25px;
+}
+
+.accordion > input:checked + .accordion_item i{
+    font-size: 30px;
+    font-weight: bold;
+    transition: 0.5s;
+    color: #aa6023;
+}
+
+.accordion > input:checked + .accordion_item p {
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.5s;
+    color: #aa6023;
+}
+
 button#custlogout  {
 	background: none;
 	color: inherit;
