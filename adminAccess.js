@@ -18,6 +18,7 @@ firebase.database()
     .ref("users/" + localStorage.getItem("userID"))
     .on("value", function (snap) {
       userType = snap.val().accountType;
+      console.log(userType)
       
         document.getElementById("adminhiddenId").innerHTML = snap.val().userType;
         document.getElementById("adminhiddenId").style.display = "none";

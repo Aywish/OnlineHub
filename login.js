@@ -64,9 +64,14 @@ document.getElementById("custLogin").onclick = function () {
         location.href='AdminAccess.html';
       }
       else{
-        if(user) {
-          alert("You are logged In!");
-          location.href = "CustomerProfile.html";
+        if(accesstype == "shoemaker"){
+          location.href='ShoemakerAccess.html';
+        }
+        else{
+          if(user) {
+            alert("You are logged In!");
+            location.href = "CustomerProfile.html";
+          }
         }
       }
     });
@@ -143,14 +148,28 @@ document.getElementById("custgoogleLogin").onclick = function () {
     var user = result.user;
     // ...
 
-    firebase
-    .database()
-    .ref("users/" + user.uid)
+    firebase.database()
+    .ref("users/" + id)
     .on("value", function (snap) {
-      localStorage.setItem("accountType", snap.val().accountType);
+      accesstype = snap.val().accountType;
+      console.log(accesstype)
+      if(accesstype == "admin"){
+        location.href='AdminAccess.html';
+      }
+      else{
+        if(accesstype == "shoemaker"){
+          location.href='ShoemakerAccess.html';
+        }
+        else{
+          if(user) {
+            alert("You are logged In!");
+            location.href = "CustomerProfile.html";
+          }
+        }
+      }
     });
-
-    location.href='CustomerProfile.html';  
+    
+    
     localStorage.setItem("userID", user.uid);
     
   }).catch((error) => {
@@ -184,6 +203,8 @@ document.getElementById("custgoogleSignup").onclick = function () {
     .ref("users/" + user.uid)
     .set({
       email: user.email,
+      accountType: "user"
+
     });
     alert("Sign up Success!" + "\n\n"+ user.email + "\nUser ID: " + user.uid);
 

@@ -15,23 +15,9 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function showCart() {
-            var x = document.getElementById("showCart");
-            if (x.style.display === "none") {
-                x.style.display = "unset";
-            } else {
-                x.style.display = "none";
-            }
-        }
 
-        function ProductPopup() {
-            document.getElementById("popup_product").style.display = "block";
-            document.getElementById("bgoverlay").style.display = "block";
-        }
-        function ClosePopup() {
-            document.getElementById("popup_product").style.display = "none";
-            document.getElementById("bgoverlay").style.display = "none";
-        }
+
+        
     </script>
 
 
@@ -68,32 +54,18 @@
                         <a class="nav-link" href="OrderCustom.html">CUSTOM SHOES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house-door-fill"></i></a>
+                        <a class="nav-link active" aria-current="page" href="CustomerProfile.html#"><i class="bi bi-house-door-fill"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="showCart()"><i class="bi bi-cart4"></i></a>
                         <!--CART DROP DOWN-->
                         <div class="cart-dropdown" id="showCart">
-                            <h6>Recently Added</h6>
-                            <table>
-                                <tr>
-                                    <td><img class="cart-image" src="images/1.jpg"></td>
-                                    <td>
-                                        <p class="cart-shoename cart-col2">Lorem Ipsum Dolor</p>
-                                        <p class="cart-shoemaker cart-col2">Shoemaker Name</p>
-                                    </td>
-                                    <td><p class="cart-price">₱1500.00</p></td>
-                                </tr>
-                                <tr>
-                                    <td><img class="cart-image" src="images/1.jpg"></td>
-                                    <td>
-                                        <p class="cart-shoename cart-col2">Lorem Ipsum Dolor</p>
-                                        <p class="cart-shoemaker cart-col2">Shoemaker Name</p>
-                                    </td>
-                                    <td><p class="cart-price">₱1500.00</p></td>
-                                </tr>
+                            <table id="cart-content">
+                                
                             </table>
-                            <a href= "FullCart.html" class="cart-fullcart">VIEW FULL CART</a>
+                            
+                            <p id="prodHiddenId"></p>
+                            <a href= "FullCart.html"  id="addToFullCart">VIEW FULL CART</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -205,9 +177,9 @@
                     </div>
         
                     <div class="popup-section product-right">
-                        <p class="shoe-name">SHOE NAME SAMPLE</p>
-                        <p class="shoe-maker">Tatay Oly Shoes</p>
-                        <p class="shoe-price">₱1500.00</p>
+                        <p class="shoe-name" id="shoeName"></p>
+                        <p class="shoe-maker" ></p>
+                        <p class="shoe-price" id="shoePrice"></p>
                         <div class="stars">
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-fill"></i>
@@ -225,32 +197,19 @@
                 </div>
             </div>
             <div class="addtocart">
-                <a href="#" id="addtocart">ADD TO CART</a>
+                <a href="#" id="addToCart">ADD TO CART</a>
             </div>
         </div>
         <!--END OF POPUP-->
 
     <div class="content" id="content_page">
-        
-        <div class="card">
-            <div class="product-image">
-                <div class="product-overlay">
-                    <a href="#" class="view-product-details" onclick="ProductPopup()">View Details</a>
-                </div>
-                <img src="images/1.jpg"> 
-            </div>
-            <div class="card-content">
-                <p class="shoe-name">SHOE NAME SAMPLE</p>
-                <p class="shoe-maker">Tatay Oly Shoes</p>
-                <p class="shoe-price">₱1500.00</p>
-            </div>
-        </div>
+       
 
     </div>
 
     
 
-
+    <p id="custhiddenId"></p>
     
     <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase.js"></script>
 
