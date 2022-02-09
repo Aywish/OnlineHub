@@ -42,15 +42,6 @@
             });
         });
 
-        //payment
-        $(document).ready(function(){
-            $('.payment_selector').click(function(){
-                $('#content_page').load('customer/customer.payment.html');
-                $('.selector').removeClass('selected')
-                $('.payment_selector').toggleClass('selected')
-            });
-        });
-
         //change password
         $(document).ready(function(){
             $('.password_selector').click(function(){
@@ -82,7 +73,7 @@
 <!--HEADER-->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-color">
     <div class="container">
-        <a class="navbar-brand" href="index.html"> <img class="img-brand-logo" src="./images/Logo.png" alt="" /> </a>
+        <a class="navbar-brand" href="homepage.html"> <img class="img-brand-logo" src="./images/Logo.png" alt="" /> </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -101,13 +92,13 @@
                     <a class="nav-link" href="ShopFull.html">PRODUCTS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html#store_section">STORE LOCATOR</a>
+                    <a class="nav-link" href="homepage.html#store_section">STORE LOCATOR</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="OrderCustom.html">CUSTOM SHOES</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active shoemaker-name" href="FullCart.html" id="tnCustUserName"></a>
+                    <a class="nav-link active shoemaker-name" id="tnCustUserName"></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="modal" role="button" ><button id="custlogout">Logout</button></a>
@@ -131,10 +122,6 @@
             <a href="#" class="selector account_selector">
                 <i class="bi bi-person-circle"></i>
                 <span>ACCOUNT DETAILS</span>
-            </a>
-            <a href="#" class="selector payment_selector">
-                <i class="bi bi-cash-stack"></i>
-                <span>PAYMENT</span>
             </a>
             <a href="#" class="selector address_selector">
                 <i class="bi bi-mailbox"></i>
@@ -166,10 +153,6 @@
         <a href="#" class="selector account_selector">
             <i class="bi bi-person-circle"></i>
             <span>ACCOUNT DETAILS</span>
-        </a>
-        <a href="#" class="selector payment_selector">
-            <i class="bi bi-cash-stack"></i>
-            <span>PAYMENT</span>
         </a>
         <a href="#" class="selector address_selector">
             <i class="bi bi-mailbox"></i>

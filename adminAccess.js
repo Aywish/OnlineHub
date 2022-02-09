@@ -8,7 +8,6 @@ var AdminLogout = document.getElementById("adminlogout");
 firebase.auth().onAuthStateChanged(function(adminUser) {
   if (!adminUser) {
     //Redirect user to login if not logged in
-    alert("Login First!");
     location.href='../index.html'; 
   }
 });

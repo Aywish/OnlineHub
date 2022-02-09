@@ -1,3 +1,17 @@
+var CustLogout = document.getElementById("custlogout");
+
+var custUser;
+
+//Check if user is logged in
+firebase.auth().onAuthStateChanged(function(custUser) {
+  if (!custUser) {
+    //Redirect user to login if not logged in
+    alert("Can't access, please login first");
+    location.href='../index.html'; 
+  }
+});
+
+
 var upperLeatherColor, shoeLaceColor, eyeletColor, outSoleColor, threadColor;
 
 var upperLeather, shoeLace, eyeLet, outSole, thread;
@@ -37,5 +51,15 @@ function setThreadColor(val) {
 }
 
 
+CustLogout.onclick = function () {
 
-
+    firebase.auth().signOut().then(() => {
+  
+      location.href='index.html';  
+      localStorage.clear();
+  
+    }).catch((error) => {
+      console.log(error);
+      // An error happened.
+    });
+  };

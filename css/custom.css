@@ -398,7 +398,7 @@ left: calc(50% - 80px);
 .bg {
   position: absolute;
   display: block;
-  top: 100px;
+  top: 200px;
   left: 35%;
   width: 250px;
   height: 250px;
@@ -571,3 +571,54 @@ margin-top: 450px;
   background:#361e02 !important;
 }
 */
+
+
+
+/*customShoes start*/
+.parent {
+  position: absolute;
+  bottom: 500px;
+  left: 10%;
+}
+
+.outsole {
+  position: absolute;
+  height: 800px;
+  }
+
+.lowerLeather {
+  position: absolute;
+  height: 800px;
+}
+
+.upperLeather {
+  position: absolute;
+  height: 800px;
+}
+
+.eyelet {
+  position: absolute;
+  height: 800px;
+}
+
+.shoelace {
+  position: absolute;
+  height: 800px;
+}
+
+.thread{
+  position: absolute;
+  height: 800px;
+}
+
+/*customShoes end*/
+
+button#custlogout  {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}

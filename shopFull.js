@@ -1,3 +1,16 @@
+var custUser;
+
+var CustLogout = document.getElementById("custlogout");
+
+
+//Check if user is logged in
+firebase.auth().onAuthStateChanged(function(custUser) {
+  if (!custUser) {
+    //Redirect user to login if not logged in
+    location.href='../index.html'; 
+  }
+});
+
 
 var product = firebase.database().ref().child("products/");
 
@@ -130,3 +143,18 @@ firebase.database()
         console.log(userType)
 
       });
+
+
+  CustLogout.onclick = function () {
+
+    firebase.auth().signOut().then(() => {
+  
+      location.href='index.html';  
+      localStorage.clear();
+  
+    }).catch((error) => {
+      console.log(error);
+      // An error happened.
+    });
+  };
+      
