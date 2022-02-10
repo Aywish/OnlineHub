@@ -72,58 +72,14 @@
         </div>
 
         <div class="table">
-            <table>
+            <table   id="product-View">
                 <tr>
                     <th><h4 class="tblHeader">IMAGE</h4></th>
                     <th><h4 class="tblHeader">PRODUCT NAME</h4></th>
                     <th><h4 class="tblHeader">PRICE</h4></th>
                     <th><h4 class="tblHeader">ACTIONS</h4></th>
                 </tr>
-                <tr>
-                    <td><img class="tblImage" src="images/1.jpg"></td>
-                    <td><p>Shoe Name Sample</p></td>
-                    <td><p>₱1500.00</p></td>
-                    <td>
-                        <button class="button-actions" onclick="EditPopup()">
-                            <i class="bi bi-pencil"></i>
-                            <span>EDIT</span>
-                        </button>
-                        <button class="button-actions">
-                            <i class="bi bi-trash"></i>
-                            <span>DELETE</span>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img class="tblImage" src="images/2.jpg"></td>
-                    <td><p>Shoe Name Sample</p></td>
-                    <td><p>₱1500.00</p></td>
-                    <td>
-                        <button class="button-actions" onclick="EditPopup()">
-                            <i class="bi bi-pencil"></i>
-                            <span>EDIT</span>
-                        </button>
-                        <button class="button-actions">
-                            <i class="bi bi-trash"></i>
-                            <span>DELETE</span>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img class="tblImage" src="images/3.jpg"></td>
-                    <td><p>Shoe Name Sample</p></td>
-                    <td><p>₱1500.00</p></td>
-                    <td>
-                        <button class="button-actions" onclick="EditPopup()">
-                            <i class="bi bi-pencil"></i>
-                            <span>EDIT</span>
-                        </button>
-                        <button class="button-actions">
-                            <i class="bi bi-trash"></i>
-                            <span>DELETE</span>
-                        </button>
-                    </td>
-                </tr>
+
             </table>
         </div>
 
@@ -262,12 +218,59 @@
             </div>
             <div class="addtocart">
                 
-                <button id="btnAddProduct">Add Product</button>
+                <a href="#" id="addtocart"><button id="btnAddProduct">Add Product</button></a>
             </div>
         </div>
         <!--END OF POPUP-->
 
-        <script src="shoemaker.js"></script>
+        <script>
+            var shmkrId = localStorage.getItem("userID");
+
+            var today = new Date();
+            var time = new Date().getFullYear() + "" + new Date().getMonth()  + 1 + "" + new Date().getDate()  + "" + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
+
+            var shoeName, shoePrice, shoeDescription;
+            var prodID_var = time;
+
+
+            function readAddForm() {
+                shoeName = document.getElementById("addProd_ShoeName").value;
+                shoePrice = document.getElementById("addProd_ShoePrice").value;
+                shoeDescription = document.getElementById("addProd_ShoeDescription").value;
+            }
+
+            //Create
+            document.getElementById("btnAddProduct").onclick = function () {
+                readAddForm();
+                console.log("Add Clicked!");
+
+                firebase
+                .database()
+                .ref("users/" + shmkrId + "/products/" + prodID_var.toString())
+                .set({
+                    shoeMakerID: shmkrId,
+                    prodId: prodID_var,
+                    prodName: shoeName,
+                    prodPrice: parseFloat(shoePrice),
+                    prodDesc: shoeDescription,
+                });
+                alert("Product Added!");
+            };
+
+
+            var cartReference = firebase.database().ref().child("users/" + shmkrId + "/products/");
+
+            cartReference.on("child_added", snap => {
+                var cProdName = snap.child("prodName").val();
+                var cProdPrice = snap.child("prodPrice").val();
+                console.log(cProdName, cProdPrice);
+                console.log("hefsdfs");
+
+                $("#product-View").append('<tr><td><img class="tblImage" src="images/1.jpg"></td><td><p>' + cProdName + '<p></td><td><p>' + cProdPrice + '</p></td><td><button class="button-actions" onclick="EditPopup()"><i class="bi bi-pencil"></i><span>EDIT</span></button><button class="button-actions"><i class="bi bi-trash"></i><span>DELETE</span></button></td></tr>');
+
+            });
+
+        </script>
 </body>
 
 </html>
