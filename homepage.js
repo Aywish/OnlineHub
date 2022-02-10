@@ -22,10 +22,20 @@ firebase.database()
       //alert(user);
         document.getElementById("custhiddenId").innerHTML = snap.val().userType;
         document.getElementById("custhiddenId").style.display = "none";
-
-        document.getElementById("snCustUserName").innerHTML = snap.val().username;
         console.log(userType)
+
+
+        customOrderNav.onclick = function () {
+          if (userType == "user") {
+            location.href='./CustomerProfile.html'; 
+          }
+          else{
+            location.href='./ShoemakerAccess.html'; 
+          }
+          
+        };
       });
+
 
 
 CustLogout.onclick = function () {

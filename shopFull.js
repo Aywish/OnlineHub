@@ -75,7 +75,6 @@ function showCart() {
       cartReference.on("child_added", snap => {
         var cProdName = snap.child("prodName").val();
         var cProdPrice = snap.child("prodPrice").val();
-        console.log(cProdName, cProdPrice)
 
 
       $("#cart-content").append('<tr><td><img class="cart-image" src="images/1.jpg"></td><td><p class="cart-shoename cart-col2" id="cartShoeName">' + cProdName + '</p><p class="cart-shoemaker cart-col2">Shoemaker Name</p></td><td><p class="cart-price" id="cartShoePrice">'+ cProdPrice +'</p></td></tr>');
@@ -142,7 +141,18 @@ firebase.database()
         document.getElementById("custhiddenId").style.display = "none";
         console.log(userType)
 
+        customOrderNav.onclick = function () {
+          if (userType == "user") {
+            location.href='./CustomerProfile.html'; 
+          }
+          else{
+            location.href='./ShoemakerAccess.html'; 
+          }
+        };
       });
+
+
+
 
 
   CustLogout.onclick = function () {

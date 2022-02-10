@@ -23,10 +23,7 @@
                 document.getElementById("add_product").style.display = "block";
                 document.getElementById("bgoverlay").style.display = "block";
             }
-            function EditPopup() {
-                document.getElementById("edit_product").style.display = "block";
-                document.getElementById("bgoverlay").style.display = "block";
-            }
+
             function ClosePopup() {
                 document.getElementById("add_product").style.display = "none";
                 document.getElementById("edit_product").style.display = "none";
@@ -72,18 +69,20 @@
         </div>
 
         <div class="table">
-            <table   id="product-View">
+            <table id="product-View">
                 <tr>
                     <th><h4 class="tblHeader">IMAGE</h4></th>
                     <th><h4 class="tblHeader">PRODUCT NAME</h4></th>
                     <th><h4 class="tblHeader">PRICE</h4></th>
                     <th><h4 class="tblHeader">ACTIONS</h4></th>
                 </tr>
-
+                    <!-- CONTENT IS GENERATED FROM THE DATABASE -->
             </table>
         </div>
 
         <!--POPUP-->
+
+        <!-- FOR EDITING A PRODUCT -->
         <div class="popup" id="edit_product">
             <div class="popup-scrollable">
                 <i class="bi bi-x" onclick="ClosePopup()"></i>
@@ -138,23 +137,22 @@
                     </div>
         
                     <div class="popup-section product-right">
-                        <p class="shoe-name">SHOE NAME SAMPLE</p>
-                        <p class="shoe-maker">Tatay Oly Shoes</p>
-                        <p class="shoe-price">₱1500.00</p>
+                        <input type="text" class="fields" placeholder="Shoe Name" id="shoename">
+                        <br>
+                        <input type="text"  class="fields"  placeholder="Price" id="shoeprice">
+                        <br>
                         <div class="description">
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                            </p>
+                            <input type="textarea"  class="fields-desc"  placeholder="Description" id="shoedesc">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="addtocart">
-                <a href="#" id="addtocart">SAVE</a>
+                <a href="#" id="saveEdit">SAVE</a>
             </div>
         </div>
 
+        <!-- FOR ADDING A PRODUCT -->
         <div class="popup" id="add_product">
             <div class="popup-scrollable">
                 <i class="bi bi-x" onclick="ClosePopup()"></i>
@@ -226,6 +224,8 @@
         <script>
             var shmkrId = localStorage.getItem("userID");
 
+            var shmkrName, userType, username, editprodId;
+
             var today = new Date();
             var time = new Date().getFullYear() + "" + new Date().getMonth()  + 1 + "" + new Date().getDate()  + "" + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
 
@@ -257,18 +257,87 @@
                 alert("Product Added!");
             };
 
-
-            var cartReference = firebase.database().ref().child("users/" + shmkrId + "/products/");
-
-            cartReference.on("child_added", snap => {
+            firebase.database()
+                .ref("users/" + shmkrId)
+                .on("value", function (snap) {
+                userType = snap.val().accountType;
+                username = snap.val().name;
+                });
+                
+            
+            var prodReference = firebase.database().ref().child("users/" + shmkrId + "/products/");
+            prodReference.on("child_added", snap => {
+                var cProdId = snap.child("prodId").val();
                 var cProdName = snap.child("prodName").val();
                 var cProdPrice = snap.child("prodPrice").val();
-                console.log(cProdName, cProdPrice);
-                console.log("hefsdfs");
 
-                $("#product-View").append('<tr><td><img class="tblImage" src="images/1.jpg"></td><td><p>' + cProdName + '<p></td><td><p>' + cProdPrice + '</p></td><td><button class="button-actions" onclick="EditPopup()"><i class="bi bi-pencil"></i><span>EDIT</span></button><button class="button-actions"><i class="bi bi-trash"></i><span>DELETE</span></button></td></tr>');
+
+                $("#product-View").append('<tr><td><img class="tblImage" src="images/1.jpg"></td><td><p>' + cProdName + '<p></td><td><p>' + cProdPrice + '</p></td><td><button class="button-actions" onclick="EditPopup(' + cProdId + ')"><i class="bi bi-pencil"></i><span>EDIT</span></button><button class="button-actions" id="delete"><i class="bi bi-trash"></i><span>DELETE</span></button></td></tr>');
 
             });
+
+
+            // READ THE DATA IN THE EDIT POPUP
+            function readCrudForm() {
+                name_var = document.getElementById("shoename").value;
+                price_var = document.getElementById("shoeprice").value;
+                desc_var = document.getElementById("shoedesc").value;
+            };
+            
+
+            // PASS VALUES OF THE CHOSEN PRODUCT TO THE EDIT POPUP
+            function EditPopup(id) {
+                editprodId = id;
+
+                firebase.database()
+                    .ref("users/" + shmkrId + "/products/" + id)
+                    .on("value", function (snap) {
+                    vwProdName = snap.val().prodName;
+                    vwProdPrice = snap.val().prodPrice;
+                    vwProdDesc = snap.val().prodDesc;
+                    
+                    //alert(user);
+                        document.getElementById("shoename").value = vwProdName;
+                        document.getElementById("shoeprice").value = vwProdPrice;
+                        document.getElementById("shoedesc").value = vwProdDesc;
+
+                    });
+                
+
+                document.getElementById("edit_product").style.display = "block";
+                document.getElementById("bgoverlay").style.display = "block";
+
+            }
+
+
+            // UPDATE THE DATA IN THE DATABASE
+            document.getElementById("saveEdit").onclick = function () {
+            readCrudForm();
+                
+            firebase
+                .database()
+                .ref("users/" + shmkrId + "/products/" + editprodId)
+                .update({
+                //   prodId: rollV,
+                prodName: name_var,
+                prodPrice: parseFloat(price_var),
+                prodDesc: desc_var,
+                });
+            alert("Data Update");
+            };
+
+
+            // DELETE PRODUCT IN THE DATABASE
+            document.getElementById("#delete").onclick = function () {
+                console.log("clicked");
+            readCrudForm();
+
+            firebase
+                .database()
+                .ref("users/" + shmkrId + "/products/" + editprodId)
+                .remove();
+            alert("Data Deleted");
+            };
 
         </script>
 </body>

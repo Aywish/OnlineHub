@@ -1,6 +1,7 @@
 var CustLogout = document.getElementById("custlogout");
 
-var custUser;
+var custUser = localStorage.getItem("userID");
+var userType;
 
 //Check if user is logged in
 firebase.auth().onAuthStateChanged(function(custUser) {
@@ -49,6 +50,33 @@ function setThreadColor(val) {
     threadColor = val;
     console.log(val)
 }
+
+
+
+
+
+firebase.database()
+    .ref("users/" + custUser)
+    .on("value", function (snap) {
+      userType = snap.val().accountType;
+      username = snap.val().userName;
+      
+      //alert(user);
+        document.getElementById("custhiddenId").innerHTML = snap.val().userType;
+        document.getElementById("custhiddenId").style.display = "none";
+        
+
+        customOrderNav.onclick = function () {
+          if (userType == "user") {
+            location.href='./CustomerProfile.html'; 
+          }
+          else{
+            location.href='./ShoemakerAccess.html'; 
+          }
+        };
+
+      });
+
 
 
 CustLogout.onclick = function () {
