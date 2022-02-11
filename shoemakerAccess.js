@@ -20,42 +20,6 @@ function readAddForm() {
     shoeDescription = document.getElementById("addProd_ShoeDescription").value;
 }
 
-//Create
-
-// document.getElementById("btnAddProduct").onclick = function () {
-//   readAddForm();
-//   console.log("Add Clicked!");
-
-//   firebase
-//     .database()
-//     .ref("users/" + shmkrId + "products/" + prodID_var)
-//     .set({
-//       shoeMakerID: shmkrId,
-//       prodId: prodID_var,
-//       prodName: shoeName,
-//       prodPrice: parseFloat(shoePrice),
-//       prodDesc: shoeDescription,
-//     });
-//   alert("Product Added!");
-// };
-// document.getElementById("btnAddProduct").onclick = function () {
-//     readAddForm();
-//     console.log("Add Clicked!");
-
-//     firebase
-//       .database()
-//       .ref("products/" + prodID_var)
-//       .set({
-//         shoeMakerID: localStorage.getItem("userID"),
-//         prodId: prodID_var,
-//         prodName: shoeName,
-//         prodPrice: parseFloat(shoePrice),
-//         prodDesc: shoeDescription,
-//       });
-//     alert("Product Added!");
-//   };
-
-//
 
 
 // Check if user is logged in

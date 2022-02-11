@@ -208,6 +208,8 @@
                         <br>
                         <input type="text"  class="fields"  placeholder="Price" id="addProd_ShoePrice">
                         <br>
+                        <input type="text"  class="fields"  placeholder="Category" id="addProd_ShoeCategory">
+                        <br>
                         <div class="description">
                             <input type="textarea"  class="fields-desc"  placeholder="Description" id="addProd_ShoeDescription">
                         </div>
@@ -236,25 +238,27 @@
             function readAddForm() {
                 shoeName = document.getElementById("addProd_ShoeName").value;
                 shoePrice = document.getElementById("addProd_ShoePrice").value;
+                shoeCategory = document.getElementById("addProd_ShoeCategory").value;
                 shoeDescription = document.getElementById("addProd_ShoeDescription").value;
             }
 
             //Create
             document.getElementById("btnAddProduct").onclick = function () {
                 readAddForm();
-                console.log("Add Clicked!");
 
                 firebase
                 .database()
-                .ref("users/" + shmkrId + "/products/" + prodID_var.toString())
+                .ref("products/" + prodID_var.toString())
                 .set({
                     shoeMakerID: shmkrId,
                     prodId: prodID_var,
                     prodName: shoeName,
                     prodPrice: parseFloat(shoePrice),
+                    prodCategory: shoeCategory,
                     prodDesc: shoeDescription,
                 });
                 alert("Product Added!");
+                location.reload();
             };
 
             firebase.database()
@@ -265,14 +269,14 @@
                 });
                 
             
-            var prodReference = firebase.database().ref().child("users/" + shmkrId + "/products/");
+            var prodReference = firebase.database().ref().child("products/").orderByChild('shoeMakerID').equalTo(shmkrId);
             prodReference.on("child_added", snap => {
                 var cProdId = snap.child("prodId").val();
                 var cProdName = snap.child("prodName").val();
                 var cProdPrice = snap.child("prodPrice").val();
 
 
-                $("#product-View").append('<tr><td><img class="tblImage" src="images/1.jpg"></td><td><p>' + cProdName + '<p></td><td><p>' + cProdPrice + '</p></td><td><button class="button-actions" onclick="EditPopup(' + cProdId + ')"><i class="bi bi-pencil"></i><span>EDIT</span></button><button class="button-actions" id="delete"><i class="bi bi-trash"></i><span>DELETE</span></button></td></tr>');
+                $("#product-View").append('<tr><td><img class="tblImage" src="images/1.jpg"></td><td><p>' + cProdName + '<p></td><td><p>' + cProdPrice + '</p></td><td><button class="button-actions" onclick="EditPopup(' + cProdId + ')"><i class="bi bi-pencil"></i><span>EDIT</span></button><button class="button-actions" onclick="deleteProd(' + cProdId + ')"><i class="bi bi-trash"></i><span>DELETE</span></button></td></tr>');
 
             });
 
@@ -290,7 +294,7 @@
                 editprodId = id;
 
                 firebase.database()
-                    .ref("users/" + shmkrId + "/products/" + id)
+                    .ref("products/" + id)
                     .on("value", function (snap) {
                     vwProdName = snap.val().prodName;
                     vwProdPrice = snap.val().prodPrice;
@@ -316,27 +320,35 @@
                 
             firebase
                 .database()
-                .ref("users/" + shmkrId + "/products/" + editprodId)
+                .ref("products/" + editprodId)
                 .update({
                 //   prodId: rollV,
                 prodName: name_var,
                 prodPrice: parseFloat(price_var),
                 prodDesc: desc_var,
                 });
-            alert("Data Update");
+            alert("Product Updated");
+            location.reload();
             };
 
 
             // DELETE PRODUCT IN THE DATABASE
-            document.getElementById("#delete").onclick = function () {
-                console.log("clicked");
+            function deleteProd(id) {
+                editprodId = id;
             readCrudForm();
+                
+                warning = "Delete this product?";
 
-            firebase
-                .database()
-                .ref("users/" + shmkrId + "/products/" + editprodId)
-                .remove();
-            alert("Data Deleted");
+                if (confirm(warning) == true) {
+                    firebase
+                        .database()
+                        .ref("products/" + editprodId)
+                        .remove();
+                    alert("Product Deleted");
+                } else {
+                    alert("You cancelled!");
+                }
+            
             };
 
         </script>
