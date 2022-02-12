@@ -178,7 +178,25 @@ firebase.database()
         };
       });
 
+  
+  
+      $(document).ready(function(){
+        $('.shmkr1').click(function(){
+            $("#check").prop("checked", true);
+            $('#content_page').load('includes/tatayolyprofilePUBLIC.html');
+            $('.selector').removeClass('selected')
+            $('.home_selector').toggleClass('selected')
+        });
+      });
 
+      $(document).ready(function(){
+        $('.shmkr2').click(function(){
+            $("#check").prop("checked", true);
+            $('#content_page').load('includes/inchesfootwearprofilePUBLIC.html');
+            $('.selector').removeClass('selected')
+            $('.home_selector').toggleClass('selected')
+        });
+      });
 
 
 
