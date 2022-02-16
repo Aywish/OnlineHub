@@ -734,12 +734,14 @@ table{
     width: 100%;
     margin-top: 50px;
     display: table;
+    text-align: center;
 }
 
-th, td{
+th, td, p{
     display: table-cell;
     vertical-align: middle;
     padding: 10px;
+    text-align: center;
 }
 
 .tblHeader{
@@ -962,4 +964,23 @@ p{
         font: inherit;
         cursor: pointer;
         outline: inherit;
+    }
+
+
+    /*ORDER STATUS*/
+    .table-status .order-rows .specs, .table-status .order-rows .specs td{
+        margin: 0;
+        padding: 0;
+        text-align: left;
+    }
+
+    #view_order .table-view td, .table-view .tblHeader{
+        margin: 0;
+        padding: 0;
+        text-align: left;
+    }
+
+    .table-view, .custom-img{
+        margin: 30px;
+        margin-top: 0px;
     }

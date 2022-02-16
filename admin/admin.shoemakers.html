@@ -83,7 +83,7 @@
         <!--END OF POPUP-->
 
         <div class="table">
-            <table>
+            <table id="admin-shmkrview">
                 <tr>
                     <th><h4 class="admin-tblHeader">IMAGE</h4></th>
                     <th><h4 class="admin-tblHeader">SHOP NAME</h4></th>
@@ -91,57 +91,41 @@
                     <th><h4 class="admin-tblHeader">ADDRESS</h4></th>
                     <th><h4 class="admin-tblHeader">ACTIONS</h4></th>
                 </tr>
-                <tr>
-                    <td><img class="admin-image" src="images/user.jpg"></td>
-                    <td><p>Tatay Oly Shoes</p></td>
-                    <td><p>Rolando "Oly" Santos</p></td>
-                    <td><p>A.B.M. 365 J.P. Rizal St. Marikina, 1800, Metro Manila</p></td>
-                    <td>
-                        <button class="button-actions">
-                            <i class="bi bi-eye"></i>
-                            <span>VIEW</span>
-                        </button>
-                        <button class="button-actions">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                            <span>DELETE</span>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img class="admin-image" src="images/user.jpg"></td>
-                    <td><p>Shoemaker Sample</p></td>
-                    <td><p>Juan Dela Cruz</p></td>
-                    <td><p>123 Sample St. Test Address, Sample City, Manila, 1234</p></td>
-                    <td>
-                        <button class="button-actions">
-                            <i class="bi bi-eye"></i>
-                            <span>VIEW</span>
-                        </button>
-                        <button class="button-actions">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                            <span>DELETE</span>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img class="admin-image" src="images/user.jpg"></td>
-                    <td><p>Shoemaker Sample</p></td>
-                    <td><p>Juan Dela Cruz</p></td>
-                    <td><p>123 Sample St. Test Address, Sample City, Manila, 1234</p></td>
-                    <td>
-                        <button class="button-actions">
-                            <i class="bi bi-eye"></i>
-                            <span>VIEW</span>
-                        </button>
-                        <button class="button-actions">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                            <span>DELETE</span>
-                        </button>
-                    </td>
-                </tr>
+                
             </table>
         </div>
+        <script>
 
+            var storeName, firstName, middleName, lastName, suffix, houseNo, stName, brgy, city, postalCode, contactNo, email;
+
+
+            var shmkrReference = firebase.database().ref().child("users/").orderByChild('accountType').equalTo("shoemaker");
+            shmkrReference.on("child_added", snap => {
+                var shopName = snap.child("name").val();
+                var fName = snap.child("firstName").val();
+                var lName = snap.child("lastName").val();
+                var address = snap.child("address").val();
+                var shmkrId = snap.child("uid").val();
+
+                $("#admin-shmkrview").append('<tr><td><img class="admin-image" src="images/user.jpg"></td><td><p>' + shopName + '</p></td><td><p>' + fName + ' ' + lName + '</p></td><td><p>' + address + '</p></td><td><button class="button-actions"><i class="bi bi-eye"></i><span>VIEW</span></button><button class="button-actions"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
+            });
+
+
+            function readAddForm() {
+                storeName = document.getElementById("storename").value;
+                firstName = document.getElementById("firstname").value;
+                middleName = document.getElementById("middlename").value;
+                lastName = document.getElementById("lastname").value;
+                suffix = document.getElementById("suffix").value;
+                houseNo = document.getElementById("houseno").value;
+                stName = document.getElementById("streetname").value;
+                brgy = document.getElementById("baranggay").value;
+                city = document.getElementById("city").value;
+                postalCode = document.getElementById("postalcode").value;
+                contactNo = document.getElementById("mobilenumber").value;
+                email = document.getElementById("email").value;
+            }
+        </script>
         
 
 </html>

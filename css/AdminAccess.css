@@ -338,7 +338,7 @@ table{
 th, td{
     display: table-cell;
     vertical-align: middle;
-    
+    text-align: center;
 }
 
 .admin-tblHeader{
@@ -573,6 +573,139 @@ p{
         display: block;
     }
     
+}
+
+/*POPUP*/
+.product-img{
+    display: flex;
+}
+
+#display_image{
+    width: 100%;
+    height: 50%;
+    border: 1px solid black;
+    background-position: center;
+    background-size: cover;
+    background-color: rgba(0,0,0,0);
+    justify-content: center;
+    box-sizing: border-box;
+    margin: 50px 10px 10px 30px;   
+}
+  
+#display_image:hover, #display_image:hover ~ #display_image span{
+    background-color: rgba(0,0,0,0.5);
+    transition: 0.1s;
+    color: white;
+}
+
+input[type="file"], input[type="radio"]{
+    display: none;
+}
+
+.add-image{
+    cursor: pointer;
+    font-size: 40px;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+.add-image:hover{
+    color: white;
+}
+
+.bi-plus-circle-dotted{
+    text-align: center;
+    margin-top: 40px;
+}
+
+#display_image span{
+    font-size: 15px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}    
+
+.popup .popup-content {
+    height: 350px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.addbanner, .editbanner{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #212529;    
+}
+
+.addbanner a, .editbanner a{
+    text-align: center;
+    background-color: #212529;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 15px;
+    margin: auto;
+}
+
+.fields { 
+    width: 100%;
+    padding-left: 10px;
+    border: 1px solid #212529;
+    border-radius: 25px;
+    outline: none;
+    margin: 15px;
+}
+
+.banner-buttonAdd{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    table-layout: fixed;
+}
+
+.add-actions{
+    width: 100%;
+}
+
+.banner-button-options{
+    display: block;
+    width: 100px;
+    height: 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 2px solid;
+    padding: 3px;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.banner-buttonAdd .col1{
+    width: 20vw;
+    padding:0;
+    margin: 0;
+    margin-right: 10px;
+}
+
+.banner-buttonAdd .col2{
+    width: 10vw;
+    padding:0;
+    margin: 0;
+    margin-right: 10px;
+}
+
+.banner-buttonAdd .col1, .banner-buttonAdd .col2{
+    padding-top: 10px;
+    overflow: hidden;
 }
 
 
