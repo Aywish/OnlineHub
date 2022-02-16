@@ -197,7 +197,7 @@ header {
 
 .fields{
     width: 400px;
-    padding-left: 10px;
+    /* padding-left: 10px; */
     border: none;
     background-color: #e5e5e5;
     border-radius: 25px;
@@ -218,31 +218,6 @@ header {
     margin-right: 30px;
     padding-top: 15px;
 }
-
-.payment-method input[type="radio"]{
-    -webkit-appearance: none;
-}
-
-.payment-method label{
-    border: none;
-    width: 120px;
-    height: 30px;
-    padding: 5px;
-    justify-content: space-between;
-    margin: 30px 30px 0px 0px;
-    text-align: center;
-    display: inline-block;
-    transition: all .3s;
-    font-size: 13px;
-    background-color: #212529;
-    color: white;
-}
-
-.payment-method input[type="radio"]:checked + .payment-method label, .payment-method input[type="radio"]:hover + .payment-method label{
-    color: #aa6023;
-}
-
-
 
 
 button#custlogout  {

@@ -259,7 +259,7 @@ header {
 .card-products{
     display: flex;
     flex-wrap: wrap;
-    width: calc(100% - 200px);
+    width: 100%;
     padding: 75px;
 }
 

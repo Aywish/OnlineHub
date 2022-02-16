@@ -113,7 +113,7 @@ document.getElementById("custSignup").onclick = function () {
       accountType: "user"
     });
 
-    alert("Sign up Success!" + "\n\n"+ signupEmail + "\n" + signupPassword + "\nUser ID: " + user.uid);
+    alert("Sign up Success!");
 
   })
   .catch((error) => {

@@ -7,6 +7,7 @@ var CustLogout = document.getElementById("custlogout");
 firebase.auth().onAuthStateChanged(function(custUser) {
   if (!custUser) {
     //Redirect user to login if not logged in
+    alert("Can't access, please login first");
     location.href='../index.html'; 
   }
 });
@@ -185,7 +186,7 @@ firebase.database()
             $("#check").prop("checked", true);
             $('#content_page').load('includes/tatayolyprofilePUBLIC.html');
             $('.selector').removeClass('selected')
-            $('.home_selector').toggleClass('selected')
+            $('.shmkr1').toggleClass('selected')
         });
       });
 
@@ -194,7 +195,7 @@ firebase.database()
             $("#check").prop("checked", true);
             $('#content_page').load('includes/inchesfootwearprofilePUBLIC.html');
             $('.selector').removeClass('selected')
-            $('.home_selector').toggleClass('selected')
+            $('.shmkr2').toggleClass('selected')
         });
       });
 
