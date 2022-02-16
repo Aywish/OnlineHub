@@ -23,7 +23,7 @@
             <div class="cust-content">
                 <div class="cust-details">
                     <div><label>USERNAME: </label></div>
-                    <div><label id="cust-username"></label></div> <!-- Will get the value from the username recorded in the DB -->
+                    <div><label id="cust-username"></label></div>
                 </div>
                 <div class="cust-details">
                     <div><label>FIRST NAME: </label></div>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="cust-details">
                     <div><label>DATE OF BIRTH: </label></div>
-                    <div></div><input type="date" id="myDate" value="yyyy-mm-dd"></div>
+                    <div><input type="date" id="myDate" value="yyyy-mm-dd"></div>
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
             </div>
             <div class="cust-content">
                 <div class="cust-details">
-                    <button class="cust-btn">SAVE</button>
+                    <button class="cust-btn" id="saveProfile">SAVE</button>
                 </div>
             </div>
         </div>
@@ -77,6 +77,8 @@
 
         var userID = localStorage.getItem("userID");
 
+        var fname, lname, email, num, bday;
+
         firebase.database()
             .ref("users/" + userID)
             .on("value", function (snap) {
@@ -85,16 +87,43 @@
             lastname = snap.val().lastName;
             email = snap.val().email;
             contact = snap.val().contactNo;
+            bday = snap.val().bday;
 
-            //alert(user);
                 document.getElementById("cust-username").innerHTML = username;
                 document.getElementById("fname").value = firstname;
                 document.getElementById("lname").value = lastname;
                 document.getElementById("emailAddress").value = email;
                 document.getElementById("num").value = contact;
+                document.getElementById("myDate").value = bday;
             });
 
 
+            function readProfileForm() {
+                fname = document.getElementById("fname").value;
+                lname = document.getElementById("lname").value;
+                email = document.getElementById("emailAddress").value;
+                num = document.getElementById("num").value;
+            }
+
+
+            document.getElementById("saveProfile").onclick = function () {
+                readProfileForm();
+
+
+                bday = document.getElementById("myDate").value;
+                firebase
+                    .database()
+                    .ref("users/" + userID)
+                    .update({
+                        firstName: fname,
+                        lastName: lname,
+                        email: email,
+                        contactNo: num,
+                        bday: bday
+                    });
+                alert("Profile Updated");
+                location.reload();
+            };
 
 
     </script>

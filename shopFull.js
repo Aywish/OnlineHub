@@ -22,7 +22,7 @@ var today = new Date();
 var time = new Date().getFullYear() + "" + new Date().getMonth()  + 1 + "" + new Date().getDate()  + "" + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
 var orderID = time;
 var userID = localStorage.getItem("userID");
-console.log(userID);
+
 
 product.on("child_added", snap => {
 

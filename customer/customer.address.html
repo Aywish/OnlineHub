@@ -22,38 +22,11 @@
                 <h1>My Addresses</h1>
             </div>
 
-            <div class="row">
-                <div class="column-6">
-                    <div class="add-content">
-                        <div class="add-details">
-                            <div><label>FULL NAME: </label></div>
-                            <div><label>PHONE NUMBER: </label></div>
-                            <div><label>ADDRESS: </label></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column-7">
-                    <div class="add-content">
-                        <div class="add-details">
-                            <div class="add-value"><p>Juan Dela Cruz</p></div>
-                            <div class="add-value"><p>+63 987 654 3210</p></div>
-                            <div class="add-value"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column-8">
-                    <div class="add-content">
-                        <div class="add-content">
-                            <div class="add-details">
-                                <button class="cust-btn">EDIT</button>
-                                <button class="cust-btn">DELETE</button>
-                                <button class="cust-btn">DEFAULT</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>    
-            
+            <div class="row" id="address-View">
+                
+                    
+                
+            </div>
         </div>
 
         <div class="row">
@@ -81,7 +54,7 @@
                     <div class="add-content">
                         <div class="add-content">
                             <div class="add-details">
-                                <button class="add">ADD</button>
+                                <button class="add" id="addAddress">ADD</button>
                             </div>
                         </div>
                     </div>
@@ -90,6 +63,83 @@
             
         </div>
     </div>
+
+    <script>
+        var userID = localStorage.getItem("userID");
+        var hNo, stName, brgy, city, pCode;
+
+
+        var address = firebase.database().ref("users/" + userID);
+
+        var today = new Date();
+        var time = today.getMinutes() + "" + today.getSeconds() + "" + userID;
+        var addId = time;
+
+            address.on("value", function (snap) {
+                var username = snap.val().username;
+                var firstname = snap.val().firstName;
+                var lastname = snap.val().lastName;
+                var email = snap.val().email;
+                var contact = snap.val().contactNo;
+                var addressId = snap.val().addId;
+                
+            
+            firebase.database()
+                .ref("users/" + userID + "/address/" + addressId)
+                .on("value", function (snap) {
+                    var hNo = snap.val().houseNo;
+                    // var stName = snap.val().streetName;
+                    // var brgy = snap.val().barangay;
+                    // var city = snap.val().city;
+                    // var pCode = snap.val().postalCode;
+                    
+
+                // $("#address-View").append('<div class="column-6"><div class="add-content"><div class="add-details"><div><label>FULL NAME: </label></div><div><label>PHONE NUMBER: </label></div><div><label>ADDRESS: </label></div></div></div></div><div class="column-7"><div class="add-content"><div class="add-details"><div class="add-value"><p>' + firstname + ' ' + lastname + '</p></div><div class="add-value"><p>' + contact + '</p></div><div class="add-value"><p>' + hNo + ' ' + stName + ', ' + brgy + ', ' + city + ', ' + pCode + '</p></div></div></div></div><div class="column-8"><div class="add-content"><div class="add-content"><div class="add-details"><button class="cust-btn">EDIT</button><button class="cust-btn" onclick="deleteAddress(' + addId + ')>DELETE</button></div></div></div></div>');
+            });
+        });
+
+        function readAddForm() {
+            hNo = document.getElementById("houseno").value;
+            stName = document.getElementById("streetname").value;
+            brgy = document.getElementById("baranggay").value;
+            city = document.getElementById("city").value;
+            pCode = document.getElementById("postalcode").value;
+        }
+        
+        document.getElementById("addAddress").onclick = function () {
+            readAddForm();
+
+            firebase
+                .database()
+                .ref("users/" + userID + "/address/" + addId)
+                .set({
+                    houseNo: hNo,
+                    streetName: stName,
+                    barangay: brgy,
+                    city: city,
+                    postalCode: pCode
+                });
+            alert("Address Added");
+            location.reload();
+        };
+
+
+        document.getElementById("deleteAddress").onclick = function () {
+                
+                warning = "Delete this address?";
+
+                // if (confirm(warning) == true) {
+                //     firebase
+                //         .database()
+                //         .ref("products/" + editprodId)
+                //         .remove();
+                //     alert("Product Deleted");
+                // } else {
+                //     alert("You cancelled!");
+                // }
+            
+            };
+    </script>
 
 </body>
 </html>

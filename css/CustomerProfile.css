@@ -419,6 +419,7 @@ button#custlogout  {
 
 .cP-details label{
     font-weight: bolder;
+    margin-left: 70px;
 }
 
 .cP-details input{
@@ -435,7 +436,7 @@ button#custlogout  {
 
 .cP-content{
     width: 50%;
-    padding-top: 20px;
+    padding-top: 60px;
 }
 
 .cP-details{
@@ -449,7 +450,7 @@ button#custlogout  {
     border-color: #000;
     color: black;
     padding: 10px 15px;
-    margin-top: 30px;
+    margin: 0px 70px;
     cursor: pointer;
     font-weight: bold;
     letter-spacing: 0.090em;
@@ -491,15 +492,15 @@ button#custlogout  {
 
 .add-container{
     margin: 0;
-    padding: 50px 30px;
+    padding: 50px 50px;
     justify-content: left;
     align-items: left;
 }
 
 .add-details label{
     font-weight: bolder;
-    margin-top: 14px;
-    margin-bottom: 17px;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 .add-details input{
@@ -516,7 +517,7 @@ button#custlogout  {
 }
 
 .add-value{
-    margin-top: 30px;
+    margin-top: 18px;
     margin-bottom: 30px;
 }
 
@@ -653,6 +654,12 @@ button#custlogout  {
 
 .cust-details option.birthday {
     color: black;
+}
+
+#myDate input{
+    width: 70%;
+    border-radius: 50px;
+    padding-left: 15px;
 }
 
 .cust-details .cust-btn, .cust-upload{
