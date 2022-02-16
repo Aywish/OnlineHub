@@ -24,14 +24,6 @@
         });
 
     //content display
-        //profile
-        $(document).ready(function(){
-            $('.profile_selector').click(function(){
-                $('#content_page').load('customer/customer.profile.html');
-                $('.selector').removeClass('selected')
-                $('.profile_selector').toggleClass('selected')
-            });
-        });
 
         //account details
         $(document).ready(function(){
@@ -115,10 +107,6 @@
             <i class="bi bi-collection nav-btn"></i>
         </div>
         <div class="mobile-nav-items" >
-            <a href="#" class="selector profile_selector">
-                <i class="bi bi-house-door"></i>
-                <span>PROFILE</span>
-            </a>
             <a href="#" class="selector account_selector">
                 <i class="bi bi-person-circle"></i>
                 <span>ACCOUNT DETAILS</span>
@@ -146,10 +134,6 @@
             <hr>
         </div id="sidebar_buttons">
         
-        <a href="#" class="selector profile_selector">
-            <i class="bi bi-house-door"></i>
-            <span>PROFILE</span>
-        </a>
         <a href="#" class="selector account_selector">
             <i class="bi bi-person-circle"></i>
             <span>ACCOUNT DETAILS</span>

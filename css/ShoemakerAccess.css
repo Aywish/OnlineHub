@@ -419,8 +419,8 @@ label #sidebar_btn:hover{
 }
 
 .card{
-    width: 250px;
-    height: 430px;
+    width: 300px;
+    height: 450px;
     box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
     border-radius: 10px;
     overflow: hidden;
@@ -488,7 +488,7 @@ label #sidebar_btn:hover{
     width: 100%;
     display: absolute;
     text-align: center;
-    padding: 10px 20px;
+    padding: 10px 10px;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -496,6 +496,7 @@ label #sidebar_btn:hover{
 .card-content .shoe-name{
     font-weight: bold;
     margin: 0;
+    padding: 0px 15px;
 }
 
 .card-content .shoe-maker{
@@ -508,6 +509,21 @@ label #sidebar_btn:hover{
     font-weight: bold;
     color: #aa6023;
     margin-bottom: 8px;
+}
+
+.product-size{
+    font-size: 1.5em;
+}
+
+.product-size label{
+    border: 2px solid;
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+    margin-left: 5px;
+    text-align: center;
+    transition: all .3s;
+    font-size: 1em;
 }
 
 input[type="checkbox"]{
@@ -984,3 +1000,158 @@ p{
         margin: 30px;
         margin-top: 0px;
     }
+
+    
+/* FOR CUSTOMER PROFILE CONTENT STYLE */
+
+*{
+    box-sizing: border-box;
+}
+
+.cust-column{
+    float: left;
+    padding: 50px 20px;
+    height: 100%;
+}
+
+.left{
+    width: 70%;
+}
+
+.right{
+    width: 30%;
+}
+
+.row:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.cust-header{
+    font-weight: bolder;
+    padding: 0px 20px;
+}
+
+.cust-content{
+    width: 50%;
+    margin-left: 15%;
+    padding-top: 20px;
+}
+
+.cust-details{
+    display: flex;
+    flex-direction: row;
+}
+
+.cust-details > div{
+    width: 500px;
+    padding-top: 10px;
+    margin: 0;
+}
+
+.cust-details label{
+    font-weight: bolder;
+}
+
+.cust-details input{
+    width: 150%;
+    border-radius: 50px;
+    padding-left: 15px;
+}
+
+.cust-details .code{
+    width: 70px;
+    height: 30px;
+    border-radius: 50px;
+    color: black;
+}
+
+.cust-details #num{
+    width: 160px;
+    border-radius: 50px;
+}
+
+
+.cust-details .birthday{
+    width: 88px;
+    height: 30px;
+    border-radius: 50px;
+    padding-left: 10px;
+}
+
+.cust-details option.birthday {
+    color: black;
+}
+
+#myDate input{
+    width: 70%;
+    border-radius: 50px;
+    padding-left: 15px;
+}
+
+.cust-details .cust-btn, .cust-upload{
+    background-color: transparent;
+    border-color: #000;
+    color: black;
+    padding: 10px 15px;
+    margin-top: 150px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 0.090em;
+    width: 120px;
+}
+
+/* END OF CUSTOMER PROFILE CONTENT STYLE */
+
+
+/* FOR CUSTOMER CHANGE PASSWORD CONTENT STYLE */
+
+.cP-container{
+    margin: 0;
+    padding: 50px 20px;
+    justify-content: left;
+    align-items: left;
+}
+
+.cP-details label{
+    font-weight: bolder;
+    margin-left: 70px;
+}
+
+.cP-details input{
+    width: 200%;
+    border-radius: 50px;
+    margin-left: 50px;
+    padding-left: 15px;
+}
+
+.cP-details input#nPass{
+    margin-left: 85px;
+    width: 177%;
+}
+
+.cP-content{
+    width: 50%;
+    padding-top: 60px;
+}
+
+.cP-details{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.cP-details .cust-btn{
+    background-color: transparent;
+    border-color: #000;
+    color: black;
+    padding: 10px 15px;
+    margin: 0px 70px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 0.090em;
+    width: 120px;
+}
+
+/* END OF  CUSTOMER CHANGE PASSWORD CONTENT STYLE */

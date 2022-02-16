@@ -66,79 +66,79 @@
 
     <script>
         var userID = localStorage.getItem("userID");
-        var hNo, stName, brgy, city, pCode;
+        // var hNo, stName, brgy, city, pCode;
 
 
-        var address = firebase.database().ref("users/" + userID);
+        // var address = firebase.database().ref("users/" + userID);
 
-        var today = new Date();
-        var time = today.getMinutes() + "" + today.getSeconds() + "" + userID;
-        var addId = time;
+        // var today = new Date();
+        // var time = today.getMinutes() + "" + today.getSeconds() + "" + userID;
+        // var addId = time;
 
-            address.on("value", function (snap) {
-                var username = snap.val().username;
-                var firstname = snap.val().firstName;
-                var lastname = snap.val().lastName;
-                var email = snap.val().email;
-                var contact = snap.val().contactNo;
-                var addressId = snap.val().addId;
+        // address.on("value", function (snap) {
+        //         var username = snap.val().username;
+        //         var firstname = snap.val().firstName;
+        //         var lastname = snap.val().lastName;
+        //         var email = snap.val().email;
+        //         var contact = snap.val().contactNo;
+        //         var addressId = snap.val().addId;
                 
             
-            firebase.database()
-                .ref("users/" + userID + "/address/" + addressId)
-                .on("value", function (snap) {
-                    var hNo = snap.val().houseNo;
-                    // var stName = snap.val().streetName;
-                    // var brgy = snap.val().barangay;
-                    // var city = snap.val().city;
-                    // var pCode = snap.val().postalCode;
+        //     firebase.database()
+        //         .ref().child("users/" + userID + "/address/" + addressId)
+        //             .on("child_added", snap => {
+        //             var hNo = snap.child("houseNo").val();
+        //             var stName = snap.child("streetName").val();
+        //             var brgy = snap.child("barangay").val();
+        //             var city = snap.child("city").val();
+        //             var pCode = snap.child("postalCode").val();
                     
 
-                // $("#address-View").append('<div class="column-6"><div class="add-content"><div class="add-details"><div><label>FULL NAME: </label></div><div><label>PHONE NUMBER: </label></div><div><label>ADDRESS: </label></div></div></div></div><div class="column-7"><div class="add-content"><div class="add-details"><div class="add-value"><p>' + firstname + ' ' + lastname + '</p></div><div class="add-value"><p>' + contact + '</p></div><div class="add-value"><p>' + hNo + ' ' + stName + ', ' + brgy + ', ' + city + ', ' + pCode + '</p></div></div></div></div><div class="column-8"><div class="add-content"><div class="add-content"><div class="add-details"><button class="cust-btn">EDIT</button><button class="cust-btn" onclick="deleteAddress(' + addId + ')>DELETE</button></div></div></div></div>');
-            });
-        });
+        //         $("#address-View").append('<div class="column-6"><div class="add-content"><div class="add-details"><div><label>FULL NAME: </label></div><div><label>PHONE NUMBER: </label></div><div><label>ADDRESS: </label></div></div></div></div><div class="column-7"><div class="add-content"><div class="add-details"><div class="add-value"><p>' + firstname + ' ' + lastname + '</p></div><div class="add-value"><p>' + contact + '</p></div><div class="add-value"><p>' + hNo + ' ' + stName + ', ' + brgy + ', ' + city + ', ' + pCode + '</p></div></div></div></div><div class="column-8"><div class="add-content"><div class="add-content"><div class="add-details"><button class="cust-btn">EDIT</button><button class="cust-btn" onclick="deleteAddress()>DELETE</button></div></div></div></div>');
+        //     });
+        // });
 
-        function readAddForm() {
-            hNo = document.getElementById("houseno").value;
-            stName = document.getElementById("streetname").value;
-            brgy = document.getElementById("baranggay").value;
-            city = document.getElementById("city").value;
-            pCode = document.getElementById("postalcode").value;
-        }
+        // function readAddForm() {
+        //     hNo = document.getElementById("houseno").value;
+        //     stName = document.getElementById("streetname").value;
+        //     brgy = document.getElementById("baranggay").value;
+        //     city = document.getElementById("city").value;
+        //     pCode = document.getElementById("postalcode").value;
+        // }
         
-        document.getElementById("addAddress").onclick = function () {
-            readAddForm();
+        // document.getElementById("addAddress").onclick = function () {
+        //     readAddForm();
 
-            firebase
-                .database()
-                .ref("users/" + userID + "/address/" + addId)
-                .set({
-                    houseNo: hNo,
-                    streetName: stName,
-                    barangay: brgy,
-                    city: city,
-                    postalCode: pCode
-                });
-            alert("Address Added");
-            location.reload();
-        };
+        //     firebase
+        //         .database()
+        //         .ref("users/" + userID + "/address/" + addId)
+        //         .set({
+        //             houseNo: hNo,
+        //             streetName: stName,
+        //             barangay: brgy,
+        //             city: city,
+        //             postalCode: pCode
+        //         });
+        //     alert("Address Added");
+        //     location.reload();
+        // };
 
 
-        document.getElementById("deleteAddress").onclick = function () {
+        // document.getElementById("deleteAddress").onclick = function () {
                 
-                warning = "Delete this address?";
+        //         warning = "Delete this address?";
 
-                // if (confirm(warning) == true) {
-                //     firebase
-                //         .database()
-                //         .ref("products/" + editprodId)
-                //         .remove();
-                //     alert("Product Deleted");
-                // } else {
-                //     alert("You cancelled!");
-                // }
+        //         // if (confirm(warning) == true) {
+        //         //     firebase
+        //         //         .database()
+        //         //         .ref("products/" + editprodId)
+        //         //         .remove();
+        //         //     alert("Product Deleted");
+        //         // } else {
+        //         //     alert("You cancelled!");
+        //         // }
             
-            };
+        //     };
     </script>
 
 </body>

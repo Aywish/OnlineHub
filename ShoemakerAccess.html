@@ -34,7 +34,7 @@
 
         //account
         $(document).ready(function(){
-            $('.accounte_selector').click(function(){
+            $('.account_selector').click(function(){
                 $('#content_page').load('shoemaker/shoemaker.account.html');
                 $('.selector').removeClass('selected')
                 $('.account_selector').toggleClass('selected')
@@ -77,6 +77,15 @@
             });
         });
 
+        //change password
+        $(document).ready(function(){
+            $('.password_selector').click(function(){
+                $('#content_page').load('shoemaker/shoemaker.password.html');
+                $('.selector').removeClass('selected')
+                $('.password_selector').toggleClass('selected')
+            });
+        });
+
         //reports
         $(document).ready(function(){
             $('.reports_selector').click(function(){
@@ -115,7 +124,7 @@
 
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active shoemaker-name">Tatay Oly Shoes</a>
+                    <a class="nav-link active shoemaker-name" id="shmkr-name-nav"></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="modal" role="button" ><button id="shmkrlogout">Logout</button></a>
@@ -156,6 +165,10 @@
                 <i class="bi bi-clock-history"></i>
                 <span>ORDER HISTORY</span>
             </a>
+            <a href="#" class="selector password_selector">
+                <i class="bi bi-key-fill"></i>
+                <span>CHANGE PASSWORD</span>
+            </a>
             <a href="#" class="selector reports_selector">
                 <i class="bi bi-paperclip"></i>
                 <span>REPORTS</span>
@@ -171,7 +184,7 @@
 
         <div class="profile-info">
             <img src="images/1.jpg" class="profile-picture" alt="">
-            <h5 class="shoemaker-name">Tatay Oly Shoes</h5>
+            <h5 class="shoemaker-name" id="shmkr-name-sidenav"></h5>
             <hr>
         </div id="sidebar_buttons">
         
@@ -198,6 +211,10 @@
         <a href="#" class="selector Ohistory_selector">
             <i class="bi bi-clock-history"></i>
             <span>ORDER HISTORY</span>
+        </a>
+        <a href="#" class="selector password_selector">
+            <i class="bi bi-key-fill"></i>
+            <span>CHANGE PASSWORD</span>
         </a>
         <a href="#" class="selector reports_selector">
             <i class="bi bi-paperclip"></i>
