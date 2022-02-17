@@ -167,7 +167,7 @@ background: #e5e5e5;
   transform: translateX(-190%);
 }
 #t4:target .page#p4 {
-  transform: translateX(-290%);
+  transform: translateX(-300%);
 }
 
 #t2:target .page#p1, 
@@ -357,7 +357,7 @@ left: calc(50% - 80px);
 /*CUSTOMIZE*/
 .accordion {
   display: table;
-  width: 90%;
+  width: 100%;
   height: 150px;
 }
 .accordion > input {
@@ -399,13 +399,15 @@ left: calc(50% - 80px);
 
 .bg {
   position: absolute;
+  left: 15%;
+
+  /* position: absolute;
   display: block;
   top: 200px;
   left: 35%;
   width: 250px;
   height: 250px;
-  transition: .25s;
-  border-radius: 50%;
+  border-radius: 50%; */
 }
 
 .color-menu li{  
@@ -414,25 +416,29 @@ left: calc(50% - 80px);
 
 .color-menu li p{ 
   display:block;
-    float:left;
-    width:100px;
-    height: 100px;
-    background:#ccc;
-    text-decoration:none;
-    transition:.25s;}
+  float:left;
+  width:100px;
+  height: 100px;
+  background:#ccc;
+  text-decoration:none;
+  transition:.25s;
+}
 
 .color-menu li p:hover{
     margin:-50px 0 0 0;
 }
 
 .color-menu{  
-width:100%;
-border-radius:10px;
-overflow:hidden;
-display: inline-flex;
-justify-content: center;
-align-items: center;
-margin-top: 450px;
+  position: absolute;
+  width: 100%;
+  height: 100px;
+
+  border-radius:10px;
+  overflow:hidden;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 700px;
 }
 
 /*UPPERLEATHER*/
