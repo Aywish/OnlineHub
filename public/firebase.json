@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "onlinehubwithcustomization",
+    "site": "itcapstone-onlinehub",
 
     "public": "public",
     "ignore": [

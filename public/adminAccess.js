@@ -1,6 +1,8 @@
 //alert(localStorage.getItem("userID"));
 var adminUser;
 
+var userId = localStorage.getItem("userID");
+
 var AdminLogout = document.getElementById("adminlogout");
 
 
