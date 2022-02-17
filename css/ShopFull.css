@@ -350,7 +350,11 @@ input[type="radio"]:checked + label, input[type="radio"]:hover + label{
     .content{
         margin-left: 60px;
     }
-    
+
+    .content #content_page_category {
+        margin-left: 30px;
+    }
+
     .sidebar #sidebar_btn{
         z-index: 1;
         color: #aa6023;

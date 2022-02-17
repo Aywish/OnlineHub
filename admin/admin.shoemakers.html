@@ -101,13 +101,17 @@
 
             var shmkrReference = firebase.database().ref().child("users/").orderByChild('accountType').equalTo("shoemaker");
             shmkrReference.on("child_added", snap => {
-                var shopName = snap.child("name").val();
+                var shopName = snap.child("storeName").val();
                 var fName = snap.child("firstName").val();
                 var lName = snap.child("lastName").val();
-                var address = snap.child("address").val();
+                var hNo = snap.child("streetName").val();
+                var brgy = snap.child("barangay").val();
+                var city = snap.child("city").val();
+                var pCode = snap.child("postalCode").val();
+                var stName = snap.child("houseNo").val();
                 var shmkrId = snap.child("uid").val();
 
-                $("#admin-shmkrview").append('<tr><td><img class="admin-image" src="images/user.jpg"></td><td><p>' + shopName + '</p></td><td><p>' + fName + ' ' + lName + '</p></td><td><p>' + address + '</p></td><td><button class="button-actions"><i class="bi bi-eye"></i><span>VIEW</span></button><button class="button-actions"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
+                $("#admin-shmkrview").append('<tr><td><img class="admin-image" src="images/user.jpg"></td><td><p>' + shopName + '</p></td><td><p>' + fName + ' ' + lName + '</p></td><td><p>' + hNo + ' '  + brgy + ', ' + city + ', ' + pCode + '</p></td><td><button class="button-actions"><i class="bi bi-eye"></i><span>VIEW</span></button><button class="button-actions"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
             });
 
 
@@ -124,7 +128,39 @@
                 postalCode = document.getElementById("postalcode").value;
                 contactNo = document.getElementById("mobilenumber").value;
                 email = document.getElementById("email").value;
-            }
+            };
+
+            addshoemaker.onclick = function () {
+                readAddForm();
+
+                firebase.auth().createUserWithEmailAndPassword(email, "password" + storeName)
+                    .then((userCredential) => {
+                        // Signed up 
+                        var user = userCredential.user;
+                        console.log(user.uid);
+                            firebase
+                            .database()
+                            .ref("users/" + user.uid)
+                            .set({
+                            uid: user.uid,
+                            storeName: storeName,
+                            firstName: firstName,
+                            middleName: middleName,
+                            lastName: lastName,
+                            suffix: suffix,
+                            houseNo: houseNo,
+                            streetName: stName,
+                            barangay: brgy,
+                            city: city,
+                            postalCode: postalCode,
+                            contactNo: contactNo,
+                            email: email,
+                            accountType: "shoemaker"
+                        });
+                    alert("Shoemaker Added!");
+                    });
+                };
+            
         </script>
         
 

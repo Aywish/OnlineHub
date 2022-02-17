@@ -47,10 +47,6 @@
                       <input type="text" id="num" name="num"></div>
                 </div>
                 <div class="cust-details">
-                    <div><label>GENDER: </label></div>
-                    <div><input type="text" id="gender" name="gender"></div>
-                </div>
-                <div class="cust-details">
                     <div><label>DATE OF BIRTH: </label></div>
                     <div><input type="date" id="myDate" value="yyyy-mm-dd"></div>
                 </div>
@@ -85,7 +81,7 @@
         firebase.database()
             .ref("users/" + userID)
             .on("value", function (snap) {
-            storename = snap.val().name;
+            storename = snap.val().storeName;
             firstname = snap.val().firstName;
             lastname = snap.val().lastName;
             email = snap.val().email;

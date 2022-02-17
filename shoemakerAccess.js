@@ -35,7 +35,7 @@ firebase.database()
     .ref("users/" + shmkrId)
     .on("value", function (snap) {
       userType = snap.val().accountType;
-      storename = snap.val().name;
+      storename = snap.val().storeName;
       
         document.getElementById("shmkr-name-nav").innerHTML = storename;
         document.getElementById("shmkr-name-sidenav").innerHTML = storename;

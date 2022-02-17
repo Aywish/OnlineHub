@@ -206,7 +206,7 @@ document.getElementById("custgoogleSignup").onclick = function () {
       accountType: "user"
 
     });
-    alert("Sign up Success!" + "\n\n"+ user.email + "\nUser ID: " + user.uid);
+    alert("Sign up Success!");
 
     firebase.auth().signOut().then(() => {
       localStorage.clear();

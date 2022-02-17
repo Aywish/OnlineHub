@@ -423,15 +423,6 @@
             });
         });
 
-        //customers
-        $(document).ready(function(){
-            $('.customers_selector').click(function(){
-                $('#content_page').load('admin/admin.customers.html');
-                $('.selector').removeClass('selected')
-                $('.customers_selector').toggleClass('selected')
-            });
-        });
-
         //reports
         $(document).ready(function(){
             $('.reports_selector').click(function(){
@@ -485,10 +476,6 @@
                 <i class="bi bi-person-badge-fill"></i>
                 <span>SHOEMAKERS</span>
             </a>
-            <a href="#" class="selector customers_selector">
-                <i class="bi bi-people-fill"></i>
-                <span>CUSTOMERS</span>
-            </a>
             <a href="#" class="selector reports_selector">
                 <i class="bi bi-paperclip"></i>
                 <span>REPORTS</span>
@@ -514,10 +501,6 @@
         <a href="#" class="selector shoemakers_selector">
             <i class="bi bi-person-badge-fill"></i>
             <span>SHOEMAKERS</span>
-        </a>
-        <a href="#" class="selector customers_selector">
-            <i class="bi bi-people-fill"></i>
-            <span>CUSTOMERS</span>
         </a>
         <a href="#" class="selector reports_selector">
             <i class="bi bi-paperclip"></i>

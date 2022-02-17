@@ -545,7 +545,7 @@ button#custlogout  {
 }
 
 .add-details #ad-num{
-    width: 290px;
+    width: 118px;
 }
 
 .add-details .ad-add{
@@ -639,10 +639,6 @@ button#custlogout  {
     color: black;
 }
 
-.cust-details #num{
-    width: 160px;
-    border-radius: 50px;
-}
 
 
 .cust-details .birthday{

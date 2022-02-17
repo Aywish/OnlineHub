@@ -136,7 +136,6 @@
             .ref("users/" + userID)
             .on("value", function (snap) {
             userType = snap.val().accountType;
-            username = snap.val().userName;
             });
 
 
@@ -147,15 +146,20 @@
             prodPrice = snap.child("prodPrice").val();
             prodName = snap.child("prodName").val();
             var shmkrId = snap.child("shoeMakerID").val();
-
                 firebase.database()
                 .ref("users/" + shmkrId)
                 .on("value", function (snap) {
-                    shmkrName = snap.val().name;
-                    console.log(prodName, prodPrice, shmkrName, shmkrId)
+                    shmkrName = snap.val().storeName;
+                    houseNo = snap.child("houseNo").val();
+                    stName = snap.child("streetName").val();
+                    brgy = snap.child("barangay").val();
+                    city = snap.child("city").val();
+                    pCode = snap.child("postalCode").val();
+                    var address = houseNo + ' ' + stName + ', ' + brgy + ', ' + city + ', ' + pCode;
                     
                     document.getElementById("shoemaker-name").innerHTML = shmkrName;
                     document.getElementById("shoemaker-name-title").innerHTML = shmkrName;
+                    document.getElementById("shoemaker-address").innerHTML = address;
                     // shoemaker-address
                     
 
@@ -180,7 +184,7 @@
                 firebase.database()
                     .ref("users/" + shmkrId)
                     .on("value", function (snap) {
-                    shmkrName = snap.val().name;
+                    shmkrName = snap.val().storeName;
                     
                     document.getElementById("shoe-maker").innerHTML = shmkrName;
                     });

@@ -40,7 +40,7 @@
             </button>
             <button class="button-actions-profile">
                 <i class="bi bi-hammer"></i>
-                <span>ORDER CUSTOM</span>
+                <span id="orderCustom"><a href="OrderCustom.html#t4" id="orderCustom">ORDER CUSTOM</a></span>
             </button>
         </div>
     </div>
@@ -154,7 +154,7 @@
         });
 
 
-        var prodReference = firebase.database().ref().child("products/").orderByChild('shoeMakerID').equalTo("UOtpenoSQ1UN0bVaU83wG6qkTPG2");
+        var prodReference = firebase.database().ref().child("products/").orderByChild('shoeMakerID').equalTo("qMjjumhYhThhN4sXV1o2ZvjNYox1");
             prodReference.on("child_added", snap => {
 
             var prodID = snap.child("prodId").val();
@@ -239,6 +239,7 @@
         });
         alert("Product added to cart");
         };
+
 
 
         CustLogout.onclick = function () {

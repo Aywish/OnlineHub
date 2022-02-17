@@ -545,3 +545,11 @@ input[type="checkbox"]:checked + label, input[type="checkbox"]:hover + label{
         padding: 15px;
         margin: auto;
     }
+
+    #orderCustom{
+        text-align: center;
+        background: none;
+        color: inherit;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
