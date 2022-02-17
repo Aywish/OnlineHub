@@ -1,7 +1,5 @@
 {
   "hosting": {
-    "site": "itcapstone-onlinehub",
-
     "public": "public",
     "ignore": [
       "firebase.json",
