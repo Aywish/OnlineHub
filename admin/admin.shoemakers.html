@@ -19,6 +19,7 @@
         }
         function ClosePopup() {
             document.getElementById("popup_product").style.display = "none";
+            document.getElementById("view_popup").style.display = "none";
             document.getElementById("bgoverlay").style.display = "none";
         }
     </script>
@@ -31,18 +32,14 @@
 
         <div class="top-level">
             <div class="top-title">
-                <h1>Discover shops and shoemakers.</h1>
+                <h1>Manage Shoemakers.</h1>
             </div>
             <div class="top-buttons">
-                <label for="add" class="buttonss products-add" onclick="OpenPopup()"">
+                <label for="add" class="buttonss products-add" onclick="OpenPopup()">
                     <i class="bi bi-plus-circle"></i>
                     <span>ADD</span>
                 </label>
                 <br>
-                <label for="find" class="buttonss products-find">
-                    <i class="bi bi-search"></i>
-                        <span>FIND</span>
-                </label>
             </div>
         </div>
 
@@ -80,6 +77,37 @@
                 <a href="#" id="addshoemaker">ADD SHOEMAKER</a>
             </div>
         </div>
+
+
+        <div class="popup" id="view_popup">
+            <div class="popup-scrollable">
+                <i class="bi bi-x" onclick="ClosePopup()"></i>
+                <div class="popup-content">
+                    <div class="profile-picture">
+                        <img src="images/logo.png" alt="">
+                    </div>
+                    
+                    <form action="" class="popup-form">
+                        <h5>Store Name</h5>
+                            <input type="text" placeholder="Full Store Name" class="storeName" id="storename">
+                        <h5>Full Name</h5>
+                            <input type="text" placeholder="First Name" class="fullName" id="firstname">
+                            <input type="text" placeholder="Middle Name" class="fullName" id="middlename">
+                            <input type="text" placeholder="Last Name" class="fullName" id="lastname">
+                            <input type="text" placeholder="Suffix" class="fullName" id="suffix">
+                        <h5>Complete Address</h5>
+                            <input type="text" placeholder="House No." class="address" id="houseno" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            <input type="text" placeholder="Street Name" class="address" id="streetname">
+                            <input type="text" placeholder="Baranggay" class="address" id="baranggay">
+                            <input type="text" placeholder="City" class="address" id="city">
+                            <input type="text" placeholder="Postal Code." class="address" id="postalcode" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                        <h5>Contact Information</h5>
+                            <input type="text" placeholder="Mobile Number" class="contact" id="mobilenumber" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            <input type="text" placeholder="Email Address" class="contact" id="email">
+                    </form>
+                </div>
+            </div>
+        </div>
         <!--END OF POPUP-->
 
         <div class="table">
@@ -94,24 +122,28 @@
                 
             </table>
         </div>
+
         <script>
+            
+            var userId = localStorage.getItem("userID");
 
-            var storeName, firstName, middleName, lastName, suffix, houseNo, stName, brgy, city, postalCode, contactNo, email;
+            var storeName, firstName, middleName, lastName, suffix, houseNo, stName, brgy, city, postalCode, contactNo, email, viewshmkrId;
 
-
+            
             var shmkrReference = firebase.database().ref().child("users/").orderByChild('accountType').equalTo("shoemaker");
             shmkrReference.on("child_added", snap => {
+                var shmkrId = snap.child("uid").val();
                 var shopName = snap.child("storeName").val();
                 var fName = snap.child("firstName").val();
                 var lName = snap.child("lastName").val();
-                var hNo = snap.child("streetName").val();
+                var hNo = snap.child("houseNo").val();
                 var brgy = snap.child("barangay").val();
                 var city = snap.child("city").val();
                 var pCode = snap.child("postalCode").val();
-                var stName = snap.child("houseNo").val();
-                var shmkrId = snap.child("uid").val();
+                var stName = snap.child("streetName").val();
+                
 
-                $("#admin-shmkrview").append('<tr><td><img class="admin-image" src="images/user.jpg"></td><td><p>' + shopName + '</p></td><td><p>' + fName + ' ' + lName + '</p></td><td><p>' + hNo + ' '  + brgy + ', ' + city + ', ' + pCode + '</p></td><td><button class="button-actions"><i class="bi bi-eye"></i><span>VIEW</span></button><button class="button-actions"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
+                $("#admin-shmkrview").append('<tr><td><img class="admin-image" src="images/user.jpg"></td><td><p>' + shopName + '</p></td><td><p>' + fName + ' ' + lName + '</p></td><td><p>' + hNo + ' ' + stName + ' '  + brgy + ', ' + city + ', ' + pCode + '</p></td><td><button class="button-actions" onclick="ViewPopup(' + shmkrId + ')"><i class="bi bi-eye"></i><span>VIEW</span></button><button class="button-actions"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
             });
 
 
@@ -129,6 +161,7 @@
                 contactNo = document.getElementById("mobilenumber").value;
                 email = document.getElementById("email").value;
             };
+    
 
             addshoemaker.onclick = function () {
                 readAddForm();
@@ -157,11 +190,33 @@
                             email: email,
                             accountType: "shoemaker"
                         });
-                    alert("Shoemaker Added!");
-                    });
-                };
-            
+                alert("Shoemaker Added!");
+                });
+            };
+
+
+
+            function ViewPopup(id) {
+                viewshmkrId = id;
+                console.log(viewshmkrId);
+                // firebase.database()
+                //     .ref("users/" + id)
+                //     .on("value", function (snap) {
+                //     // vwProdName = snap.val().prodName;
+                //     // vwProdPrice = snap.val().prodPrice;
+                //     // vwProdDesc = snap.val().prodDesc;
+                    
+                //     // //alert(user);
+                //     //     document.getElementById("shoename").value = vwProdName;
+                //     //     document.getElementById("shoeprice").value = vwProdPrice;
+                //     //     document.getElementById("shoedesc").value = vwProdDesc;
+
+                //     });
+                // document.getElementById("view_product").style.display = "block";
+                // document.getElementById("bgoverlay").style.display = "block";
+            };
+
         </script>
         
-
+    </body>
 </html>

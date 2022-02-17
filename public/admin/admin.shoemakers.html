@@ -83,7 +83,7 @@
         <!--END OF POPUP-->
 
         <div class="table">
-            <table>
+            <table id="admin-shmkrview">
                 <tr>
                     <th><h4 class="admin-tblHeader">IMAGE</h4></th>
                     <th><h4 class="admin-tblHeader">SHOP NAME</h4></th>
@@ -91,57 +91,77 @@
                     <th><h4 class="admin-tblHeader">ADDRESS</h4></th>
                     <th><h4 class="admin-tblHeader">ACTIONS</h4></th>
                 </tr>
-                <tr>
-                    <td><img class="admin-image" src="images/user.jpg"></td>
-                    <td><p>Tatay Oly Shoes</p></td>
-                    <td><p>Rolando "Oly" Santos</p></td>
-                    <td><p>A.B.M. 365 J.P. Rizal St. Marikina, 1800, Metro Manila</p></td>
-                    <td>
-                        <button class="button-actions">
-                            <i class="bi bi-eye"></i>
-                            <span>VIEW</span>
-                        </button>
-                        <button class="button-actions">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                            <span>DELETE</span>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img class="admin-image" src="images/user.jpg"></td>
-                    <td><p>Shoemaker Sample</p></td>
-                    <td><p>Juan Dela Cruz</p></td>
-                    <td><p>123 Sample St. Test Address, Sample City, Manila, 1234</p></td>
-                    <td>
-                        <button class="button-actions">
-                            <i class="bi bi-eye"></i>
-                            <span>VIEW</span>
-                        </button>
-                        <button class="button-actions">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                            <span>DELETE</span>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img class="admin-image" src="images/user.jpg"></td>
-                    <td><p>Shoemaker Sample</p></td>
-                    <td><p>Juan Dela Cruz</p></td>
-                    <td><p>123 Sample St. Test Address, Sample City, Manila, 1234</p></td>
-                    <td>
-                        <button class="button-actions">
-                            <i class="bi bi-eye"></i>
-                            <span>VIEW</span>
-                        </button>
-                        <button class="button-actions">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                            <span>DELETE</span>
-                        </button>
-                    </td>
-                </tr>
+                
             </table>
         </div>
+        <script>
 
+            var storeName, firstName, middleName, lastName, suffix, houseNo, stName, brgy, city, postalCode, contactNo, email;
+
+
+            var shmkrReference = firebase.database().ref().child("users/").orderByChild('accountType').equalTo("shoemaker");
+            shmkrReference.on("child_added", snap => {
+                var shopName = snap.child("storeName").val();
+                var fName = snap.child("firstName").val();
+                var lName = snap.child("lastName").val();
+                var hNo = snap.child("streetName").val();
+                var brgy = snap.child("barangay").val();
+                var city = snap.child("city").val();
+                var pCode = snap.child("postalCode").val();
+                var stName = snap.child("houseNo").val();
+                var shmkrId = snap.child("uid").val();
+
+                $("#admin-shmkrview").append('<tr><td><img class="admin-image" src="images/user.jpg"></td><td><p>' + shopName + '</p></td><td><p>' + fName + ' ' + lName + '</p></td><td><p>' + hNo + ' '  + brgy + ', ' + city + ', ' + pCode + '</p></td><td><button class="button-actions"><i class="bi bi-eye"></i><span>VIEW</span></button><button class="button-actions"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
+            });
+
+
+            function readAddForm() {
+                storeName = document.getElementById("storename").value;
+                firstName = document.getElementById("firstname").value;
+                middleName = document.getElementById("middlename").value;
+                lastName = document.getElementById("lastname").value;
+                suffix = document.getElementById("suffix").value;
+                houseNo = document.getElementById("houseno").value;
+                stName = document.getElementById("streetname").value;
+                brgy = document.getElementById("baranggay").value;
+                city = document.getElementById("city").value;
+                postalCode = document.getElementById("postalcode").value;
+                contactNo = document.getElementById("mobilenumber").value;
+                email = document.getElementById("email").value;
+            };
+
+            addshoemaker.onclick = function () {
+                readAddForm();
+
+                firebase.auth().createUserWithEmailAndPassword(email, "password" + storeName)
+                    .then((userCredential) => {
+                        // Signed up 
+                        var user = userCredential.user;
+                        console.log(user.uid);
+                            firebase
+                            .database()
+                            .ref("users/" + user.uid)
+                            .set({
+                            uid: user.uid,
+                            storeName: storeName,
+                            firstName: firstName,
+                            middleName: middleName,
+                            lastName: lastName,
+                            suffix: suffix,
+                            houseNo: houseNo,
+                            streetName: stName,
+                            barangay: brgy,
+                            city: city,
+                            postalCode: postalCode,
+                            contactNo: contactNo,
+                            email: email,
+                            accountType: "shoemaker"
+                        });
+                    alert("Shoemaker Added!");
+                    });
+                };
+            
+        </script>
         
 
 </html>

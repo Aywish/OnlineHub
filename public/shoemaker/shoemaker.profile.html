@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title class="shoemaker-name">Tatay Oly Shoes - Profile</title>
+    <title class="shoemaker-name" id="shoemaker-name-title"></title>
     
     <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,123 +39,15 @@
                 <img src="images/1.jpg" alt="">
             </div>
             <div class="shoemaker-description">
-                <h1 class="shoemaker-name"> Tatay Oly Shoes</h1>
-                <p class="address">A.B.M., 365 J.P. Rizal St., Marikina, 1800 Metro Manila</p>
+                <h1 class="shoemaker-name" id="shoemaker-name"></h1>
+                <p class="address" id="shoemaker-address"></p>
             </div>
         </div>
         <!--PRODUCTS-->
         <div class="profile-products">
-            <div class="products-sidebar">
-                <div class="sidebar-sort">
-                    <div class="sidebar-title">
-                        <span>SORT BY</span>
-                        <i class="bi bi-list-stars"></i>
-                    </div>
-                    <div class="sidebar-choices categories">
-                        <a href="#">Relevance</a>
-                        <a href="#">Latest</a>
-                        <a href="#">Popular</a>
-                        <a href="#">Top Sales</a>
-                        <a href="#">Price</a>
-                        <a href="#">Shop</a>
-                    </div>
-                </div>
-                <div class="sidebar-categories">
-                    <div class="sidebar-title">
-                        <span>CATEGORIES</span>
-                        <i class="bi bi-funnel-fill"></i>
-                    </div>
 
-                    <div class="sidebar-choices categories">
-                        <a href="#">Category 1</a>
-                        <a href="#">Category 2</a>
-                        <a href="#">Category 3</a>
-                        <a href="#">Category 4</a>
-                        <a href="#">Category 5</a>
-                        <a href="#">Category 6</a>
-                        <a href="#">Category 7</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-products">
-                <div class="card">
-                    <div class="product-image">
-                        <div class="product-overlay">
-                            <a href="#" class="view-product-details" onclick="ProductPopup()">View Details</a>
-                        </div>
-                        <img src="images/1.jpg"> 
-                    </div>
-                    <div class="card-content">
-                        <p class="shoe-name">SHOE NAME SAMPLE</p>
-                        <p class="shoe-maker">Tatay Oly Shoes</p>
-                        <p class="shoe-price">₱1500.00</p>
-                        <div class="sizes">
-                            <input type="radio" name="shoe-size" id="sizeA">
-                                <label for="sizeA">5</label>
-                            <input type="radio" name="shoe-size" id="sizeB">
-                                <label for="sizeB">6</label>
-                            <input type="radio" name="shoe-size" id="sizeC">
-                                <label for="sizeC">7</label>
-                            <input type="radio" name="shoe-size" id="sizeD">
-                                <label for="sizeD">8</label>
-                            <input type="radio" name="shoe-size" id="sizeE">
-                                <label for="sizeE">9</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="product-image">
-                        <div class="product-overlay">
-                            <a href="#" class="view-product-details" onclick="ProductPopup()">View Details</a>
-                        </div>
-                        <img src="images/1.jpg"> 
-                    </div>
-                    <div class="card-content">
-                        <p class="shoe-name">SHOE NAME SAMPLE</p>
-                        <p class="shoe-maker">Tatay Oly Shoes</p>
-                        <p class="shoe-price">₱1500.00</p>
-                        <div class="sizes">
-                            <input type="radio" name="shoe-size" id="sizeA">
-                                <label for="sizeA">5</label>
-                            <input type="radio" name="shoe-size" id="sizeB">
-                                <label for="sizeB">6</label>
-                            <input type="radio" name="shoe-size" id="sizeC">
-                                <label for="sizeC">7</label>
-                            <input type="radio" name="shoe-size" id="sizeD">
-                                <label for="sizeD">8</label>
-                            <input type="radio" name="shoe-size" id="sizeE">
-                                <label for="sizeE">9</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="product-image">
-                        <div class="product-overlay">
-                            <a href="#" class="view-product-details" onclick="ProductPopup()">View Details</a>
-                        </div>
-                        <img src="images/1.jpg"> 
-                    </div>
-                    <div class="card-content">
-                        <p class="shoe-name">SHOE NAME SAMPLE</p>
-                        <p class="shoe-maker">Tatay Oly Shoes</p>
-                        <p class="shoe-price">₱1500.00</p>
-                        <div class="sizes">
-                            <input type="radio" name="shoe-size" id="sizeA">
-                                <label for="sizeA">5</label>
-                            <input type="radio" name="shoe-size" id="sizeB">
-                                <label for="sizeB">6</label>
-                            <input type="radio" name="shoe-size" id="sizeC">
-                                <label for="sizeC">7</label>
-                            <input type="radio" name="shoe-size" id="sizeD">
-                                <label for="sizeD">8</label>
-                            <input type="radio" name="shoe-size" id="sizeE">
-                                <label for="sizeE">9</label>
-                        </div>
-                    </div>
-                </div>
+            <div class="card-products" id="card-products">
+                
             </div>
 
         </div>
@@ -199,9 +91,9 @@
                     </div>
         
                     <div class="popup-section product-right">
-                        <p class="shoe-name">SHOE NAME SAMPLE</p>
-                        <p class="shoe-maker">Tatay Oly Shoes</p>
-                        <p class="shoe-price">₱1500.00</p>
+                        <p class="shoe-name" id="shoe-name"></p>
+                        <p class="shoe-maker" id="shoe-maker"></p>
+                        <p class="shoe-price" id="shoe-price"></p>
                         <div class="stars">
                             <i class="bi bi-star-fill"></i>
                             <i class="bi bi-star-fill"></i>
@@ -210,9 +102,8 @@
                             <i class="bi bi-star-fill"></i>
                         </div>
                         <div class="description">
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            <p  id="shoe-desc">
+                            
                             </p>
                         </div>
                     </div>
@@ -224,6 +115,93 @@
         </div>
         <!--END OF POPUP-->
 
+
+        <script>
+
+            var userID = localStorage.getItem("userID");
+
+            var CustLogout = document.getElementById("custlogout");
+
+
+            //Check if user is logged in
+            firebase.auth().onAuthStateChanged(function(custUser) {
+            if (!custUser) {
+                //Redirect user to login if not logged in
+                location.href='../index.html'; 
+            }
+            });
+
+
+            firebase.database()
+            .ref("users/" + userID)
+            .on("value", function (snap) {
+            userType = snap.val().accountType;
+            });
+
+
+            var prodReference = firebase.database().ref().child("products/").orderByChild('shoeMakerID').equalTo(userID);
+            prodReference.on("child_added", snap => {
+
+            var prodID = snap.child("prodId").val();
+            prodPrice = snap.child("prodPrice").val();
+            prodName = snap.child("prodName").val();
+            var shmkrId = snap.child("shoeMakerID").val();
+                firebase.database()
+                .ref("users/" + shmkrId)
+                .on("value", function (snap) {
+                    shmkrName = snap.val().storeName;
+                    houseNo = snap.child("houseNo").val();
+                    stName = snap.child("streetName").val();
+                    brgy = snap.child("barangay").val();
+                    city = snap.child("city").val();
+                    pCode = snap.child("postalCode").val();
+                    var address = houseNo + ' ' + stName + ', ' + brgy + ', ' + city + ', ' + pCode;
+                    
+                    document.getElementById("shoemaker-name").innerHTML = shmkrName;
+                    document.getElementById("shoemaker-name-title").innerHTML = shmkrName;
+                    document.getElementById("shoemaker-address").innerHTML = address;
+                    // shoemaker-address
+                    
+
+                    $("#card-products").append('<div class="card"><div class="product-image"><div class="product-overlay"><a href="#" class="view-product-details" onclick="ProductPopup('+ prodID +')">View Details</a></div><img src="images/1.jpg"></div><div class="card-content"><p class="shoe-name">' + prodName + '</p><p class="shoe-maker">' + shmkrName + '</p><p class="shoe-price">₱'+ prodPrice + '.00</p><div class="product-size sizes"><input type="radio" name="shoe-size" id="sizeA"><label for="sizeA">5</label><input type="radio" name="shoe-size" id="sizeB"><label for="sizeB">6</label><input type="radio" name="shoe-size" id="sizeC"><label for="sizeC">7</label><input type="radio" name="shoe-size" id="sizeD"><label for="sizeD">8</label><input type="radio" name="shoe-size" id="sizeE"><label for="sizeE">9</label></div></div></div>');
+
+                });
+            });
+
+            function ProductPopup(id) {
+            console.log("Clicked!");
+            addprodId = id;
+            
+            firebase.database()
+                .ref("products/" + id)
+                .on("value", function (snap) {
+                vwProdName = snap.val().prodName;
+                vwProdPrice = snap.val().prodPrice;
+                vwProdDesc = snap.val().prodDesc;
+                
+                shmkrId = snap.child("shoeMakerID").val();
+                
+                firebase.database()
+                    .ref("users/" + shmkrId)
+                    .on("value", function (snap) {
+                    shmkrName = snap.val().storeName;
+                    
+                    document.getElementById("shoe-maker").innerHTML = shmkrName;
+                    });
+
+                //alert(user);
+                    document.getElementById("shoe-name").innerHTML = vwProdName;
+                    document.getElementById("shoe-price").innerHTML = vwProdPrice;
+                    document.getElementById("shoe-desc").innerHTML = vwProdDesc;
+
+                });
+            
+
+            document.getElementById("popup_product").style.display = "block";
+            document.getElementById("bgoverlay").style.display = "block";
+            }
+
+        </script>
         
     </body>
     </html>

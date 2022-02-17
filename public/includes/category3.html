@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- bootstrap and css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/ShopFull.css">
+
+    <!-- jQuery and js-->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+    
+    <title>Made In Marikina</title>
+
+</head>
+<body>
+    <div class="bgoverlay" id="bgoverlay">
+    </div>
+
+    <div class="popup" id="popup_product">
+        <div class="popup-scrollable">
+            <i class="bi bi-x" onclick="ClosePopup()"></i>
+            <div class="popup-content">
+                <div class="popup-section product-left">
+                    <div class="product-left product-img">
+                        <div class="product-img small-img">
+                            <img src="images/1.jpg">
+                            <img src="images/1.jpg">
+                            <img src="images/1.jpg">
+                        </div>
+                        <div class="product-img big-img">
+                            <img src="images/1.jpg">
+                        </div>
+                    </div>
+                    <div class="product-left product-colorsize">
+                        <i class="bi bi-circle-fill product-colorsize color1"></i>
+                        <i class="bi bi-circle-fill product-colorsize color2"></i>
+                        <i class="bi bi-circle-fill product-colorsize color3"></i>
+                        <i class="bi bi-circle-fill product-colorsize color4"></i>
+                    </div>
+                    <div class="product-colorsize sizes">
+                        <input type="radio" name="shoe-size" id="sizeA">
+                            <label for="sizeA">5</label>
+                        <input type="radio" name="shoe-size" id="sizeB">
+                            <label for="sizeB">6</label>
+                        <input type="radio" name="shoe-size" id="sizeC">
+                            <label for="sizeC">7</label>
+                        <input type="radio" name="shoe-size" id="sizeD">
+                            <label for="sizeD">8</label>
+                        <input type="radio" name="shoe-size" id="sizeE">
+                            <label for="sizeE">9</label>
+                    </div>
+                </div>
+
+                <div class="popup-section product-right">
+                    <p class="shoe-name" id="shoeName"></p>
+                    <p class="shoe-maker" id="shoemakerName"></p>
+                    <p class="shoe-price" id="shoePrice"></p>
+                    <div class="stars">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="description">
+                        <p id="shoeDesc">
+                        
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="addtocart">
+            <a href="#" id="addToCart">ADD TO CART</a>
+        </div>
+    </div>
+
+    <div class="content" id="category-view">
+
+    </div>
+
+    <script>
+        var product = firebase.database().ref().child("products/").orderByChild('prodCategory').equalTo("Sandals");
+            product.on("child_added", snap => {
+
+            var prodID = snap.child("prodId").val();
+            var prodPrice = snap.child("prodPrice").val();
+            var prodName = snap.child("prodName").val();
+            shmkrId = snap.child("shoeMakerID").val();
+
+            firebase.database()
+                .ref("users/" + shmkrId)
+                .on("value", function (snap) {
+                    shmkrName = snap.val().storeName;
+                
+
+            $("#category-view").append('<div class="card"><div class="product-image"><div class="product-overlay"><a href="#" class="view-product-details" onclick="ProductPopup('+ prodID +')">View Details</a></div><img src="images/1.jpg"></div><div class="card-content"><p class="shoe-name">' + prodName + '</p><p class="shoe-maker" id="shoemaker">' + shmkrName + '</p><p class="shoe-price"> ₱' + prodPrice +  '.00</p></div></div></div>');
+            });
+        });
+    </script>
+    
+</body>
+</html>

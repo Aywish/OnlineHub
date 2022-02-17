@@ -10,7 +10,7 @@ var ShoemakerLogout = document.getElementById("shmkrlogout");
 var today = new Date();
 var time = new Date().getFullYear() + "" + new Date().getMonth()  + 1 + "" + new Date().getDate()  + "" + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
 
-var shoeName, shoePrice, shoeDescription;
+var shoeName, shoePrice, shoeDescription, storename;
 var prodID_var = time;
 
 
@@ -32,13 +32,13 @@ firebase.auth().onAuthStateChanged(function(shoemakerUser) {
 
 
 firebase.database()
-    .ref("users/" + localStorage.getItem("userID"))
+    .ref("users/" + shmkrId)
     .on("value", function (snap) {
       userType = snap.val().accountType;
-      console.log(userType)
+      storename = snap.val().storeName;
       
-        document.getElementById("shmkrhiddenId").innerHTML = snap.val().userType;
-        document.getElementById("shmkrhiddenId").style.display = "none";
+        document.getElementById("shmkr-name-nav").innerHTML = storename;
+        document.getElementById("shmkr-name-sidenav").innerHTML = storename;
       });
 
 

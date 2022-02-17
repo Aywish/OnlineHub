@@ -40,7 +40,7 @@
             </button>
             <button class="button-actions-profile">
                 <i class="bi bi-hammer"></i>
-                <span>ORDER CUSTOM</span>
+                <span id="orderCustom"><a href="OrderCustom.html#t4" id="orderCustom">ORDER CUSTOM</a></span>
             </button>
         </div>
     </div>
@@ -48,39 +48,6 @@
     <div class="profile-products">
         <div class="card-products" id="card-products">
             
-        </div>
-
-        <div class="products-sidebar">
-            <div class="sidebar-sort">
-                <div class="sidebar-title">
-                    <span>SORT BY</span>
-                    <i class="bi bi-list-stars"></i>
-                </div>
-                <div class="sidebar-choices categories">
-                    <a href="#">Relevance</a>
-                    <a href="#">Latest</a>
-                    <a href="#">Popular</a>
-                    <a href="#">Top Sales</a>
-                    <a href="#">Price</a>
-                    <a href="#">Shop</a>
-                </div>
-            </div>
-            <div class="sidebar-categories">
-                <div class="sidebar-title">
-                    <span>CATEGORIES</span>
-                    <i class="bi bi-funnel-fill"></i>
-                </div>
-
-                <div class="sidebar-choices categories">
-                    <a href="#">Category 1</a>
-                    <a href="#">Category 2</a>
-                    <a href="#">Category 3</a>
-                    <a href="#">Category 4</a>
-                    <a href="#">Category 5</a>
-                    <a href="#">Category 6</a>
-                    <a href="#">Category 7</a>
-                </div>
-            </div>
         </div>
 
     </div>
@@ -187,7 +154,7 @@
         });
 
 
-        var prodReference = firebase.database().ref().child("products/").orderByChild('shoeMakerID').equalTo("UOtpenoSQ1UN0bVaU83wG6qkTPG2");
+        var prodReference = firebase.database().ref().child("products/").orderByChild('shoeMakerID').equalTo("qMjjumhYhThhN4sXV1o2ZvjNYox1");
             prodReference.on("child_added", snap => {
 
             var prodID = snap.child("prodId").val();
@@ -272,6 +239,7 @@
         });
         alert("Product added to cart");
         };
+
 
 
         CustLogout.onclick = function () {

@@ -7,6 +7,7 @@ var CustLogout = document.getElementById("custlogout");
 firebase.auth().onAuthStateChanged(function(custUser) {
   if (!custUser) {
     //Redirect user to login if not logged in
+    alert("Can't access, please login first");
     location.href='../index.html'; 
   }
 });
@@ -21,7 +22,7 @@ var today = new Date();
 var time = new Date().getFullYear() + "" + new Date().getMonth()  + 1 + "" + new Date().getDate()  + "" + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
 var orderID = time;
 var userID = localStorage.getItem("userID");
-console.log(userID);
+
 
 product.on("child_added", snap => {
 
@@ -33,7 +34,7 @@ product.on("child_added", snap => {
   firebase.database()
         .ref("users/" + shmkrId)
         .on("value", function (snap) {
-          shmkrName = snap.val().name;
+          shmkrName = snap.val().storeName;
         
 
     $("#content_page").append('<div class="card"><div class="product-image"><div class="product-overlay"><a href="#" class="view-product-details" onclick="ProductPopup('+ prodID +')">View Details</a></div><img src="images/1.jpg"></div><div class="card-content"><p class="shoe-name">' + prodName + '</p><p class="shoe-maker" id="shoemaker">' + shmkrName + '</p><p class="shoe-price"> ₱' + prodPrice +  '.00</p></div></div></div>');
@@ -58,7 +59,7 @@ function ProductPopup(id) {
       firebase.database()
         .ref("users/" + shmkrId)
         .on("value", function (snap) {
-          shmkrName = snap.val().name;
+          shmkrName = snap.val().storeName;
           
           document.getElementById("shoemakerName").innerHTML = shmkrName;
         });
@@ -185,7 +186,7 @@ firebase.database()
             $("#check").prop("checked", true);
             $('#content_page').load('includes/tatayolyprofilePUBLIC.html');
             $('.selector').removeClass('selected')
-            $('.home_selector').toggleClass('selected')
+            $('.shmkr1').toggleClass('selected')
         });
       });
 
@@ -194,11 +195,63 @@ firebase.database()
             $("#check").prop("checked", true);
             $('#content_page').load('includes/inchesfootwearprofilePUBLIC.html');
             $('.selector').removeClass('selected')
-            $('.home_selector').toggleClass('selected')
+            $('.shmkr2').toggleClass('selected')
         });
       });
 
+      $(document).ready(function(){
+        $('.category1').click(function(){
+            $("#check").prop("checked", true);
+            $('#content_page').load('includes/category1.html');
+            $('.selector').removeClass('selected')
+            $('.category1').toggleClass('selected')
+        });
+      });
 
+      $(document).ready(function(){
+        $('.category2').click(function(){
+            $("#check").prop("checked", true);
+            $('#content_page').load('includes/category2.html');
+            $('.selector').removeClass('selected')
+            $('.category2').toggleClass('selected')
+        });
+      });
+
+      $(document).ready(function(){
+        $('.category3').click(function(){
+            $("#check").prop("checked", true);
+            $('#content_page').load('includes/category3.html');
+            $('.selector').removeClass('selected')
+            $('.category3').toggleClass('selected')
+        });
+      });
+
+      $(document).ready(function(){
+        $('.category4').click(function(){
+            $("#check").prop("checked", true);
+            $('#content_page').load('includes/category4.html');
+            $('.selector').removeClass('selected')
+            $('.category4').toggleClass('selected')
+        });
+      });
+
+      $(document).ready(function(){
+        $('.category5').click(function(){
+            $("#check").prop("checked", true);
+            $('#content_page').load('includes/category5.html');
+            $('.selector').removeClass('selected')
+            $('.category5').toggleClass('selected')
+        });
+      });
+
+      $(document).ready(function(){
+        $('.category6').click(function(){
+            $("#check").prop("checked", true);
+            $('#content_page').load('includes/category6.html');
+            $('.selector').removeClass('selected')
+            $('.category6').toggleClass('selected')
+        });
+      });
 
   CustLogout.onclick = function () {
 
