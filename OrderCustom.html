@@ -102,6 +102,7 @@
                 $("#custom_outsole").css("display", "none");
                 $("#custom_thread").css("display", "none");
                 $("#submit_order").css("display", "none");
+                ViewOrder();
             });
 
             $('#custom-op2').click(function(){
@@ -111,6 +112,7 @@
                 $("#custom_outsole").css("display", "none");
                 $("#custom_thread").css("display", "none");
                 $("#submit_order").css("display", "none");
+                ViewOrder();
             });
 
             $('#custom-op3').click(function(){
@@ -120,6 +122,7 @@
                 $("#custom_outsole").css("display", "none");
                 $("#custom_thread").css("display", "none");
                 $("#submit_order").css("display", "none");
+                ViewOrder();
             });
 
             $('#custom-op4').click(function(){
@@ -129,6 +132,7 @@
                 $("#custom_outsole").css("display", "block");
                 $("#custom_thread").css("display", "none");
                 $("#submit_order").css("display", "none");
+                ViewOrder();
             });
 
             $('#custom-op5').click(function(){
@@ -138,6 +142,7 @@
                 $("#custom_outsole").css("display", "none");
                 $("#custom_thread").css("display", "block");
                 $("#submit_order").css("display", "none");
+                ViewOrder();
             });
 
             $('#custom-op6').click(function(){
@@ -330,11 +335,9 @@
         //popups
         function ViewOrder() {
             document.getElementById("view_order").style.display = "block";
-            document.getElementById("bgoverlay").style.display = "block";
         }
         function ClosePopup() {
             document.getElementById("view_order").style.display = "none";
-            document.getElementById("bgoverlay").style.display = "none";
         }
     </script>
 
@@ -517,9 +520,6 @@
                                         
                                         <input id="custom-op5" name="customopt" type="radio">
                                         <label style="background:rgb(170, 114, 50)" for="custom-op5" class="accordion__item"><p>THREAD</p></label>
-
-                                        <input id="custom-op6" name="customopt" type="radio">
-                                        <label style="background:rgb(216, 157, 90)" for="custom-op6" class="accordion__item"><p>Submit Order</p></label>
                                     </div>
 
                                     <div class="bg">
@@ -578,7 +578,6 @@
                                     
                                     <div class="popup" id="view_order">
                                         <div class="popup-scrollable">
-                                            <i class="bi bi-x" onclick="ClosePopup()"></i>
                                             <div class="custom-content"> 
                                                 <!-- <div class="product-img big-img custom-img" style="border: 1px solid;">
                                                     <img src="" alt="custom order image">

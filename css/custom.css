@@ -556,12 +556,11 @@ left: calc(50% - 80px);
   background:#361e02 !important;
 }
 
-
 .submit_order{
   justify-content: center;
   align-items: center;
   display: none;
-  }
+}
 
 .H-colors li:first-child p, .H-colors li:first-child:hover ~ .bg{  
   background-color:#ffffff !important;
@@ -632,33 +631,22 @@ button#custlogout  {
 
 
 /*POPUP*/
-.bgoverlay{
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 2;
-  display: none;
-}
 
 .popup{
   background-color: white;
-  width: 50%;
-  min-width: 430px;
-  height: 800px;
+  min-width: 350px;
+  height: 500px;
   position: absolute;
   margin: auto;
   z-index: 3;
-  left: 28%;
-  top: 12%;
+  right: 5%;
+  top: 25%;
   display: none;
 }
 
 .popup-scrollable{
   background-color: white;
-  height: 750px;
+  height: 450px;
   overflow-y:auto;
   overflow-x: hidden;
   margin: auto;
@@ -676,53 +664,12 @@ button#custlogout  {
   background-color: #212529;
 }
 
-.bi-x{
-  right: 10px;
-  top: 5px;
-  font-size: 30px;
-  position: sticky;
-  top: 0;
-  float: right;
-  cursor: pointer;
-}
-
-.popup-content{
-  margin-top: 25px;
-}
-.popup .product-left{
-  display: table;
-  margin-bottom: 20px;
-}
-
-.popup .small-img img{
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  box-sizing: border-box;
-  margin: 10px;    
-}
-
 .popup .big-img img{
   width: 350px;
   height: 350px;
   object-fit: cover;
   box-sizing: border-box;
   margin: 10px;
-}
-.popup .popup-content {
-  height: 350px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.popup .popup-content .popup-section {
-  flex: 1;
-  padding: 25px; 
-}
-
-
-p{
-  text-align: justify;
 }
 
 .addtocart{
@@ -745,6 +692,9 @@ p{
   margin: auto;
 }
 
+p{
+ 
+}
 
 table{
     width: 100%;
@@ -756,54 +706,20 @@ table{
 table p{  
   color: rgb(0, 0, 0);
   font-size: large;
+  vertical-align: bottom;
+  
 }
 
 th, td{
     display: table-cell;
     vertical-align: middle;
-    padding: 10px;
-    text-align: center;
+    padding: 5px;
+    vertical-align: bottom;
+    align-items: center;
 }
 
 .tblHeader{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 15px;
     color: #aa6023;
-    text-align: center;
-}
-
-.tblImage{
-    height: 60px;
-    width: 100px;
-    object-fit: cover;
-    box-sizing: border-box;
-    margin:auto;
-    display:block;
-    
-}
-
-.button-actions{
-    width: 100px;
-    padding: 5px;
-    font-size: 13px;
-    border-radius: 25px;
-    background-color: #212529;
-    color: white;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    position:relative;
-    margin:auto;
-    display:block;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    
-}
-
-.button-actions:hover, .top-buttons .buttonss:hover{
-    background-color: #aa6023;
-}
-
-p{
-    text-align: center;  
 }
