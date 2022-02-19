@@ -80,6 +80,8 @@
 
         var fname, lname, email, num, bday;
 
+
+        // RETRIEVE AND DISPLAY VALUES ON THE FORM
         firebase.database()
             .ref("users/" + userID)
             .on("value", function (snap) {
@@ -99,14 +101,16 @@
             });
 
 
+            // READ FORM VALUES
             function readProfileForm() {
                 fname = document.getElementById("fname").value;
                 lname = document.getElementById("lname").value;
                 email = document.getElementById("emailAddress").value;
                 num = document.getElementById("num").value;
-            }
+            };
 
 
+            // FUNCTION FOR UPDATING PROFILE INFORMATION
             document.getElementById("saveProfile").onclick = function () {
                 readProfileForm();
 
@@ -128,7 +132,6 @@
 
 
             // FOR IMAGE UPLOAD
-
             const uploadBtn = document.querySelector("#uploadImage");
 
             uploadBtn.addEventListener('click', function(e) {
