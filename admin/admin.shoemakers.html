@@ -19,7 +19,6 @@
         }
         function ClosePopup() {
             document.getElementById("popup_product").style.display = "none";
-            document.getElementById("view_popup").style.display = "none";
             document.getElementById("bgoverlay").style.display = "none";
         }
     </script>
@@ -78,36 +77,6 @@
             </div>
         </div>
 
-
-        <div class="popup" id="view_popup">
-            <div class="popup-scrollable">
-                <i class="bi bi-x" onclick="ClosePopup()"></i>
-                <div class="popup-content">
-                    <div class="profile-picture">
-                        <img src="images/logo.png" alt="">
-                    </div>
-                    
-                    <form action="" class="popup-form">
-                        <h5>Store Name</h5>
-                            <input type="text" placeholder="Full Store Name" class="storeName" id="storename">
-                        <h5>Full Name</h5>
-                            <input type="text" placeholder="First Name" class="fullName" id="firstname">
-                            <input type="text" placeholder="Middle Name" class="fullName" id="middlename">
-                            <input type="text" placeholder="Last Name" class="fullName" id="lastname">
-                            <input type="text" placeholder="Suffix" class="fullName" id="suffix">
-                        <h5>Complete Address</h5>
-                            <input type="text" placeholder="House No." class="address" id="houseno" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                            <input type="text" placeholder="Street Name" class="address" id="streetname">
-                            <input type="text" placeholder="Baranggay" class="address" id="baranggay">
-                            <input type="text" placeholder="City" class="address" id="city">
-                            <input type="text" placeholder="Postal Code." class="address" id="postalcode" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                        <h5>Contact Information</h5>
-                            <input type="text" placeholder="Mobile Number" class="contact" id="mobilenumber" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                            <input type="text" placeholder="Email Address" class="contact" id="email">
-                    </form>
-                </div>
-            </div>
-        </div>
         <!--END OF POPUP-->
 
         <div class="table">
@@ -195,26 +164,6 @@
             };
 
 
-
-            function ViewPopup(id) {
-                viewshmkrId = id;
-                console.log(viewshmkrId);
-                // firebase.database()
-                //     .ref("users/" + id)
-                //     .on("value", function (snap) {
-                //     // vwProdName = snap.val().prodName;
-                //     // vwProdPrice = snap.val().prodPrice;
-                //     // vwProdDesc = snap.val().prodDesc;
-                    
-                //     // //alert(user);
-                //     //     document.getElementById("shoename").value = vwProdName;
-                //     //     document.getElementById("shoeprice").value = vwProdPrice;
-                //     //     document.getElementById("shoedesc").value = vwProdDesc;
-
-                //     });
-                // document.getElementById("view_product").style.display = "block";
-                // document.getElementById("bgoverlay").style.display = "block";
-            };
 
         </script>
         

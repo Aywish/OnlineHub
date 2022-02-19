@@ -632,6 +632,19 @@ button#custlogout  {
     padding-left: 15px;
 }
 
+.cust-details #image{
+    background-color: transparent;
+    border-color: #000;
+    color: black;
+    padding: 10px 20px;
+    width: 700%;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 0.090em;
+}
+
+
 .cust-details .code{
     width: 70px;
     height: 30px;
@@ -658,12 +671,26 @@ button#custlogout  {
     padding-left: 15px;
 }
 
-.cust-details .cust-btn, .cust-upload{
+.cust-details .cust-upload {
+    background-color: transparent;
+    border-color: #000;
+    color: black;
+    padding: 10px 20px;
+    margin-top: 80px;
+    margin-right: 150px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 0.090em;
+    width: 120px;
+}
+
+.cust-details .cust-btn{
     background-color: transparent;
     border-color: #000;
     color: black;
     padding: 10px 15px;
-    margin-top: 150px;
+    margin-top: 250px;
+    margin-left: 38px;
     cursor: pointer;
     font-weight: bold;
     letter-spacing: 0.090em;

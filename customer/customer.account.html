@@ -52,6 +52,14 @@
         <div class="cust-column right">
             <div class="cust-content">
                 <div class="cust-details">
+                    <div><input type="file" class="image" id="image"></div>
+                    <button type="button" class="cust-upload" id="uploadImage">UPLOAD</button>
+                </div>
+
+                
+
+
+                <div class="cust-details">
                     <button class="cust-btn" id="saveProfile">SAVE</button>
                 </div>
             </div>
@@ -66,6 +74,9 @@
         // FOR BACKEND CONNECTION
 
         var userID = localStorage.getItem("userID");
+
+        var today = new Date();
+        var time = today.getMinutes() + "" + today.getSeconds();
 
         var fname, lname, email, num, bday;
 
@@ -114,6 +125,33 @@
                 alert("Profile Updated");
                 location.reload();
             };
+
+
+            // FOR IMAGE UPLOAD
+
+            const uploadBtn = document.querySelector("#uploadImage");
+
+            uploadBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const storage = firebase.storage();
+                const storageRef = storage.ref();
+
+                var file = document.querySelector("#image").files[0];
+                var name = time + '' + file.name;
+                var metadata = {
+                    contentType: file.type
+                }
+
+                var uploadTask = storageRef.child(name).put(file, metadata);
+
+                uploadTask.then(snapshot => snapshot.ref.getDownloadURL())
+                .then(url => {
+
+                    alert("Image Uploaded!");
+                    document.querySelector('#image').value = "";
+                })
+            });
 
 
     </script>

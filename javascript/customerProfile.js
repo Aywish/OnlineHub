@@ -30,6 +30,7 @@ firebase.database()
       });
 
 
+
 CustLogout.onclick = function () {
 
   firebase.auth().signOut().then(() => {
