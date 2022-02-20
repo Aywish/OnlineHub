@@ -32,7 +32,7 @@
     
     <div class="bgoverlay" id="bgoverlay">
     </div>
-    
+
     <div class="add-container">
         <div class="row">
             <div class="add-header">
@@ -87,18 +87,18 @@
                 <i class="bi bi-x" onclick="ClosePopup()"></i>
                     <div class="popup-section product-right">
                         <div>
-                            <input type="text" class="fields" placeholder="House No." id="houseno">
+                            <input type="text" class="fields" placeholder="House No." id="e-houseno">
                         </div>
                         <br>
                         <div>
-                            <input type="text" class="fields" placeholder="Street Name" id="streetname">
+                            <input type="text" class="fields" placeholder="Street Name" id="e-streetname">
                         </div>
                         <br>
-                        <input type="text" class="fields" placeholder="Baranggay" id="baranggay">
+                        <input type="text" class="fields" placeholder="Baranggay" id="e-baranggay">
                         <br>
-                        <input type="text" class="fields" placeholder="City" id="city">
+                        <input type="text" class="fields" placeholder="City" id="e-city">
                         <br>
-                        <input type="text" class="fields" placeholder="Postal Code." id="postalcode">
+                        <input type="text" class="fields" placeholder="Postal Code." id="e-postalcode">
                     </div>
                     
             </div>
@@ -124,6 +124,14 @@
             brgy = document.getElementById("baranggay").value;
             city = document.getElementById("city").value;
             pCode = document.getElementById("postalcode").value;
+        }
+
+        function readEditForm() {
+            ehNo = document.getElementById("e-houseno").value;
+            estName = document.getElementById("e-streetname").value;
+            ebrgy = document.getElementById("e-baranggay").value;
+            ecity = document.getElementById("e-city").value;
+            epCode = document.getElementById("e-postalcode").value;
         }
 
 
@@ -178,8 +186,43 @@
         function EditAddress(id) {
             editAddressId = id;
 
+            firebase.database()
+                .ref("users/" + userID + "/address/" + editAddressId)
+                .on("value", function (snap) {
+                    
+                    var hNo = snap.val().houseNo;
+                    var stName = snap.val().streetName;
+                    var brgy = snap.val().barangay;
+                    var city = snap.val().city;
+                    var pCode = snap.val().postalCode;
+
+
+                    document.getElementById("e-houseno").value = hNo;
+                    document.getElementById("e-streetname").value = stName;
+                    document.getElementById("e-baranggay").value = brgy;
+                    document.getElementById("e-city").value = city;
+                    document.getElementById("e-postalcode").value = pCode;
+                });
+
             document.getElementById("edit_address").style.display = "block";
             document.getElementById("bgoverlay").style.display = "block";
+        };
+
+
+        document.getElementById("saveEdit").onclick = function () {
+            readEditForm();
+
+            firebase.database()
+                .ref("users/" + userID + "/address/" + editAddressId)
+                .update({
+                    houseNo: ehNo,
+                    streetName: estName,
+                    barangay: ebrgy,
+                    city: ecity,
+                    postalCode: epCode
+                });
+            alert("Address Updated");
+            location.reload();
         }
 
 

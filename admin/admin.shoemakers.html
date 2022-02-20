@@ -17,8 +17,15 @@
             document.getElementById("popup_product").style.display = "block";
             document.getElementById("bgoverlay").style.display = "block";
         }
+
+        function OpenPopupView() {
+            document.getElementById("popup_viewSM").style.display = "block";
+            document.getElementById("bgoverlay").style.display = "block";
+        }
+
         function ClosePopup() {
             document.getElementById("popup_product").style.display = "none";
+            document.getElementById("popup_viewSM").style.display = "none";
             document.getElementById("bgoverlay").style.display = "none";
         }
     </script>
@@ -79,6 +86,80 @@
 
         <!--END OF POPUP-->
 
+        <!--VIEW SHOEMAKER POPUP-->
+        <div class="popup" id="popup_viewSM">
+            <div class="popup-scrollable">
+                <i class="bi bi-x" onclick="ClosePopup()"></i>
+                <div class="popup-content">
+                    <div class="profile-picture">
+                        <img src="images/logo.png" alt="">
+                    </div>
+                    
+                    <form action="" class="popup-form">
+                        <h5>Store Name</h5>
+                            <p id="shoemaker_storename" class="shoemakers_view">Tatay Oly Shoes</p>
+                        <h5>Full Name</h5>
+                            <table class="shoemakers_view shoemakers_fullname">
+                                <tr>
+                                    <th>First Name:</th>
+                                    <td>Rolando</td>
+                                </tr>
+                                <tr>
+                                    <th>Middle Name:</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Last Name:</th>
+                                    <td>Santos</td>
+                                </tr>
+                                <tr>
+                                    <th>Suffix:</th>
+                                    <td>Sr.</td>
+                                </tr>
+                            </table>
+                        <h5>Complete Address</h5>
+                            <table class="shoemakers_view shoemakers_fulladdress">
+                                <tr>
+                                    <th>House No:</th>
+                                    <td>365</td>
+                                </tr>
+                                <tr>
+                                    <th>Street Name:</th>
+                                    <td>J.P. Rizal</td>
+                                </tr>
+                                <tr>
+                                    <th>Baranggay:</th>
+                                    <td>Sto. Niño</td>
+                                </tr>
+                                <tr>
+                                    <th>City:</th>
+                                    <td>Marikina</td>
+                                </tr>
+                                <tr>
+                                    <th>Postal Code:</th>
+                                    <td>1800</td>
+                                </tr>
+                            </table>
+                        <h5>Contact Information</h5>
+                        <table class="shoemakers_view shoemakers_fulladdress">
+                            <tr>
+                                <th>Mobile Number:</th>
+                                <td>+639876543210</td>
+                            </tr>
+                            <tr>
+                                <th>Email Address:</th>
+                                <td>tatayoly@gmail.com</td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div class="addshoemaker">
+                <a href="#" id="addshoemaker">ADD SHOEMAKER</a>
+            </div>
+        </div>
+        <!--END OF POPUP-->
+
         <div class="table">
             <table id="admin-shmkrview">
                 <tr>
@@ -112,7 +193,7 @@
                 var stName = snap.child("streetName").val();
                 
 
-                $("#admin-shmkrview").append('<tr><td><img class="admin-image" src="images/user.jpg"></td><td><p>' + shopName + '</p></td><td><p>' + fName + ' ' + lName + '</p></td><td><p>' + hNo + ' ' + stName + ' '  + brgy + ', ' + city + ', ' + pCode + '</p></td><td><button class="button-actions" onclick="ViewPopup(' + shmkrId + ')"><i class="bi bi-eye"></i><span>VIEW</span></button><button class="button-actions"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
+                $("#admin-shmkrview").append('<tr><td><img class="admin-image" src="images/user.jpg"></td><td><p>' + shopName + '</p></td><td><p>' + fName + ' ' + lName + '</p></td><td><p>' + hNo + ' ' + stName + ' '  + brgy + ', ' + city + ', ' + pCode + '</p></td><td><button class="button-actions"onclick="OpenPopupView()"><i class="bi bi-eye"></i><span>VIEW</span></button><button class="button-actions"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
             });
 
 

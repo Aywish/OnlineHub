@@ -298,9 +298,20 @@ input[type=text]{
 #streetname{
     width: 55%;
     margin: 0;
-    margin-left: 20px;
-    
+    margin-left: 20px;   
 }
+
+#popup_viewSM .popup-form table{
+    margin-left: 10%;
+    margin-top: 0;
+    width: 90%;
+}
+
+#popup_viewSM .popup-form{
+    width: 100%;
+}
+
+
 /*CONTENT*/
 .top-level{
     display: flex;
@@ -654,13 +665,23 @@ input[type="file"], input[type="radio"]{
     margin: auto;
 }
 
-.fields { 
+.popup-content .fields { 
     width: 100%;
     padding-left: 10px;
     border: 1px solid #212529;
     border-radius: 25px;
     outline: none;
-    margin: 15px;
+    margin: 10px 0px 0px 20px;
+}
+
+.fields-desc { 
+    width: 100%;
+    height: 100px;
+    padding-left: 10px;
+    border: 1px solid #212529;
+    border-radius: 15px;
+    outline: none;
+    margin: 10px 0px 0px 20px;
 }
 
 .banner-buttonAdd{

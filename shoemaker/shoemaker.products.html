@@ -52,6 +52,27 @@
             reader.readAsDataURL(this.files[0]);
             });
         </script>
+
+        <!--jquery-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            //to add colors on shoe products
+        $(document).ready(function(){
+            var i=1, x=1;
+            $("#add_colors").click(function(){
+                $('#addr'+i).html("<input type='color' id='color' name='shoe-color' id='color"+(i+1)+"'></input>");
+                $('#tab_logic').append('<td id="addr'+(i+1)+'"></td>');
+                i++
+                });
+
+            //to add sizes on shoe products
+            $("#add_sizes").click(function(){
+                $('#sizetd'+x).html("<input type='text' name='shoe-size' id='size"+(x+1)+"' placeholder='0'></input>");
+                $('#tab_sizes').append('<td id="sizetd'+(x+1)+'"></td>');
+                x++
+            });
+        });
+        </script>
     </head>
     <body>
         <div class="bgoverlay" id="bgoverlay">
@@ -113,26 +134,32 @@
                                 </div>
                             </div>
                             <div class="product-img big-img">
-                                <img src="images/1.jpg">
+                                <div id="display_image">
+                                    <input type="file" id="image_input">
+                                    <label for="image_input" class="add-image">
+                                        <i class="bi bi-plus-circle-dotted"></i>
+                                    </label>
+                                    <span>Add Image</span>
+                                </div>
                             </div>
                         </div>
                         <div class="product-left product-colorsize">
-                            <i class="bi bi-circle-fill product-colorsize color1"></i>
-                            <i class="bi bi-circle-fill product-colorsize color2"></i>
-                            <i class="bi bi-circle-fill product-colorsize color3"></i>
-                            <i class="bi bi-circle-fill product-colorsize color4"></i>
+                            <table>
+                                <tr id="tab_logic">
+                                    <td><i class="bi bi-plus-circle-dotted" id="add_colors"></i></td>
+                                    <td id="addr0"><input type="color" name="shoe-color" id="color0"></input></td>
+                                    <td id="addr1"></td>
+                                </tr>
+                            </table>
                         </div>
-                        <div class="product-colorsize sizes">
-                            <input type="radio" name="shoe-size" id="sizeA">
-                                <label for="sizeA">5</label>
-                            <input type="radio" name="shoe-size" id="sizeB">
-                                <label for="sizeB">6</label>
-                            <input type="radio" name="shoe-size" id="sizeC">
-                                <label for="sizeC">7</label>
-                            <input type="radio" name="shoe-size" id="sizeD">
-                                <label for="sizeD">8</label>
-                            <input type="radio" name="shoe-size" id="sizeE">
-                                <label for="sizeE">9</label>
+                        <div class="product-left product-colorsize">
+                            <table>
+                                <tr id="tab_sizes">
+                                    <td><i class="bi bi-plus-square-dotted" id="add_sizes" ></i></td>
+                                    <td id="sizetd0"><input type="text" name="shoe-size" id="size0" placeholder="0"></td>
+                                    <td id="sizetd1"></td>
+                                </tr>
+                            </table>      
                         </div>
                     </div>
         
@@ -193,13 +220,22 @@
                             </div>
                         </div>
                         <div class="product-left product-colorsize">
-                            <input type="color" id="color" name="shoe-color" id="color1"></input>
-                            <i class="bi bi-plus-circle-dotted"></i>
+                            <table>
+                                <tr id="tab_logic">
+                                    <td><i class="bi bi-plus-circle-dotted" id="add_colors"></i></td>
+                                    <td id="addr0"><input type="color" name="shoe-color" id="color0"></input></td>
+                                    <td id="addr1"></td>
+                                </tr>
+                            </table>
                         </div>
-                        <div class="product-colorsize sizes">
-                            <input type="text" name="shoe-size" id="sizeA" placeholder="0">
-                            <input type="checkbox" name="shoe-size" id="sizeB">
-                                <label for="sizeB">+</label>
+                        <div class="product-left product-colorsize">
+                            <table>
+                                <tr id="tab_sizes">
+                                    <td><i class="bi bi-plus-square-dotted" id="add_sizes" ></i></td>
+                                    <td id="sizetd0"><input type="text" name="shoe-size" id="size0" placeholder="0"></td>
+                                    <td id="sizetd1"></td>
+                                </tr>
+                            </table>   
                         </div>
                     </div>
         

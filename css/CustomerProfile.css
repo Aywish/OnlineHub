@@ -587,11 +587,11 @@ button#custlogout  {
 }
 
 .left{
-    width: 70%;
+    width: 65%;
 }
 
 .right{
-    width: 30%;
+    width: 35%;
 }
 
 .row:after{
@@ -714,7 +714,7 @@ button#custlogout  {
 
 .popup{
     background-color: white;
-    width: 30%;
+    width: 40%;
     height: 500px;
     position: absolute;
     margin: auto;

@@ -530,13 +530,11 @@ input[type="checkbox"]{
     -webkit-appearance: none;
 }
 
-.sizes input[type="text"]{
+.product-colorsize input[type="text"]{
     border: 2px solid;
     width: 40px;
     height: 40px;
-    margin-right: 5px;
     text-align: center;
-    display: inline-block;
     transition: all .3s;
     font-size: 15px;
     vertical-align: top;
@@ -843,7 +841,7 @@ p{
         color: white;
     }
 
-    .bi-plus-circle-dotted{
+    .bi{
         text-align: center;
     }
 
@@ -853,6 +851,16 @@ p{
         display: flex;
         justify-content: center;
     }    
+
+    .popup .product-colorsize table{
+        margin: 0;
+        padding: 0;
+    }
+
+    .popup .product-colorsize table td input{
+        margin: 0;
+        margin-top: 10px;
+    }
 
   .product-left .big-img #display_image{
         width: 350px;
@@ -936,7 +944,7 @@ p{
       padding: 0;
     }
 
-    .product-colorsize .bi-plus-circle-dotted{
+    .product-colorsize .bi-plus-circle-dotted, .product-colorsize .bi-plus-square-dotted{
         font-size: 38px;
         position: relative;
         margin-top: -8px;;
