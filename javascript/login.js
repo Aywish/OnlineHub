@@ -89,6 +89,16 @@ document.getElementById("custLogin").onclick = function () {
 
 };
 
+orderCustom.onclick = function () {
+  warning = "Order Custom is only available for wholesale orders with no less than 300 pair of shoes. \n\nWould you like to proceed?";
+
+      if (confirm(warning) == true) {
+          location.href='./OrderCustom.html#t4'; 
+      } else {
+          alert("You cancelled!");
+      }
+};
+
 //Signup 
 document.getElementById("custSignup").onclick = function () {
   signup = true;

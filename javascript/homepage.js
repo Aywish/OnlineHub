@@ -12,6 +12,16 @@ firebase.auth().onAuthStateChanged(function(custUser) {
   }
 });
 
+orderCustom.onclick = function () {
+  warning = "Order Custom is only available for wholesale orders with no less than 300 pair of shoes. \n\nWould you like to proceed?";
+
+      if (confirm(warning) == true) {
+          location.href='./OrderCustom.html#t4'; 
+      } else {
+          alert("You cancelled!");
+      }
+};
+
 
 firebase.database()
     .ref("users/" + localStorage.getItem("userID"))

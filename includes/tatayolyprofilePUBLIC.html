@@ -40,7 +40,7 @@
             </button>
             <button class="button-actions-profile">
                 <i class="bi bi-hammer"></i>
-                <span><a href="OrderCustom.html#t4" id="orderCustom">ORDER CUSTOM</a></span>
+                <span><a id="orderCustom">ORDER CUSTOM</a></span>
             </button>
         </div>
     </div>
@@ -155,6 +155,16 @@
             }
             };
         });
+
+        orderCustom.onclick = function () {
+            warning = "Order Custom is only available for wholesale orders with no less than 300 pair of shoes. \n\nWould you like to proceed?";
+
+                if (confirm(warning) == true) {
+                    location.href='./OrderCustom.html#t4'; 
+                } else {
+                    alert("You cancelled!");
+                }
+        };
 
 
         var prodReference = firebase.database().ref().child("products/").orderByChild('shoeMakerID').equalTo("HKpMuLa8LFgfn4ppJRabdqZx7Vq1");

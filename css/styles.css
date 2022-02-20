@@ -443,6 +443,15 @@ pre h1{
     padding: 5px 5px;
 }
 
+a#orderCustom {
+    color: white;
+}
+
+a#orderCustom:hover {
+    border: 0px solid #333;
+    color: #333;
+}
+
 .footer .footer-content .links ul a:hover {
     color: #aa6023;
     margin-left: 15px;

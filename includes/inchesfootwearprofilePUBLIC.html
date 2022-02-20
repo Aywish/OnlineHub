@@ -40,7 +40,7 @@
             </button>
             <button class="button-actions-profile">
                 <i class="bi bi-hammer"></i>
-                <span id="orderCustom"><a href="OrderCustom.html#t4" id="orderCustom">ORDER CUSTOM</a></span>
+                <span><a id="orderCustom">ORDER CUSTOM</a></span>
             </button>
         </div>
     </div>
@@ -154,6 +154,17 @@
         });
 
 
+        orderCustom.onclick = function () {
+            warning = "Order Custom is only available for wholesale orders with no less than 300 pair of shoes. \n\nWould you like to proceed?";
+
+                if (confirm(warning) == true) {
+                    location.href='./OrderCustom.html#t4'; 
+                } else {
+                    alert("You cancelled!");
+                }
+        };
+
+
         var prodReference = firebase.database().ref().child("products/").orderByChild('shoeMakerID').equalTo("qMjjumhYhThhN4sXV1o2ZvjNYox1");
             prodReference.on("child_added", snap => {
 
@@ -165,7 +176,7 @@
             firebase.database()
                 .ref("users/" + shmkrId)
                 .on("value", function (snap) {
-                    shmkrName = snap.val().name;
+                    shmkrName = snap.val().storeName;
                     console.log(prodName, prodPrice, shmkrName, shmkrId)
                 
             $("#card-products").append('<div class="card"><div class="product-image"><div class="product-overlay"><a href="#" class="view-product-details" onclick="ProductPopup('+ prodID +')">View Details</a></div><img src="../images/1.jpg"></div><div class="card-content"><p class="shoe-name">' + prodName + '</p><p class="shoe-maker">' + shmkrName + '</p><p class="shoe-price">₱'+ prodPrice + '.00</p><div class="sizes"><input type="radio" name="shoe-size" id="sizeA"><label for="sizeA">5</label><input type="radio" name="shoe-size" id="sizeB"><label for="sizeB">6</label><input type="radio" name="shoe-size" id="sizeC"><label for="sizeC">7</label><input type="radio" name="shoe-size" id="sizeD"><label for="sizeD">8</label><input type="radio" name="shoe-size" id="sizeE"><label for="sizeE">9</label></div></div></div>');
