@@ -149,7 +149,6 @@
 
             customOrderNav.onclick = function () {
                 
-                localStorage.setItem("shoemakerID", shoemakerID);
             if (userType == "user") {
                 location.href='./CustomerProfile.html';
             }
@@ -161,7 +160,8 @@
 
         orderCustom.onclick = function () {
             warning = "Order Custom is only available for wholesale orders with no less than 300 pair of shoes. \n\nWould you like to proceed?";
-
+            
+            localStorage.setItem("shoemakerID", shoemakerID);
                 if (confirm(warning) == true) {
                     location.href='./OrderCustom.html#t4'; 
                 } else {
