@@ -948,6 +948,7 @@ p{
         font-size: 38px;
         position: relative;
         margin-top: -8px;;
+        cursor: pointer;
     }
 
     .fields { 

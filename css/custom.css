@@ -713,6 +713,8 @@ th, td{
     padding: 5px;
     vertical-align: bottom;
     align-items: center;
+    text-align: left;
+    padding-left: 30px;
 }
 
 .tblHeader{
