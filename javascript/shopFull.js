@@ -12,9 +12,6 @@ firebase.auth().onAuthStateChanged(function(custUser) {
   }
 });
 
-
-var product = firebase.database().ref().child("products/");
-
 var addprodId, vwProdName, vwProdPrice;
 
 //ID Generator YEARMONTHDAYHOURSMINUTESSECONDS
@@ -23,6 +20,8 @@ var time = new Date().getFullYear() + "" + new Date().getMonth()  + 1 + "" + new
 var orderID = time;
 var userID = localStorage.getItem("userID");
 
+
+var product = firebase.database().ref().child("products/");
 
 product.on("child_added", snap => {
 
