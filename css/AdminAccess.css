@@ -188,7 +188,7 @@ label #sidebar_btn:hover{
 
 .popup{
     background-color: white;
-    width: 50%;
+    width: 40%;
     min-width: 430px;
     height: 580px;
     position: absolute;
@@ -202,7 +202,7 @@ label #sidebar_btn:hover{
 .popup-scrollable{
     background-color: white;
     height: 580px;
-    overflow-y:auto;
+    overflow-y: auto;
     overflow-x: hidden;
     margin: auto;
 }
@@ -311,6 +311,20 @@ input[type=text]{
     width: 100%;
 }
 
+.popup-content .firstrow{
+    display: flex;
+    width: 100%;
+}
+
+.popup-content .firstrow #display_image{
+    width: 50%;
+    height: 200px;
+}
+
+.popup-content .firstrow .input-fields{
+    margin-top: 50px;
+    width: 35%;
+}
 
 /*CONTENT*/
 .top-level{
@@ -783,6 +797,7 @@ input[type="file"], input[type="radio"]{
     padding: 3px;
     font-weight: 400;
     font-size: 12px;
+    cursor: pointer;
 }
 
 .banner-buttonAdd .col1{
