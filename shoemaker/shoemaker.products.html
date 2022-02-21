@@ -57,18 +57,18 @@
         <script>
             //to add colors on shoe products
         $(document).ready(function(){
-            var i=1, x=1;
+            var i=0, x=0;
             $("#add_color").click(function(){
-                $('#addr'+i).html("<input type='color' id='color' name='shoe-color' id='color"+(i+1)+"'></input>");
-                $('#tab_logic').append('<td id="addr'+(i+1)+'"></td>');
-                i++
+                $('#colortd'+i).html("<input type='color' id='color' name='shoe-color' id='color"+(i+1)+"'></input>");
+                
+                $('#color_row').append('<td id="colortd'+(i+1)+'"></td>');
+                i++;
                 });
 
             //to add sizes on shoe products
-            $("#add_size").click(function(){
-                $('#sizetd'+x).html("<input type='text' name='shoe-size' id='size"+(x+1)+"' placeholder='0'></input>");
-                $('#tab_sizes').append('<td id="sizetd'+(x+1)+'"></td>');
-                x++
+            $("#add_shoesize").click(function(){
+                $('#tab_size').append('<td id="sizetd'+x+'""><input type="text" name="shoe-size" id="size'+x+'" placeholder="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"></input></td>');
+                x++;
             });
         });
         </script>
@@ -87,7 +87,6 @@
                 </label>
             </div>
         </div>
-
         <div class="table">
             <table id="product-View">
                 <tr>
@@ -99,9 +98,7 @@
                     <!-- CONTENT IS GENERATED FROM THE DATABASE -->
             </table>
         </div>
-
         <!--POPUP-->
-
         <!-- FOR EDITING A PRODUCT -->
         <div class="popup" id="edit_product">
             <div class="popup-scrollable">
@@ -177,7 +174,6 @@
                 <a href="#" id="saveEdit">SAVE</a>
             </div>
         </div>
-
         <!-- FOR ADDING A PRODUCT -->
         <div class="popup" id="add_product">
             <div class="popup-scrollable">
@@ -197,19 +193,16 @@
                         </div>
                         <div class="product-left product-colorsize">
                             <table>
-                                <tr id="tab_logic">
+                                <tr id="color_row">
                                     <td><i class="bi bi-plus-circle-dotted" id="add_color"></i></td>
-                                    <td id="addr0"><input type="color" name="shoe-color" id="color0"></input></td>
-                                    <td id="addr1"></td>
+                                    <td id="colortd0"></td>
                                 </tr>
                             </table>
                         </div>
                         <div class="product-left product-colorsize">
                             <table>
                                 <tr id="tab_size">
-                                    <td><i class="bi bi-plus-square-dotted" id="add_sizes" ></i></td>
-                                    <td id="sizetd0"><input type="text" name="shoe-size" id="size0" placeholder="0"></td>
-                                    <td id="sizetd1"></td>
+                                    <td><i class="bi bi-plus-square-dotted" id="add_shoesize" ></i></td>
                                 </tr>
                             </table>   
                         </div>
