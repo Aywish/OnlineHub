@@ -118,23 +118,31 @@ submitOrder.onclick = function () {
       prodCustom_Thread: threadColor,
       prodCustom_Eyelet: eyeletColor
   });
-  //location.reload();
 
   //Add To Customer's Own Collection
-  // firebase
-  // .database()
-  // .ref("users/" + userID + "/cart/" + orderID.toString())
-  // .set({
-  //   userID: userID,
-  //   orderID: orderid,
-  //   prodId: orderid,
-  //   prodName: cProdName,
-  //   prodDesc: cProdDesc,
-  //   prodPrice: cProdPrice,
-  //   shoemakerName: shmkrName
-  // });
+  firebase
+  .database()
+  .ref("users/" + userID + "/customOrders/" + orderID.toString())
+  .set({
+    shoemakerID: selectedShoemakerID, 
+    shoemakerName: shmkrName,
+    orderID: orderid,
+    orderStatus: "Pending",
+    prodName: cProdName,
+    prodPrice: cProdPrice,
+    prodDesc: cProdDesc,
+    prodType: cProdType,
+    prodQuantity: orderQuantity,
+    prodCustom_UpperLeather: upperLeatherColor,
+    prodCustom_ShoeLace: shoeLaceColor,
+    prodCustom_OutSole: outSoleColor, 
+    prodCustom_Thread: threadColor,
+    prodCustom_Eyelet: eyeletColor
+  });
+
   alert("Order Submitted. Pending for review.");
-  
+  location.reload();
+
 };
 
 CustLogout.onclick = function () {
