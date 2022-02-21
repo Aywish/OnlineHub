@@ -26,9 +26,10 @@
             }
 
             function ClosePopup() {
+                document.getElementById("bgoverlay").style.display = "none";
                 document.getElementById("add_banner").style.display = "none";
                 document.getElementById("edit_banner").style.display = "none";
-                document.getElementById("bgoverlay").style.display = "none";
+                
             }
 
             //add image
@@ -47,16 +48,31 @@
 
         <!--jquery-->
         <script>
+            //edit banner
 			$(document).ready(function(){
-			  var i=1;
-			  $("#add_row").click(function(){
+			    var i=1;
+			    $("#addbtnRowEdit").click(function(){
                     var strLink = $("#url_value").val();
                     var strAction = $("#action_value").val();
-                    $('#addr'+i).html("<td class='col1'><p>" + strLink + "</p></td><td class='col2'><p>" + strAction + "</p><td><a id='delete_row'  class='banner-button-options'>Delete Row</a></td>");
-                    $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+                    $('#buttonrow'+i).html("<td class='col1'><p>" + strLink + "</p></td><td class='col2'><p>" + strAction + "</p><td><a id='delete_row'  class='banner-button-options'>Delete Row</a></td>");
+                    $('#addbtnBanner').append('<tr id="buttonrow'+(i+1)+'"></tr>');
                     i++;
 				});
 			});
+
+            //add banner
+            $(document).ready(function(){
+			    var i=1;
+			    $("#addbtnRow").click(function(){
+                    var strLink = $("#url_value").val();
+                    var strAction = $("#action_value").val();
+                    $('#buttonrow'+i).html("<td class='col1'><p>" + strLink + "</p></td><td class='col2'><p>" + strAction + "</p><td><a id='delete_row'  class='banner-button-options'>Delete Row</a></td>");
+                    $('#addbtnBanner').append('<tr id="buttonrow'+(i+1)+'"></tr>');
+                    i++;
+				});
+			});
+
+            //delete row
 			$(document).on('click', '#delete_row', function () {
 			  $(this).closest('tr').remove();
 			  return false;
@@ -159,18 +175,17 @@
                     <br>
                     <input type="text"  class="fields"  placeholder="Subtitle">
                     <div class="add-actions">
-                        <table class="banner-buttonAdd" id="tab_logic">
+                        <table class="banner-buttonAdd" id="addbtnBanner">
                             <tr>
                                 <th class='col1'>Link</th>
                                 <th class='col2'>Button Name</th>
                                 <th>Action</th>
                             </tr>
-                            <tr id='addr0'>
+                            <tr id='buttonrow0'>
                                 <td><input type="text" name='url0'  placeholder='Insert website URL' id='url_value' class='col1'/></td>
                                 <td><input type="text" name='btn0' placeholder="Button" id='action_value' class='col2'/></td>
-                                <td><a id="add_row" class="banner-button-options">Add Row</a></td>
+                                <td><a class="banner-button-options">Edit Button</a></td>
                             </tr>
-                            <tr id='addr1'></tr>
                         </table>
                     </div>
                 </div>
@@ -195,17 +210,18 @@
                     <br>
                     <input type="text"  class="fields"  placeholder="Subtitle">
                     <div class="add-actions">
-                        <table class="banner-buttonAdd" id="tab_logic">
+                        <table class="banner-buttonAdd" id="addbtnBanner">
                             <tr>
                                 <th class='col1'>Link</th>
                                 <th class='col2'>Button Name</th>
                                 <th>Action</th>
                             </tr>
-                            <tr id='addr0'>
+                            <tr id='buttonrow0'>
                                 <td><input type="text" name='url0'  placeholder='Insert website URL' id='url_value' class='col1'/></td>
                                 <td><input type="text" name='btn0' placeholder="Button" id='action_value' class='col2'/></td>
-                                <td><a id="add_row" class="banner-button-options">Add Row</a></td>
+                                <td><a id="addbtnRow" class="banner-button-options">Add Row</a></td>
                             </tr>
+                            <tr id='buttonrow1'></tr>
                         </table>
                     </div>
                 </div>
