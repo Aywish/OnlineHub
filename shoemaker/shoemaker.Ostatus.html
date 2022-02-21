@@ -15,7 +15,15 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript">
             //popups
-            function ViewOrder() {
+            function ViewOrderPending() {
+                document.getElementById("view_order").style.display = "block";
+                document.getElementById("bgoverlay").style.display = "block";
+            }
+            function ViewOrderAccepted() {
+                btnOrderCompleted = "COMPLETE ORDER"
+                txtOstatus = "Accepted"
+                document.getElementById("btnOrder").innerHTML = btnOrderCompleted;
+                document.getElementById("txtOrderStatus").innerHTML = txtOstatus;
                 document.getElementById("view_order").style.display = "block";
                 document.getElementById("bgoverlay").style.display = "block";
             }
@@ -62,16 +70,16 @@
                         </table>
                     </td>
                     <td><p>Retail</p></td>
-                    <td><p>Pending</p></td>
+                    <td id="pendingaccepted"><p>Pending</p></td>
                     <td>
-                        <button class="button-actions" onclick="ViewOrder()">
+                        <button class="button-actions" onclick="ViewOrderPending()">
                             <i class="bi bi-eye"></i>
                             <span>VIEW</span>
                         </button>
-                        <button class="button-actions">
+                        <!--<button class="button-actions">
                             <i class="bi bi-chat-dots"></i>
                             <span>MESSAGE</span>
-                        </button>
+                        </button>-->
                     </td>
                 </tr>
 
@@ -94,21 +102,21 @@
                         </table>
                     </td>
                     <td><p>Retail</p></td>
-                    <td><p>Pending</p></td>
+                    <td id="pendingaccepted"><p>Accepted</p></td>
                     <td>
-                        <button class="button-actions" onclick="ViewOrder()">
+                        <button class="button-actions" onclick="ViewOrderAccepted()">
                             <i class="bi bi-eye"></i>
                             <span>VIEW</span>
                         </button>
-                        <button class="button-actions">
+                        <!--<button class="button-actions">
                             <i class="bi bi-chat-dots"></i>
                             <span>MESSAGE</span>
-                        </button>
+                        </button>-->
                     </td>
                 </tr> 
             </table>
 
-            <!--EDIT PRODUCT POPUP-->
+            <!--VIEW ORDER PENDING-->
         <div class="popup" id="view_order">
             <div class="popup-scrollable">
                 <i class="bi bi-x" onclick="ClosePopup()"></i>
@@ -133,7 +141,7 @@
                             </tr>
                             <tr>
                                 <th><h4 class="tblHeader">ORDER STATUS</h4></th>
-                                <td><p>Pending</p></td>
+                                <td id="txtOrderStatus"><p>Pending</p></td>
                             </tr>
                             
                         </table>
@@ -175,7 +183,7 @@
                     </div>
                 </div>
             <div class="addtocart">
-                <a href="#" id="addtocart">ACCEPT ORDER</a>
+                <a href="#" id="btnOrder">ACCEPT ORDER</a>
             </div>
         </div>
         </div>
