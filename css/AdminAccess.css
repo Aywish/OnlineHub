@@ -188,7 +188,7 @@ label #sidebar_btn:hover{
 
 .popup{
     background-color: white;
-    width: 50%;
+    width: 40%;
     min-width: 430px;
     height: 580px;
     position: absolute;
@@ -311,6 +311,20 @@ input[type=text]{
     width: 100%;
 }
 
+.popup-content .firstrow{
+    display: flex;
+    width: 100%;
+}
+
+.popup-content .firstrow #display_image{
+    width: 50%;
+    height: 200px;
+}
+
+.popup-content .firstrow .input-fields{
+    margin-top: 50px;
+    width: 35%;
+}
 
 /*CONTENT*/
 .top-level{
