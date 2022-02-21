@@ -22,12 +22,12 @@
                     var strMaterial = $("#txtMaterial").val();
                     var strColor = $("#txtColor").val();
                     var strQuantity = $("#txtQuantity").val();
-                    $('#addr'+i).html("<td><p>" + strShoetype + "</p></td><td><p>" + strShoepart + "</p></td><td><p>" + strMaterial + "</p></td><td><p>" + strColor + "</p></td><td><p>" + strQuantity + "</p></td>");
+                    $('#material_row'+i).html("<td><p>" + strShoetype + "</p></td><td><p>" + strShoepart + "</p></td><td><p>" + strMaterial + "</p></td><td><p>" + strColor + "</p></td><td><p>" + strQuantity + "</p></td><td><button class='button-actions'><i class='bi bi-pencil'></i><span> EDIT</span></button><button class='button-actions'><i class='bi bi-trash'></i><span> DELETE</span></button></td>");
 
-                    $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+                    $('#tab_logic').append('<tr id="material_row'+(i+1)+'"></tr>');
                     i++; 
-                    });
                 });
+            });
         </script>
     </head>
     <body>
@@ -36,12 +36,6 @@
         <div class="top-level">
             <div class="top-title">
                 <h1>Inventory.</h1>
-            </div>
-            <div class="top-buttons">
-                <label for="add" class="buttonss banner-add" id="add_custom">
-                        <i class="bi bi-plus-circle"></i>
-                        <span>ADD</span>
-                </label>
             </div>
         </div>
 
@@ -53,47 +47,17 @@
                     <th><h4 class="tblHeader">MATERIAL</h4></th>
                     <th><h4 class="tblHeader">COLOR</h4></th>
                     <th><h4 class="tblHeader">QUANTITY</h4></th>
-                    <!--<th><h4 class="tblHeader">ACTIONS</h4></th>-->
+                    <th><h4 class="tblHeader">ACTIONS</h4></th>
                 </tr>
                 <tr>
                     <td><input type="text" name='type0'  placeholder='ex: Classic' class="form-control" id="txtShoetype"/></td>
                     <td><input type="text" name='type0'  placeholder='ex: Eyelet' class="form-control" id="txtShoepart"/></td>
                     <td><input type="text" name='type0'  placeholder='ex: Leather' class="form-control" id="txtMaterial"/></td>
                     <td><input type="text" name='type0'  placeholder='ex: White' class="form-control" id="txtColor"/></td>
-                    <td><input type="text" name='type0'  placeholder='ex: 5' class="form-control" id="txtQuantity"/></td>
+                    <td><input type="text" name='type0'  placeholder='ex: 5' class="form-control" id="txtQuantity" onkeypress='return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))'/></td>
+                    <td><label for="add" class="button-actions" id="add_custom"><i class="bi bi-plus-circle"></i><span> ADD</span></label></td>
                 </tr>
-                <tr>
-                    <td><p>Topsider</p></td>
-                    <td><p>Out Sole</p></td>
-                    <td><p>Leather</p></td>
-                    <td><p>Brown</p></td>
-                    <td><p>3</p></td>
-                    <!--<td>
-                        <button class="button-actions" onclick="EditPopup()">
-                            <i class="bi bi-pencil"></i>
-                            <span>EDIT</span>
-                        </button>
-                        <button class="button-actions">
-                            <i class="bi bi-trash"></i>
-                            <span>DELETE</span>
-                        </button>
-                    </td>-->
-                </tr>
-                <tr>
-                    <td><p>Topsider</p></td>
-                    <td><p>Thread</p></td>
-                    <td><p>Leather</p></td>
-                    <td><p>Black</p></td>
-                    <td><p>7</p></td>
-                </tr>
-                <tr>
-                    <td><p>Topsider</p></td>
-                    <td><p>Thread</p></td>
-                    <td><p>Leather</p></td>
-                    <td><p>Blue</p></td>
-                    <td><p>3</p></td>
-                </tr>
-                <tr id="addr0">
+                <tr id="material_row0">
                 </tr>
             </table>
         </div>
