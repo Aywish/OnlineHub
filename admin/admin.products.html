@@ -20,19 +20,6 @@
                 document.getElementById("edit_category").style.display = "none";
                 document.getElementById("bgoverlay").style.display = "none";
             }
-
-            //add image
-            const image_input = document.querySelector("#image_input");
-            var uploaded_image;
-
-            image_input.addEventListener('change', function() {
-            const reader = new FileReader();
-            reader.addEventListener('load', () => {
-                uploaded_image = reader.result;
-                document.querySelector("#display_image").style.backgroundImage = `url(${uploaded_image})`;
-            });
-            reader.readAsDataURL(this.files[0]);
-            });
         </script>
 
          <!-- bootstrap and css -->
@@ -140,5 +127,21 @@
                 <a href="#" id="editbanner">SAVE CHANGES</a>
             </div>
         </div>
+
+        <script>
+
+            // FOR IMAGE UPLOAD
+            // const storage = firebase.storage();
+            //     const storageRef = storage.ref();
+
+            //     var file = document.querySelector("#image_input").files[0];
+            //     var name = file.name;
+            //     var imgId = userID;
+            //     var metadata = {
+            //         contentType: file.type
+            //     }
+            
+            //     console.log(file);
+        </script>
 
 </html>

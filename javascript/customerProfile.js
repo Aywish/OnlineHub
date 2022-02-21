@@ -32,17 +32,11 @@ firebase.database()
 
 
       // RETRIEVE IMAGE FROM FIREBASE
-      app.controller('MyController', ['$scope', function($scope) {
-        // Create a reference to the file we want to download
-        var starsRef = storageRef.child('/' + userID + '/customerProfile/' + file.name);
-    
-        // Get the download URL
-        starsRef.getDownloadURL().then(function(url) {
-        // Insert url into an <img> tag to "download"
-            $scope.imageUrl = url;
-        });
-    }]);
-
+      firebase.database()
+      .ref("users/" + userID + "/profilePicture/" + userID)
+      .on("value", function (snap) {
+        document.getElementById('profilePicture').src = snap.val().imageLink;
+      });
 
 CustLogout.onclick = function () {
 
