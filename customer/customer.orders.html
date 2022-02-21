@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <title class="customer-name">Made in Marikina - Products</title>
+
+        <!-- icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+
+         <!-- bootstrap and css -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/ShoemakerAccess.css">
+
+        <!--javascript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript">
+            //popups
+            function ViewOrderPending() {
+                document.getElementById("view_order").style.display = "block";
+                document.getElementById("bgoverlay").style.display = "block";
+            }
+            function ViewOrderAccepted() {
+                btnOrderCompleted = ""
+                txtOstatus = "Accepted"
+                document.getElementById("btnOrder").innerHTML = btnOrderCompleted;
+                document.getElementById("txtOrderStatus").innerHTML = txtOstatus;
+                document.getElementById("view_order").style.display = "block";
+                document.getElementById("bgoverlay").style.display = "block";
+            }
+            function ClosePopup() {
+                document.getElementById("view_order").style.display = "none";
+                document.getElementById("bgoverlay").style.display = "none";
+            }
+        </script>
+    </head>
+    <body>
+        <div class="bgoverlay" id="bgoverlay">
+        </div>
+        <div class="top-level">
+            <div class="top-title">
+                <h1>Order Status</h1>
+            </div>
+        </div>
+
+        <div class="table-status">
+            <table>
+                <tr>
+                    <th><h4 class="tblHeader">SHOE TYPE</h4></th>
+                    <th><h4 class="tblHeader">SHOE DETAILS</h4></th>
+                    <th><h4 class="tblHeader">ORDER TYPE</h4></th>
+                    <th><h4 class="tblHeader">STATUS</h4></th>
+                    <th><h4 class="tblHeader">ACTIONS</h4></th>
+                </tr>
+                <tr class="order-rows">
+                    <td><p>Topsider</p></td>
+                    <td>
+                        <table class="specs">
+                            <tr class="spec-row">
+                                <td class="spec-title">Material: </td>
+                                <td class="spec-value">Leather</td>
+                            </tr>
+                            <tr class="spec-row">
+                                <td class="spec-title">Size: </td>
+                                <td class="spec-value">39</td>
+                            </tr>
+                            <tr class="spec-row">
+                                <td class="spec-title">Qty: </td>
+                                <td class="spec-value">3</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td><p>Retail</p></td>
+                    <td id="pendingaccepted"><p>Pending</p></td>
+                    <td>
+                        <button class="button-actions" onclick="ViewOrderPending()">
+                            <i class="bi bi-eye"></i>
+                            <span>VIEW</span>
+                        </button>
+                        <!--<button class="button-actions">
+                            <i class="bi bi-chat-dots"></i>
+                            <span>MESSAGE</span>
+                        </button>-->
+                    </td>
+                </tr>
+
+                <tr class="order-rows">
+                    <td><p>Topsider</p></td>
+                    <td>
+                        <table class="specs">
+                            <tr class="spec-row">
+                                <td class="spec-title">Material: </td>
+                                <td class="spec-value">Leather</td>
+                            </tr>
+                            <tr class="spec-row">
+                                <td class="spec-title">Size: </td>
+                                <td class="spec-value">39</td>
+                            </tr>
+                            <tr class="spec-row">
+                                <td class="spec-title">Qty: </td>
+                                <td class="spec-value">3</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td><p>Retail</p></td>
+                    <td id="pendingaccepted"><p>Accepted</p></td>
+                    <td>
+                        <button class="button-actions" onclick="ViewOrderAccepted()">
+                            <i class="bi bi-eye"></i>
+                            <span>VIEW</span>
+                        </button>
+                        <!--<button class="button-actions">
+                            <i class="bi bi-chat-dots"></i>
+                            <span>MESSAGE</span>
+                        </button>-->
+                    </td>
+                </tr> 
+            </table>
+
+            <!--VIEW ORDER PENDING-->
+        <div class="popup" id="view_order">
+            <div class="popup-scrollable">
+                <i class="bi bi-x" onclick="ClosePopup()"></i>
+                <div class="custom-content">
+                    <div class="table-view order-details">
+                        <table>
+                            <tr>
+                                <th><h4 class="tblHeader">CUSTOMER NAME</h4></th>
+                                <td><p>Juan Dela Cruz</p></td>
+                            </tr>
+                            <tr>
+                                <th><h4 class="tblHeader">CONTACT NUMBER</h4></th>
+                                <td><p>+639876543210</p></td>
+                            </tr>
+                            <tr>
+                                <th><h4 class="tblHeader">ORDER TYPE</h4></th>
+                                <td><p>Retail</p></td>
+                            </tr>
+                            <tr>
+                                <th><h4 class="tblHeader">QUANTITY</h4></th>
+                                <td><p>3</p></td>
+                            </tr>
+                            <tr>
+                                <th><h4 class="tblHeader">ORDER STATUS</h4></th>
+                                <td id="txtOrderStatus"><p>Pending</p></td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    <div class="product-img big-img custom-img" style="border: 1px solid;">
+                        <img src="" alt="custom order image">
+                    </div>
+                    <div class="table-view">
+                        <table>
+                            <tr>
+                                <th><h4 class="tblHeader">SHOE TYPE</h4></th>
+                                <td><p>Topsider</p></td>
+                            </tr>
+                            <tr>
+                                <th><h4 class="tblHeader">MATERIAL</h4></th>
+                                <td><p>Leather</p></td>
+                            </tr>
+                            <tr>
+                                <th><h4 class="tblHeader">UPPER LEATHER</h4></th>
+                                <td><p>WHITE</p></td>
+                            </tr>
+                            <tr>
+                                <th><h4 class="tblHeader">SHOELACE</h4></th>
+                                <td><p>WHITE</p></td>
+                            </tr>
+                            <tr>
+                                <th><h4 class="tblHeader">EYELET</h4></th>
+                                <td><p>WHITE</p></td>
+                            </tr>
+                            <tr>
+                                <th><h4 class="tblHeader">OUT SOLE</h4></th>
+                                <td><p>WHITE</p></td>
+                            </tr>
+                            <tr>
+                                <th><h4 class="tblHeader">THREAD</h4></th>
+                                <td><p>WHITE</p></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            <div class="addtocart">
+                <a href="OrderCustom.html" id="btnOrder">EDIT ORDER</a>
+            </div>
+        </div>
+        </div>
+    </body>
+</html>

@@ -52,6 +52,15 @@
             });
         });
 
+        //custom orders
+        $(document).ready(function(){
+            $('.orders_selector').click(function(){
+                $('#content_page').load('customer/customer.orders.html');
+                $('.selector').removeClass('selected')
+                $('.orders_selector').toggleClass('selected')
+            });
+        });
+
     </script>
 
     <!-- icons -->
@@ -142,6 +151,10 @@
         <a href="#" class="selector password_selector">
             <i class="bi bi-key-fill"></i>
             <span>CHANGE PASSWORD</span>
+        </a>
+        <a href="#" class="selector orders_selector">
+            <i class="bi bi-card-checklist"></i>
+            <span>CUSTOM ORDERS</span>
         </a>
     </div>
 
