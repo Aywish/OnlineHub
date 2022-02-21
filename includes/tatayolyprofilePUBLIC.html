@@ -120,6 +120,7 @@
 
     <script>
         var custUser, shmkrId;
+        var shoemakerID = "HKpMuLa8LFgfn4ppJRabdqZx7Vq1";
         var prodName, prodPrice;
         var userID = localStorage.getItem("userID");
 
@@ -147,8 +148,10 @@
             console.log(userType)
 
             customOrderNav.onclick = function () {
+                
+                localStorage.setItem("shoemakerID", shoemakerID);
             if (userType == "user") {
-                location.href='./CustomerProfile.html'; 
+                location.href='./CustomerProfile.html';
             }
             else{
                 location.href='./ShoemakerAccess.html'; 
@@ -167,7 +170,7 @@
         };
 
 
-        var prodReference = firebase.database().ref().child("products/").orderByChild('shoeMakerID').equalTo("HKpMuLa8LFgfn4ppJRabdqZx7Vq1");
+        var prodReference = firebase.database().ref().child("products/").orderByChild('shoeMakerID').equalTo(shoemakerID);
             prodReference.on("child_added", snap => {
 
             var prodID = snap.child("prodId").val();

@@ -199,6 +199,27 @@ label #sidebar_btn:hover{
     display: none;
 }
 
+
+.addbanner, .editbanner{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #212529;    
+}
+
+.addbanner a, .editbanner a{
+    text-align: center;
+    background-color: #212529;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 15px;
+    margin: auto;
+}
+
 .popup-scrollable{
     background-color: white;
     height: 750px;

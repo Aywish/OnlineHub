@@ -1,5 +1,7 @@
 var CustLogout = document.getElementById("custlogout");
 
+alert(localStorage.getItem("shoemakerID"));
+
 var custUser = localStorage.getItem("userID");
 var userType;
 

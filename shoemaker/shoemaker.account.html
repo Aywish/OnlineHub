@@ -34,8 +34,16 @@
                     <div><input type="text" id="fname" name="fname"></div>
                 </div>
                 <div class="cust-details">
+                    <div><label>MIDDLE NAME: </label></div>
+                    <div><input type="text" id="mname" name="mname"></div>
+                </div>
+                <div class="cust-details">
                     <div><label>LAST NAME: </label></div>
                     <div><input type="text" id="lname" name="lname"></div>
+                </div>
+                <div class="cust-details">
+                    <div><label>SUFFIX: </label></div>
+                    <div><input type="text" id="suffix" name="suffix"></div>
                 </div>
                 <div class="cust-details">
                     <div><label>EMAIL ADDRESS: </label></div>
@@ -77,14 +85,18 @@
             .on("value", function (snap) {
             storename = snap.val().storeName;
             firstname = snap.val().firstName;
+            middlename = snap.val().middleName;
             lastname = snap.val().lastName;
+            suffix = snap.val().suffix;
             email = snap.val().email;
             contact = snap.val().contactNo;
             bday = snap.val().bday;
 
                 document.getElementById("shmkr-storename").innerHTML = storename;
                 document.getElementById("fname").value = firstname;
+                document.getElementById("mname").value = middlename;
                 document.getElementById("lname").value = lastname;
+                document.getElementById("suffix").value = suffix;
                 document.getElementById("emailAddress").value = email;
                 document.getElementById("num").value = contact;
                 document.getElementById("myDate").value = bday;
@@ -93,7 +105,9 @@
 
             function readProfileForm() {
                 fname = document.getElementById("fname").value;
+                mname = document.getElementById("mname").value;
                 lname = document.getElementById("lname").value;
+                suffix = document.getElementById("suffix").value;
                 email = document.getElementById("emailAddress").value;
                 num = document.getElementById("num").value;
             }
@@ -109,7 +123,9 @@
                     .ref("users/" + userID)
                     .update({
                         firstName: fname,
+                        middleName: mname,
                         lastName: lname,
+                        suffix: suffix,
                         email: email,
                         contactNo: num,
                         bday: bday

@@ -52,7 +52,9 @@
         <div class="cust-column right">
             <div class="cust-content">
                 <div class="cust-details">
-                    <div><input type="file" class="image" id="image"></div>
+                    <div><input type="file" class="image" id="image">
+                        <label class="uploadProgress" id="upProgress"></label></div>
+                    <div></div>
                     <button type="button" class="cust-upload" id="uploadImage">UPLOAD</button>
                 </div>
 
@@ -78,7 +80,7 @@
         var today = new Date();
         var time = today.getMinutes() + "" + today.getSeconds();
 
-        var fname, lname, email, num, bday;
+        var fname, lname, email, num, bday, imgUrl;
 
 
         // RETRIEVE AND DISPLAY VALUES ON THE FORM
@@ -141,19 +143,31 @@
                 const storageRef = storage.ref();
 
                 var file = document.querySelector("#image").files[0];
-                var name = time + '' + file.name;
+                var name = file.name;
+                var imgId = userID;
                 var metadata = {
                     contentType: file.type
                 }
 
-                var uploadTask = storageRef.child(name).put(file, metadata);
+                var uploadTask = storageRef.child(userID + "/customerProfile/" + name).put(file, metadata);
+
+                uploadTask.on('state_changed', function(snapshot){
+                    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    document.getElementById("upProgress").innerHTML = 'Upload' + progress + '%';
+                })
 
                 uploadTask.then(snapshot => snapshot.ref.getDownloadURL())
                 .then(url => {
+                    imgUrl = url;
 
-                    alert("Image Uploaded!");
-                    document.querySelector('#image').value = "";
+                firebase.database().ref("users/" + userID + "/profilePicture/" + userID)
+                .set({
+                    imageId: imgId,
+                    imageName: name,
+                    imageLink: imgUrl
                 })
+                alert("Image Uploaded Successfully!");
+                });
             });
 
 

@@ -627,6 +627,12 @@ button#custlogout  {
     padding-top: 4px;
 }
 
+.cust-details label.uploadProgress{
+    width: 10px;
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
 .cust-details input{
     width: 150%;
     border-radius: 50px;
@@ -645,7 +651,8 @@ button#custlogout  {
     color: black;
     padding: 10px 20px;
     margin-top: 80px;
-    width: 700%;
+    margin-left: -35px;
+    width: 500%;
     border-radius: 50px;
     cursor: pointer;
     font-weight: bold;
@@ -653,7 +660,8 @@ button#custlogout  {
 }
 
 .cust-details #uploadImage{
-    margin-top: 150px;
+    margin-top: 200px;
+    margin-left: -20px;
 }
 
 
