@@ -10,16 +10,37 @@
         <!--javascript -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript">
+
             //popups
-            function editProductCategory() {
-                document.getElementById("edit_category").style.display = "block";
+            function editProductCategory1() {
+                document.getElementById("edit_category1").style.display = "block";
+                document.getElementById("bgoverlay").style.display = "block";
+            }
+
+            function editProductCategory2() {
+                document.getElementById("edit_category2").style.display = "block";
+                document.getElementById("bgoverlay").style.display = "block";
+            }
+
+            function editProductCategory3() {
+                document.getElementById("edit_category3").style.display = "block";
+                document.getElementById("bgoverlay").style.display = "block";
+            }
+
+            function editProductCategory4() {
+                document.getElementById("edit_category4").style.display = "block";
                 document.getElementById("bgoverlay").style.display = "block";
             }
 
             function ClosePopup() {
-                document.getElementById("edit_category").style.display = "none";
+                document.getElementById("edit_category1").style.display = "none";
+                document.getElementById("edit_category2").style.display = "none";
+                document.getElementById("edit_category3").style.display = "none";
+                document.getElementById("edit_category4").style.display = "none";
                 document.getElementById("bgoverlay").style.display = "none";
             }
+
+            
         </script>
 
          <!-- bootstrap and css -->
@@ -27,6 +48,9 @@
         <link rel="stylesheet" href="../css/AdminAccess.css">
     </head>
     <body>
+        <div class="bgoverlay" id="bgoverlay">
+        </div>
+
         <div class="top-level">
             <div class="top-title">
                 <h1>Manage Products.</h1>
@@ -42,106 +66,519 @@
                     <th><h4 class="admin-tblHeader">ACTIONS</h4></th>
                 </tr>
                 <tr>
-                    <td><img class="admin-image" src="images/1.jpg"></td>
-                    <td><p>Headline</p></td>
-                    <td><p>Lorem ipsum dolor sit amet. Eum amet galisum id aperiam deserunt et nihil praesentium.</p></td>
+                    <td><img class="admin-image" src="" id="productView1"></td>
+                    <td><p id="tblHeadline1"></p></td>
+                    <td><p id="tblDescription1"></p></td>
                     <td>
-                        <button class="button-actions" onclick="editProductCategory()">
+                        <button class="button-actions" onclick="editProductCategory1()">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                             <span>EDIT</span>
                         </button>
-                        <!--<button class="button-actions">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                            <span>DELETE</span>
-                        </button>-->
                     </td>
                 </tr>
                 <tr>
-                    <td><img class="admin-image" src="images/2.jpg"></td>
-                    <td><p>Headline</p></td>
-                    <td><p>Lorem ipsum dolor sit amet. Eum amet galisum id aperiam deserunt et nihil praesentium.</p></td>
+                    <td><img class="admin-image" src="" id="productView2"></td>
+                    <td><p id="tblHeadline2"></p></td>
+                    <td><p id="tblDescription2"></p></td>
                     <td>
-                        <button class="button-actions" onclick="editProductCategory()">
+                        <button class="button-actions" onclick="editProductCategory2()">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                             <span>EDIT</span>
                         </button>
-                        <!--<button class="button-actions">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                            <span>DELETE</span>
-                        </button>-->
                     </td>
                 </tr>
                 <tr>
-                    <td><img class="admin-image" src="images/3.jpg"></td>
-                    <td><p>Headline</p></td>
-                    <td><p>Lorem ipsum dolor sit amet. Eum amet galisum id aperiam deserunt et nihil praesentium.</p></td>
+                    <td><img class="admin-image" src="" id="productView3"></td>
+                    <td><p id="tblHeadline3"></p></td>
+                    <td><p id="tblDescription3"></p></td>
                     <td>
-                        <button class="button-actions" onclick="editProductCategory()">
+                        <button class="button-actions" onclick="editProductCategory3()">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                             <span>EDIT</span>
                         </button>
-                        <!--<button class="button-actions">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                            <span>DELETE</span>
-                        </button>-->
                     </td>
                 </tr>
                 <tr>
-                    <td><img class="admin-image" src="images/1.jpg"></td>
-                    <td><p>Headline</p></td>
-                    <td><p>Lorem ipsum dolor sit amet. Eum amet galisum id aperiam deserunt et nihil praesentium.</p></td>
+                    <td><img class="admin-image" src="" id="productView4"></td>
+                    <td><p id="tblHeadline4"></p></td>
+                    <td><p id="tblDescription4"></p></td>
                     <td>
-                        <button class="button-actions"  onclick="editProductCategory()">
+                        <button class="button-actions" onclick="editProductCategory4()">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                             <span>EDIT</span>
                         </button>
-                        <!--<button class="button-actions">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                            <span>DELETE</span>
-                        </button>-->
                     </td>
                 </tr>
+                
             </table>
         </div>
 
         <!--EDIT BANNER POPUP-->
-        <div class="popup" id="edit_category">
+        <div class="popup" id="edit_category1">
             <div class="popup-scrollable">
                 <i class="bi bi-x" onclick="ClosePopup()"></i>
                 <div class="popup-content">
-                    <div id="display_image" style="margin-bottom: 30px; height: 200px;">
-                        <input type="file" id="image_input">
-                        <label for="image_input" class="add-image">
+                    <div id="display_image1" style="margin-bottom: 30px; height: 200px;">
+                        <input type="file" id="image_input1">
+                        <label for="image_input1" class="add-image">
                             <i class="bi bi-plus-circle-dotted"></i>
                         </label>
+                        <label class="uploadProgress" id="upProgress1"></label>
                         <span>Add Image</span>
                     </div>
-                    <input type="text" class="fields" placeholder="Headline">
+                    <input type="text" class="fields" placeholder="Headline" id="headline1">
                     <br>
-                    <input type="textarea"  class="fields-desc"  placeholder="Short description">
+                    <input type="textarea"  class="fields-desc"  placeholder="Short description" id="shortdesc1">
                     <br>
-                    <input type="text"  class="fields"  placeholder="Link to view products">
                 </div>
             </div>
             <div class="editbanner">
-                <a href="#" id="editbanner">SAVE CHANGES</a>
+                <a href="#" id="editProduct1">SAVE CHANGES</a>
             </div>
         </div>
 
+        <div class="popup" id="edit_category2">
+            <div class="popup-scrollable">
+                <i class="bi bi-x" onclick="ClosePopup()"></i>
+                <div class="popup-content">
+                    <div id="display_image2" style="margin-bottom: 30px; height: 200px;">
+                        <input type="file" id="image_input2">
+                        <label for="image_input2" class="add-image">
+                            <i class="bi bi-plus-circle-dotted"></i>
+                        </label>
+                        <label class="uploadProgress" id="upProgress2"></label>
+                        <span>Add Image</span>
+                    </div>
+                    <input type="text" class="fields" placeholder="Headline" id="headline2">
+                    <br>
+                    <input type="textarea"  class="fields-desc"  placeholder="Short description" id="shortdesc2">
+                    <br>
+                </div>
+            </div>
+            <div class="editbanner">
+                <a href="#" id="editProduct2">SAVE CHANGES</a>
+            </div>
+        </div>
+
+        <div class="popup" id="edit_category3">
+            <div class="popup-scrollable">
+                <i class="bi bi-x" onclick="ClosePopup()"></i>
+                <div class="popup-content">
+                    <div id="display_image3" style="margin-bottom: 30px; height: 200px;">
+                        <input type="file" id="image_input3">
+                        <label for="image_input3" class="add-image">
+                            <i class="bi bi-plus-circle-dotted"></i>
+                        </label>
+                        <label class="uploadProgress" id="upProgress3"></label>
+                        <span>Add Image</span>
+                    </div>
+                    <input type="text" class="fields" placeholder="Headline" id="headline3">
+                    <br>
+                    <input type="textarea"  class="fields-desc"  placeholder="Short description" id="shortdesc3">
+                    <br>
+                </div>
+            </div>
+            <div class="editbanner">
+                <a href="#" id="editProduct3">SAVE CHANGES</a>
+            </div>
+        </div>
+
+        <div class="popup" id="edit_category4">
+            <div class="popup-scrollable">
+                <i class="bi bi-x" onclick="ClosePopup()"></i>
+                <div class="popup-content">
+                    <div id="display_image4" style="margin-bottom: 30px; height: 200px;">
+                        <input type="file" id="image_input4">
+                        <label for="image_input4" class="add-image">
+                            <i class="bi bi-plus-circle-dotted"></i>
+                        </label>
+                        <label class="uploadProgress" id="upProgress4"></label>
+                        <span>Add Image</span>
+                    </div>
+                    <input type="text" class="fields" placeholder="Headline" id="headline4">
+                    <br>
+                    <input type="textarea"  class="fields-desc"  placeholder="Short description" id="shortdesc4">
+                    <br>
+                </div>
+            </div>
+            <div class="editbanner">
+                <a href="#" id="editProduct4">SAVE CHANGES</a>
+            </div>
+        </div>
+
+
         <script>
 
-            // FOR IMAGE UPLOAD
-            // const storage = firebase.storage();
-            //     const storageRef = storage.ref();
+            var userID = localStorage.getItem("userID");
 
-            //     var file = document.querySelector("#image_input").files[0];
-            //     var name = file.name;
-            //     var imgId = userID;
-            //     var metadata = {
-            //         contentType: file.type
-            //     }
+            var headline, shortdesc, link, imgUrl;
+
+            var today = new Date();
+            var time = today.getMinutes() + "" + today.getSeconds();
+
+
+            function readProductForm1() {
+                headline = document.getElementById("headline1").value;
+                shortdesc = document.getElementById("shortdesc1").value;
+            };
+
+            function readProductForm2() {
+                headline = document.getElementById("headline2").value;
+                shortdesc = document.getElementById("shortdesc2").value;
+            };
+
+            function readProductForm3() {
+                headline = document.getElementById("headline3").value;
+                shortdesc = document.getElementById("shortdesc3").value;
+            };
+
+            function readProductForm4() {
+                headline = document.getElementById("headline4").value;
+                shortdesc = document.getElementById("shortdesc4").value;
+            };
+
+
+            function editProductCategory1() {
+
+                firebase.database()
+                .ref("adminProducts/" + 1)
+                .on("value", function (snap) {
+                showheadline = snap.val().prodHeadline;
+                showshortdesc = snap.val().shortDescription;
+                showlink = snap.val().prodLink;
+
+                    document.getElementById("headline1").value = showheadline;
+                    document.getElementById("shortdesc1").value = showshortdesc;
+                });
+                
+                document.getElementById("edit_category1").style.display = "block";
+                document.getElementById("bgoverlay").style.display = "block";
+            };
+
+            function editProductCategory2() {
+
+                firebase.database()
+                .ref("adminProducts/" + 2)
+                .on("value", function (snap) {
+                showheadline = snap.val().prodHeadline;
+                showshortdesc = snap.val().shortDescription;
+                showlink = snap.val().prodLink;
+
+                // console.log("dfvdfv")
+
+                    document.getElementById("headline2").value = showheadline;
+                    document.getElementById("shortdesc2").value = showshortdesc;
+                });
+
+                document.getElementById("edit_category2").style.display = "block";
+                document.getElementById("bgoverlay").style.display = "block";
+            };
+
+            function editProductCategory3() {
+
+                firebase.database()
+                .ref("adminProducts/" + 3)
+                .on("value", function (snap) {
+                showheadline = snap.val().prodHeadline;
+                showshortdesc = snap.val().shortDescription;
+                showlink = snap.val().prodLink;
+
+                    document.getElementById("headline3").value = showheadline;
+                    document.getElementById("shortdesc3").value = showshortdesc;
+                });
+
+                document.getElementById("edit_category3").style.display = "block";
+                document.getElementById("bgoverlay").style.display = "block";
+            };
+
+            function editProductCategory4() {
+
+                firebase.database()
+                .ref("adminProducts/" + 4)
+                .on("value", function (snap) {
+                showheadline = snap.val().prodHeadline;
+                showshortdesc = snap.val().shortDescription;
+                showlink = snap.val().prodLink;
+
+                // console.log("dfvdfv")
+
+                    document.getElementById("headline4").value = showheadline;
+                    document.getElementById("shortdesc4").value = showshortdesc;
+                });
+
+                document.getElementById("edit_category4").style.display = "block";
+                document.getElementById("bgoverlay").style.display = "block";
+            };
+
+
+
+            // LOAD IMAGE
+
+            const image_input1 = document.querySelector("#image_input1");
+            var uploaded_image;
+
+                image_input1.addEventListener('change', function() {
+                const reader = new FileReader();
+                reader.addEventListener('load', () => {
+                    uploaded_image = reader.result;
+                    document.querySelector("#display_image1").style.backgroundImage = `url(${uploaded_image})`;
+                });
+                reader.readAsDataURL(this.files[0]);
+            });
+
+            const image_input2 = document.querySelector("#image_input2");
+            var uploaded_image;
+
+                image_input2.addEventListener('change', function() {
+                const reader = new FileReader();
+                reader.addEventListener('load', () => {
+                    uploaded_image = reader.result;
+                    document.querySelector("#display_image2").style.backgroundImage = `url(${uploaded_image})`;
+                });
+                reader.readAsDataURL(this.files[0]);
+            });
+
+            const image_input3 = document.querySelector("#image_input3");
+            var uploaded_image;
+
+                image_input3.addEventListener('change', function() {
+                const reader = new FileReader();
+                reader.addEventListener('load', () => {
+                    uploaded_image = reader.result;
+                    document.querySelector("#display_image3").style.backgroundImage = `url(${uploaded_image})`;
+                });
+                reader.readAsDataURL(this.files[0]);
+            });
+
+            const image_input4 = document.querySelector("#image_input4");
+            var uploaded_image;
+
+                image_input4.addEventListener('change', function() {
+                const reader = new FileReader();
+                reader.addEventListener('load', () => {
+                    uploaded_image = reader.result;
+                    document.querySelector("#display_image4").style.backgroundImage = `url(${uploaded_image})`;
+                });
+                reader.readAsDataURL(this.files[0]);
+            });
+
+
+            // UPLOAD IMAGE
             
-            //     console.log(file);
+            const saveProduct1 = document.querySelector("#editProduct1");
+
+            saveProduct1.addEventListener('click', function(e) {
+                readProductForm1();
+                e.preventDefault();
+
+                const storage = firebase.storage();
+                const storageRef = storage.ref();
+
+                var file = image_input1.files[0];
+                var name = time + '' + file.name;
+                var imgId = 1;
+                var metadata = {
+                    contentType: file.type
+                }
+
+                var uploadTask = storageRef.child(userID + "/adminProducts/" + name).put(file, metadata);
+
+                uploadTask.on('state_changed', function(snapshot){
+                    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    document.getElementById("upProgress1").innerHTML = 'Upload' + progress + '%';
+                })
+
+                uploadTask.then(snapshot => snapshot.ref.getDownloadURL())
+                .then(url => {
+                    imgUrl = url;
+
+                firebase.database().ref("adminProducts/" + 1)
+                .set({
+                    imageId: imgId,
+                    imageName: name,
+                    imageLink: imgUrl,
+                    prodHeadline: headline,
+                    shortDescription: shortdesc
+                })
+                alert("Product Updated Successfully!");
+                location.reload();
+                });
+            });
+
+            const saveProduct2 = document.querySelector("#editProduct2");
+
+            saveProduct2.addEventListener('click', function(e) {
+                readProductForm2();
+                e.preventDefault();
+
+                const storage = firebase.storage();
+                const storageRef = storage.ref();
+
+                var file = image_input2.files[0];
+                var name = time + '' + file.name;
+                var imgId = 2;
+                var metadata = {
+                    contentType: file.type
+                }
+
+                var uploadTask = storageRef.child(userID + "/adminProducts/" + name).put(file, metadata);
+
+                uploadTask.on('state_changed', function(snapshot){
+                    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    document.getElementById("upProgress2").innerHTML = 'Upload' + progress + '%';
+                })
+
+                uploadTask.then(snapshot => snapshot.ref.getDownloadURL())
+                .then(url => {
+                    imgUrl = url;
+
+                firebase.database().ref("adminProducts/" + 2)
+                .set({
+                    imageId: imgId,
+                    imageName: name,
+                    imageLink: imgUrl,
+                    prodHeadline: headline,
+                    shortDescription: shortdesc
+                })
+                alert("Product Updated Successfully!");
+                location.reload();
+                });
+            });
+
+            const saveProduct3 = document.querySelector("#editProduct3");
+
+            saveProduct3.addEventListener('click', function(e) {
+                readProductForm3();
+                e.preventDefault();
+
+                const storage = firebase.storage();
+                const storageRef = storage.ref();
+
+                var file = image_input3.files[0];
+                var name = time + '' + file.name;
+                var imgId = 3;
+                var metadata = {
+                    contentType: file.type
+                }
+
+                var uploadTask = storageRef.child(userID + "/adminProducts/" + name).put(file, metadata);
+
+                uploadTask.on('state_changed', function(snapshot){
+                    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    document.getElementById("upProgress3").innerHTML = 'Upload' + progress + '%';
+                })
+
+                uploadTask.then(snapshot => snapshot.ref.getDownloadURL())
+                .then(url => {
+                    imgUrl = url;
+
+                firebase.database().ref("adminProducts/" + 3)
+                .set({
+                    imageId: imgId,
+                    imageName: name,
+                    imageLink: imgUrl,
+                    prodHeadline: headline,
+                    shortDescription: shortdesc
+                })
+                alert("Product Updated Successfully!");
+                location.reload();
+                });
+            });
+
+            const saveProduct4 = document.querySelector("#editProduct4");
+
+            saveProduct4.addEventListener('click', function(e) {
+                readProductForm4();
+                e.preventDefault();
+
+                const storage = firebase.storage();
+                const storageRef = storage.ref();
+
+                var file = image_input4.files[0];
+                var name = time + '' + file.name;
+                var imgId = 2;
+                var metadata = {
+                    contentType: file.type
+                }
+
+                var uploadTask = storageRef.child(userID + "/adminProducts/" + name).put(file, metadata);
+
+                uploadTask.on('state_changed', function(snapshot){
+                    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    document.getElementById("upProgress4").innerHTML = 'Upload' + progress + '%';
+                })
+
+                uploadTask.then(snapshot => snapshot.ref.getDownloadURL())
+                .then(url => {
+                    imgUrl = url;
+
+                firebase.database().ref("adminProducts/" + 4)
+                .set({
+                    imageId: imgId,
+                    imageName: name,
+                    imageLink: imgUrl,
+                    prodHeadline: headline,
+                    shortDescription: shortdesc
+                })
+                alert("Product Updated Successfully!");
+                location.reload();
+                });
+            });
+
+
+            // LOAD DATA TO PRODUCT FORM
+
+            firebase.database()
+                .ref("adminProducts/" + 1)
+                .on("value", function (snap) {
+                    vwHeadline = snap.val().prodHeadline;
+                    vwDescription = snap.val().shortDescription;
+                    vwLink = snap.val().prodLink;
+
+                    document.getElementById('productView1').src = snap.val().imageLink;
+                    document.getElementById('tblDescription1').innerHTML = vwDescription;
+                    document.getElementById('tblHeadline1').innerHTML = vwHeadline;
+                });
+
+            firebase.database()
+            .ref("adminProducts/" + 2)
+            .on("value", function (snap) {
+                vwHeadline = snap.val().prodHeadline;
+                vwDescription = snap.val().shortDescription;
+                vwLink = snap.val().prodLink;
+
+                document.getElementById('productView2').src = snap.val().imageLink;
+                document.getElementById('tblDescription2').innerHTML = vwDescription;
+                document.getElementById('tblHeadline2').innerHTML = vwHeadline;
+            });
+
+            firebase.database()
+                .ref("adminProducts/" + 3)
+                .on("value", function (snap) {
+                    vwHeadline = snap.val().prodHeadline;
+                    vwDescription = snap.val().shortDescription;
+                    vwLink = snap.val().prodLink;
+
+                    document.getElementById('productView3').src = snap.val().imageLink;
+                    document.getElementById('tblDescription3').innerHTML = vwDescription;
+                    document.getElementById('tblHeadline3').innerHTML = vwHeadline;
+                });
+
+            firebase.database()
+                .ref("adminProducts/" + 4)
+                .on("value", function (snap) {
+                    vwHeadline = snap.val().prodHeadline;
+                    vwDescription = snap.val().shortDescription;
+                    vwLink = snap.val().prodLink;
+
+                    document.getElementById('productView4').src = snap.val().imageLink;
+                    document.getElementById('tblDescription4').innerHTML = vwDescription;
+                    document.getElementById('tblHeadline4').innerHTML = vwHeadline;
+                });
+
+
+            
+
         </script>
 
 </html>

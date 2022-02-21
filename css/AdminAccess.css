@@ -190,7 +190,7 @@ label #sidebar_btn:hover{
     background-color: white;
     width: 50%;
     min-width: 430px;
-    height: 800px;
+    height: 580px;
     position: absolute;
     margin: auto;
     z-index: 3;
@@ -199,30 +199,9 @@ label #sidebar_btn:hover{
     display: none;
 }
 
-
-.addbanner, .editbanner{
-    display: flex;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #212529;    
-}
-
-.addbanner a, .editbanner a{
-    text-align: center;
-    background-color: #212529;
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 14px;
-    padding: 15px;
-    margin: auto;
-}
-
 .popup-scrollable{
     background-color: white;
-    height: 750px;
+    height: 580px;
     overflow-y:auto;
     overflow-x: hidden;
     margin: auto;
@@ -625,6 +604,81 @@ p{
 }
   
 #display_image:hover, #display_image:hover ~ #display_image span{
+    background-color: rgba(0,0,0,0.5);
+    transition: 0.1s;
+    color: white;
+}
+
+#display_image1{
+    width: 100%;
+    height: 50%;
+    border: 1px solid black;
+    background-position: center;
+    background-size: cover;
+    background-color: rgba(0,0,0,0);
+    justify-content: center;
+    box-sizing: border-box;
+    margin: 50px 10px 10px 30px;   
+}
+  
+#display_image1:hover, #display_image1:hover ~ #display_image1 span{
+    background-color: rgba(0,0,0,0.5);
+    transition: 0.1s;
+    color: white;
+}
+
+
+#display_image2{
+    width: 100%;
+    height: 50%;
+    border: 1px solid black;
+    background-position: center;
+    background-size: cover;
+    background-color: rgba(0,0,0,0);
+    justify-content: center;
+    box-sizing: border-box;
+    margin: 50px 10px 10px 30px;   
+}
+  
+#display_image2:hover, #display_image2:hover ~ #display_image2 span{
+    background-color: rgba(0,0,0,0.5);
+    transition: 0.1s;
+    color: white;
+}
+
+
+#display_image3{
+    width: 100%;
+    height: 50%;
+    border: 1px solid black;
+    background-position: center;
+    background-size: cover;
+    background-color: rgba(0,0,0,0);
+    justify-content: center;
+    box-sizing: border-box;
+    margin: 50px 10px 10px 30px;   
+}
+  
+#display_image3:hover, #display_image3:hover ~ #display_image3 span{
+    background-color: rgba(0,0,0,0.5);
+    transition: 0.1s;
+    color: white;
+}
+
+
+#display_image4{
+    width: 100%;
+    height: 50%;
+    border: 1px solid black;
+    background-position: center;
+    background-size: cover;
+    background-color: rgba(0,0,0,0);
+    justify-content: center;
+    box-sizing: border-box;
+    margin: 50px 10px 10px 30px;   
+}
+  
+#display_image4:hover, #display_image4:hover ~ #display_image4 span{
     background-color: rgba(0,0,0,0.5);
     transition: 0.1s;
     color: white;
