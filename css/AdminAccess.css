@@ -201,7 +201,7 @@ label #sidebar_btn:hover{
 
 .popup-scrollable{
     background-color: white;
-    height: 580px;
+    height: 500px;
     overflow-y: auto;
     overflow-x: hidden;
     margin: auto;
@@ -253,7 +253,8 @@ label #sidebar_btn:hover{
     display:flex;
     justify-content: center;
     align-items: center;
-    margin: 20px
+    margin: 20px;
+    width: 100%;
 }
 
 .popup .profile-picture img{
@@ -274,7 +275,7 @@ label #sidebar_btn:hover{
 
 .popup .popup-form h5{
     text-align: center;
-    margin-top: 20px;;
+    margin-top: 20px;
 }
 
 input[type=text]{
@@ -305,6 +306,11 @@ input[type=text]{
     margin-left: 10%;
     margin-top: 0;
     width: 90%;
+    text-align: left;
+}
+
+#popup_viewSM .popup-form .shoemakers_view th, #popup_viewSM .popup-form .shoemakers_view td{
+    text-align: left;
 }
 
 #popup_viewSM .popup-form{
