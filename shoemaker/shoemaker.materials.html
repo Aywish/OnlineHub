@@ -50,11 +50,34 @@
                     <th><h4 class="tblHeader">ACTIONS</h4></th>
                 </tr>
                 <tr>
-                    <td><input type="text" name='type0'  placeholder='ex: Classic' class="form-control" id="txtShoetype"/></td>
-                    <td><input type="text" name='type0'  placeholder='ex: Eyelet' class="form-control" id="txtShoepart"/></td>
-                    <td><input type="text" name='type0'  placeholder='ex: Leather' class="form-control" id="txtMaterial"/></td>
-                    <td><input type="text" name='type0'  placeholder='ex: White' class="form-control" id="txtColor"/></td>
-                    <td><input type="text" name='type0'  placeholder='ex: 5' class="form-control" id="txtQuantity" onkeypress='return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))'/></td>
+                    <td>
+                        <select name="shoetype" class="form-control" id="txtShoetype">
+                            <option value="" disabled selected></option>
+                            <option value="Topsider">Topsider</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="shoepart" class="form-control" id="txtShoepart">
+                            <option value="" disabled selected></option>
+                            <option value="Upper Leather">Upper Leather</option>
+                            <option value="Shoelace">Shoelace</option>
+                            <option value="Eyelet">Eyelet</option>
+                            <option value="Out Sole">Out Sole</option>
+                            <option value="Thread">Thread</option>
+                          </select>
+                    </td>
+                    <td>
+                        <select name="material" class="form-control" id="txtMaterial">
+                            <option value="" disabled selected></option>
+                            <option value="Leather">Leather</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" name='type0'  placeholder='' class="form-control" id="txtColor"/>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" id="txtQuantity" value="1" min="1">
+                    </td>
                     <td><label for="add" class="button-actions" id="add_custom"><i class="bi bi-plus-circle"></i><span> ADD</span></label></td>
                 </tr>
                 <tr id="material_row0">
