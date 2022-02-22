@@ -152,7 +152,7 @@ header {
     margin-bottom:40px;
 }
 
-.message-button{
+.delete-button{
     border: 2px solid #aa6023;
     padding: 5px 10px;
     text-decoration: none;
@@ -165,13 +165,13 @@ header {
     white-space: nowrap;
 }
 
-.message-button:hover{
+.delete-button:hover{
     background: #212529;
     color: white; 
     border: 2px solid #212529;
 }
 
-.message-button-disabled{
+.delete-button-disabled{
     color: #dabea8; 
     border: 2px solid #dabea8;
     padding: 5px 10px;
