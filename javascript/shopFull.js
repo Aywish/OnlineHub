@@ -92,6 +92,8 @@ addToCart.onclick = function () {
   
   var orderid = orderID.toString();
 
+  var orderQuantity = document.getElementById("quantity").value;
+
   var cProdName = vwProdName;
   var cProdPrice = vwProdPrice;
   var cProdDesc = vwProdDesc;
@@ -111,6 +113,7 @@ addToCart.onclick = function () {
     prodPrice: cProdPrice,
     prodSize: cProdSize,
     prodColor: cProdColor,
+    prodQty: orderQuantity,
     shoemakerName: shmkrName
   });
   alert("Product added to cart");
