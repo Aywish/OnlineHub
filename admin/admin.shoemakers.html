@@ -194,7 +194,7 @@
                 var stName = snap.child("streetName").val();
                 
 
-                $("#admin-shmkrview").append('<tr><td><img class="admin-image" src="images/user.jpg"></td><td><p>' + shopName + '</p></td><td><p>' + fName + ' ' + lName + '</p></td><td><p>' + hNo + ' ' + stName + ' '  + brgy + ', ' + city + ', ' + pCode + '</p></td><td><button class="button-actions"onclick="OpenPopupView()"><i class="bi bi-eye"></i><span>VIEW</span></button><button class="button-actions"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
+                $("#admin-shmkrview").append('<tr><td><img class="admin-image" src="images/user.jpg"></td><td><p>' + shopName + '</p></td><td><p>' + fName + ' ' + lName + '</p></td><td><p>' + hNo + ' ' + stName + ' '  + brgy + ', ' + city + ', ' + pCode + '</p></td><td><button class="button-actions"onclick="OpenPopupView(' + shmkrId + ')"><i class="bi bi-eye"></i><span>VIEW</span></button><button class="button-actions"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
             });
 
 
@@ -246,7 +246,28 @@
             };
 
 
+            function OpenPopupView(id) {
+                viewshmkrId = id;
 
+                firebase.database()
+                    .ref("users/" + id)
+                    .on("value", function (snap) {
+                        vwsname = snap.val().storeName;
+                        vwfname = snap.val().firstName;
+                        vwmname = snap.val().middleName;
+                        vwlname = snap.val().lastName;
+                        vwsuffix = snap.val().suffix;
+                        vwhno = snap.val().houseNo;
+                        vwstname = snap.val().stname;
+                        vwbrgy = snap.val().barangay;
+                        vwcity = snap.val().city;
+                        vwpcode = snap.val().postalCode;
+                        vwcno = snap.val().contactNo;
+                        vwemail = snap.val().email;
+
+
+                    });
+            };
         </script>
         
     </body>
