@@ -802,6 +802,11 @@ p{
     text-align: center;  
 }
 
+.table table{
+    width: 100%;
+    table-layout: fixed;
+}
+
     /*POPUP*/
     .product-img{
         display: flex;

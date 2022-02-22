@@ -22,7 +22,7 @@
                     var strMaterial = $("#txtMaterial").val();
                     var strColor = $("#txtColor").val();
                     var strQuantity = $("#txtQuantity").val();
-                    $('#material_row'+i).html("<td><p>" + strShoetype + "</p></td><td><p>" + strShoepart + "</p></td><td><p>" + strMaterial + "</p></td><td><p>" + strColor + "</p></td><td><p>" + strQuantity + "</p></td><td><button class='button-actions'><i class='bi bi-pencil'></i><span> EDIT</span></button><button class='button-actions'><i class='bi bi-trash'></i><span> DELETE</span></button></td>");
+                    $('#material_row'+i).html("<td><p>" + strShoetype + "</p></td><td><p>" + strShoepart + "</p></td><td><p>" + strMaterial + "</p></td><td><p>" + strColor + "</p></td><td><input type='number' class='form-control' id='txtQuantity' value='1' min='1'></td><td><button class='button-actions'><i class='bi bi-trash'></i><span> DELETE</span></button></td>");
 
                     $('#tab_logic').append('<tr id="material_row'+(i+1)+'"></tr>');
                     i++; 
