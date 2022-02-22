@@ -1146,3 +1146,102 @@ p{
 }
 
 /* END OF  CUSTOMER CHANGE PASSWORD CONTENT STYLE */
+
+/*REPORTS*/
+#reports_page{
+    margin: 0;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.reports-users{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bar-chart {
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+  
+  #line-chart {
+    width: 100%;
+    height: 300px;
+    position: relative;
+  }
+  
+  #pie-chart {
+    width: 500px;
+    height: 250px;
+    position: relative;
+    display: inline-flex;
+  }
+  #pie-chart::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 180px;
+    height: 115px;
+    left: 315px;
+    top: 0;
+    background: #FAFAFA;
+    box-shadow: 1px 1px 0 0 #DDD;
+  }
+  
+  #pie-chart::after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 260px;
+    left: 70px;
+    width: 170px;
+    height: 2px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 50%;
+    box-shadow: 0 0 3px 4px rgba(0,0,0,0.1);
+    
+  }
+
+  .graph-title{
+      text-align: center;
+      margin: 20px;
+  }
+
+  /*REPORTS OPTIONS*/
+  .accordion {
+    display: table;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+  }
+
+  .accordion > input {
+    display: none;
+  }
+
+  .accordion_item {
+    cursor: pointer;
+    display: table-cell;
+    width: 150px;
+    transition: .25s ease;
+  }
+
+  .accordion_item p{
+    font-size: 12px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: white;
+}
+
+  .accordion .accordion_item:hover + .accordion_item p, .accordion > input:checked + .accordion_item p {
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.5s;
+  }
