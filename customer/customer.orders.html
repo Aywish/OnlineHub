@@ -28,14 +28,23 @@
             }
             function ViewOrderRTW() {
                 document.getElementById("edit_order").style.display = "none";
+                document.getElementById("completedrating").style.display = "none";
                 document.getElementById("view_orderRTW").style.display = "block";
                 document.getElementById("bgoverlay").style.display = "block";
                 document.getElementById("view_order").style.display = "block";
             }
+            function ViewOrderRTWCompleted() {
+                document.getElementById("edit_order").style.display = "none";
+                document.getElementById("view_orderRTW").style.display = "block";
+                document.getElementById("bgoverlay").style.display = "block";
+                document.getElementById("view_order").style.display = "block";
+                document.getElementById("completedrating").style.display = "block";
+            }
+
             function ClosePopup() {
+                document.getElementById("bgoverlay").style.display = "none";
                 document.getElementById("view_order").style.display = "none";
                 document.getElementById("view_orderRTW").style.display = "none";
-                document.getElementById("bgoverlay").style.display = "none";
             }
         </script>
     </head>
@@ -53,6 +62,7 @@
                 <tr>
                     <th><h4 class="tblHeader">IMAGE</h4></th>
                     <th><h4 class="tblHeader">SHOE NAME/TYPE</h4></th>
+                    <th><h4 class="tblHeader">PRICE</h4></th>
                     <th><h4 class="tblHeader">ORDER TYPE</h4></th>
                     <th><h4 class="tblHeader">STATUS</h4></th>
                     <th><h4 class="tblHeader">ACTIONS</h4></th>
@@ -69,6 +79,7 @@
                             </tr>
                         </table>
                     </td>
+                    <td>₱245.00</td>
                     <td>RTW</td>
                     <td id="pendingaccepted">Accepted</td>
                     <td>
@@ -95,6 +106,7 @@
                             </tr>
                         </table>
                     </td>
+                    <td>₱13000.00</td>
                     <td>Custom</td>
                     <td id="pendingaccepted">Pending</td>
                     <td>
@@ -121,10 +133,38 @@
                             </tr>
                         </table>
                     </td>
+                    <td>₱12500.00</td>
                     <td>Custom</td>
                     <td id="pendingaccepted">Completed</td>
                     <td>
                         <button class="button-actions" onclick="ViewOrderCustom()">
+                            <i class="bi bi-eye"></i>
+                            <span>VIEW</span>
+                        </button>
+                        <!--<button class="button-actions">
+                            <i class="bi bi-chat-dots"></i>
+                            <span>MESSAGE</span>
+                        </button>-->
+                    </td>
+                </tr>
+
+                <tr class="order-rows">
+                    <td><img class="product-image" src="images/1.jpg"></td>
+                    <td>
+                        <table class="specs">
+                            <tr class="spec-row">
+                                <td class="spec-title"><h6>Indoor/Bedroom Slippers</h6></td>
+                            </tr>
+                            <tr class="spec-row">
+                                <td class="spec-value">Inches Footwear</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>₱100.00</td>
+                    <td>RTW</td>
+                    <td id="pendingaccepted">Completed</td>
+                    <td>
+                        <button class="button-actions" onclick="ViewOrderRTWCompleted()">
                             <i class="bi bi-eye"></i>
                             <span>VIEW</span>
                         </button>
@@ -170,6 +210,10 @@
                             <tr>
                                 <th><h4 class="tblHeader">ORDER TYPE</h4></th>
                                 <td><p>Custom</p></td>
+                            </tr> 
+                            <tr>
+                                <th><h4 class="tblHeader">PRICE</h4></th>
+                                <td><p>₱245.00</p></td>
                             </tr> 
                             </table>
                     </div>
@@ -259,6 +303,10 @@
                                     <th><h4 class="tblHeader">ORDER TYPE</h4></th>
                                     <td><p>RTW</p></td>
                                 </tr> 
+                                <tr>
+                                    <th><h4 class="tblHeader">PRICE</h4></th>
+                                    <td><p>₱245.00</p></td>
+                                </tr> 
                             </table>
                         </div>
                         <div class="vieworder-img">
@@ -285,6 +333,18 @@
                                 <tr>
                                     <th><h4 class="tblHeader">COLOR</h4></th>
                                     <td><p>Black</p></td>
+                                </tr>
+                                <tr id="completedrating">
+                                    <th><h4 class="tblHeader">RATE PRODUCT</h4></th>
+                                    <td>
+                                        <fieldset class="rating">
+                                            <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                                            <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                                            <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                                            <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                                            <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                                        </fieldset>
+                                    </td>
                                 </tr>
                             </table>
                         </div>
