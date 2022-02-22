@@ -122,6 +122,13 @@ $(document).ready(function(){
   $('#color1').click(function(){
       vwProdColor = "Brown";
       console.log("Color Selected: " + vwProdColor);
+      
+      $('#color1').toggleClass("colorselected");
+      if($('#color2').hasClass("colorselected") || $('#color3').hasClass("colorselected") || $('#color4').hasClass("colorselected")){
+        $('#color2').removeClass("colorselected");
+        $('#color3').removeClass("colorselected");
+        $('#color4').removeClass("colorselected");
+      }
   });
 });
 
@@ -129,6 +136,13 @@ $(document).ready(function(){
   $('#color2').click(function(){
       vwProdColor = "Black";
       console.log("Color Selected: " + vwProdColor);
+
+      $('#color2').toggleClass("colorselected");
+      if($('#color1').hasClass("colorselected") || $('#color3').hasClass("colorselected") || $('#color4').hasClass("colorselected")){
+        $('#color1').removeClass("colorselected");
+        $('#color3').removeClass("colorselected");
+        $('#color4').removeClass("colorselected");
+      }
   });
 });
 
@@ -136,6 +150,13 @@ $(document).ready(function(){
   $('#color3').click(function(){
       vwProdColor = "Tan";
       console.log("Color Selected: " + vwProdColor);
+
+      $('#color3').toggleClass("colorselected");
+      if($('#color2').hasClass("colorselected") || $('#color1').hasClass("colorselected") || $('#color4').hasClass("colorselected")){
+        $('#color2').removeClass("colorselected");
+        $('#color1').removeClass("colorselected");
+        $('#color4').removeClass("colorselected");
+      }
   });
 });
 
@@ -143,6 +164,13 @@ $(document).ready(function(){
   $('#color4').click(function(){
       vwProdColor = "White";
       console.log("Color Selected: " + vwProdColor);
+
+      $('#color4').toggleClass("colorselected");
+      if($('#color2').hasClass("colorselected") || $('#color3').hasClass("colorselected") || $('#color1').hasClass("colorselected")){
+        $('#color2').removeClass("colorselected");
+        $('#color3').removeClass("colorselected");
+        $('#color1').removeClass("colorselected");
+      }
   });
 });
 

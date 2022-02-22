@@ -193,7 +193,7 @@
                 var pCode = snap.child("postalCode").val();
                 var stName = snap.child("streetName").val();
                 
-                $("#admin-shmkrview").append('<tr><td><img class="admin-image" src="images/user.jpg"></td><td><p>' + shopName + '</p></td><td><p>' + fName + ' ' + lName + '</p></td><td><p>' + hNo + ' ' + stName + ' '  + brgy + ', ' + city + ', ' + pCode + '</p></td><td><button class="button-actions" onclick="OpenPopupView(' + shmkrId + ')"><i class="bi bi-eye"></i><span>VIEW</span></button><button class="button-actions"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
+                $("#admin-shmkrview").append('<tr><td>' + shmkrId + '</td><td><p>' + shopName + '</p></td><td><p>' + fName + ' ' + lName + '</p></td><td><p>' + hNo + ' ' + stName + ' '  + brgy + ', ' + city + ', ' + pCode + '</p></td><td><button class="button-actions" onclick="OpenPopupView(' + shmkrId + ')"><i class="bi bi-eye"></i><span>VIEW</span></button><button class="button-actions"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
             });
 
             function readAddForm() {

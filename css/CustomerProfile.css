@@ -209,7 +209,7 @@ label #sidebar_btn:hover{
     text-align: center;
 }
 
-table{
+.table-status table{
     width: 100%;
     margin-top: 50px;
     display: table;
@@ -218,17 +218,22 @@ table{
 th, td{
     display: table-cell;
     vertical-align: middle;
-    
+    text-align: center;
 }
 
-.admin-tblHeader{
+.table-status td{
+    text-align: center !important;
+
+}
+
+.tblHeader{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 15px;
     color: #aa6023;
     text-align: center;
 }
 
-.admin-image{
+.product-image{
     height: 60px;
     width: 100px;
     object-fit: cover;
@@ -243,7 +248,7 @@ th, td{
     padding: 5px;
     font-size: 13px;
     border-radius: 25px;
-    background-color: #aa6023;
+    background-color: #212529;
     color: white;
     border: none;
     cursor: pointer;
@@ -258,6 +263,10 @@ th, td{
 
 p{
     text-align: center;  
+}
+
+.specs{
+    margin: 15px !important;
 }
 
 /* MOBILE NAV */
@@ -722,8 +731,9 @@ button#custlogout  {
 
 .popup{
     background-color: white;
-    width: 40%;
-    height: 500px;
+    width: 50%;
+    min-width: 430px;
+    height: 600px;
     position: absolute;
     margin: auto;
     z-index: 3;
@@ -734,10 +744,11 @@ button#custlogout  {
 
 .popup-scrollable{
     background-color: white;
-    height: 500px;
+    height: 570px;
     overflow-y:auto;
     overflow-x: hidden;
     margin: auto;
+    padding-left: 0;
 }
 
 .popup-scrollable::-webkit-scrollbar
@@ -762,36 +773,15 @@ button#custlogout  {
     cursor: pointer;
 }
 
-.popup-section{
-    margin: 100px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-
-.product-right .shoe-name{
-    font-size: 1.50em;
-    font-weight: bold;
-    margin: 0;
-}
-
-.product-right .shoe-maker{
-    font-size: 12px;
-    color: gray;
-    margin: 0;
-}
-
-
-.addAddress{
+.editorder{
     display: flex;
     position: absolute;
-    bottom: 0px;
-    margin-top: 150px;
+    bottom: 0;
     width: 100%;
-    background-color: #212529;    
+    background-color: #212529;   
 }
 
-.addAddress a{
+.editorder a{
     text-align: center;
     background-color: #212529;
     color: #fff;
@@ -816,5 +806,19 @@ p{
     text-align: justify;
 }
 
+.table-view{
+    margin: 20px;
+}
+
+.table-view td, .table-view th h4{
+    text-align: left;
+    margin-right: 20px;
+}
+
+.vieworder-img{
+    border: 1px solid;
+    margin: 20px;
+    height: 250px;
+}
 
 /* END OF POPUP STYLE */
