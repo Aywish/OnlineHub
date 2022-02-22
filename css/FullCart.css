@@ -192,7 +192,7 @@ header {
 
 .info-box{
     width: 550px;
-    height: 500px;
+    height: 450px;
     background-color: white;
     border-radius: 25px;
     margin: 60px;
@@ -203,12 +203,16 @@ header {
 }
 
 .fields{
-    width: 400px;
-    /* padding-left: 10px; */
+    width: 335px;
+    padding-left: 15px;
     border: none;
     background-color: #e5e5e5;
     border-radius: 25px;
     outline: none;
+}
+
+.infoFields input {
+    height: 30px;
 }
 
 .form-title i{
@@ -219,11 +223,14 @@ header {
     font-weight: bold;
 }
 
+
+
 .info-box p{
-    font-size: 14px;;
+    font-size: 15px;;
     vertical-align: middle;
     margin-right: 30px;
     padding-top: 15px;
+    margin-left: 15px;
 }
 
 .button-actions{
@@ -239,7 +246,7 @@ header {
     position: relative;
     margin: auto;
     display: block;
-    margin-top: 5px;
+    margin-top: 30px;
     margin-bottom: 5px;
 }
 

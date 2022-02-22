@@ -176,6 +176,7 @@
             var prodID = snap.child("prodId").val();
             prodPrice = snap.child("prodPrice").val();
             prodName = snap.child("prodName").val();
+            imageLink = snap.child("imageLink").val();
             var shmkrId = snap.child("shoeMakerID").val();
 
             firebase.database()
@@ -184,7 +185,7 @@
                     shmkrName = snap.val().storeName;
                     console.log(prodName, prodPrice, shmkrName, shmkrId)
                 
-            $("#card-products").append('<div class="card"><div class="product-image"><div class="product-overlay"><a href="#" class="view-product-details" onclick="ProductPopup('+ prodID +')">View Details</a></div><img src="../images/1.jpg"></div><div class="card-content"><p class="shoe-name">' + prodName + '</p><p class="shoe-maker">' + shmkrName + '</p><p class="shoe-price">₱'+ prodPrice + '.00</p><div class="sizes"><input type="radio" name="shoe-size" id="sizeA"><label for="sizeA">5</label><input type="radio" name="shoe-size" id="sizeB"><label for="sizeB">6</label><input type="radio" name="shoe-size" id="sizeC"><label for="sizeC">7</label><input type="radio" name="shoe-size" id="sizeD"><label for="sizeD">8</label><input type="radio" name="shoe-size" id="sizeE"><label for="sizeE">9</label></div></div></div>');
+            $("#card-products").append('<div class="card"><div class="product-image"><div class="product-overlay"><a href="#" class="view-product-details" onclick="ProductPopup('+ prodID +')">View Details</a></div><img src=" ' + imageLink + ' "></div><div class="card-content"><p class="shoe-name">' + prodName + '</p><p class="shoe-maker">' + shmkrName + '</p><p class="shoe-price">₱'+ prodPrice + '.00</p><div class="sizes"><input type="radio" name="shoe-size" id="sizeA"><label for="sizeA">5</label><input type="radio" name="shoe-size" id="sizeB"><label for="sizeB">6</label><input type="radio" name="shoe-size" id="sizeC"><label for="sizeC">7</label><input type="radio" name="shoe-size" id="sizeD"><label for="sizeD">8</label><input type="radio" name="shoe-size" id="sizeE"><label for="sizeE">9</label></div></div></div>');
             });
         });
 
@@ -200,13 +201,14 @@
             vwProdName = snap.val().prodName;
             vwProdPrice = snap.val().prodPrice;
             vwProdDesc = snap.val().prodDesc;
+            vwImageLink = snap.val().imageLink;
             
             shmkrId = snap.child("shoeMakerID").val();
             
             firebase.database()
                 .ref("users/" + shmkrId)
                 .on("value", function (snap) {
-                shmkrName = snap.val().name;
+                shmkrName = snap.val().storeName;
                 
                 document.getElementById("shoemakerName").innerHTML = shmkrName;
                 });
@@ -215,6 +217,7 @@
                 document.getElementById("shoeName").innerHTML = vwProdName;
                 document.getElementById("shoePrice").innerHTML = vwProdPrice;
                 document.getElementById("shoeDesc").innerHTML = vwProdDesc;
+                document.getElementById("imageLink").src = vwImageLink;
                 console.log(vwProdName, vwProdPrice)
 
             });
@@ -238,6 +241,7 @@
         var cProdName = vwProdName;
         var cProdPrice = vwProdPrice;
         var cProdDesc = vwProdDesc;
+        var cImageLink = vwImageLink;
         var orderid = orderID.toString() + addprodId;
         console.log(orderid, cProdName, cProdPrice, addprodId);
 
@@ -248,6 +252,7 @@
             userID: userID,
             orderID: orderid,
             prodId: addprodId,
+            imageLink: cImageLink,
             prodName: cProdName,
             prodDesc: cProdDesc,
             prodPrice: cProdPrice,

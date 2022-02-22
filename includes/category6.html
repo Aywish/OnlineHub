@@ -90,12 +90,13 @@
 
     <script>
         var product = firebase.database().ref().child("products/").orderByChild('prodCategory').equalTo("Indoor Slippers");
-            product.on("child_added", snap => {
+        product.on("child_added", snap => {
 
-            var prodID = snap.child("prodId").val();
-            var prodPrice = snap.child("prodPrice").val();
-            var prodName = snap.child("prodName").val();
-            shmkrId = snap.child("shoeMakerID").val();
+        var prodID = snap.child("prodId").val();
+        var prodPrice = snap.child("prodPrice").val();
+        var prodName = snap.child("prodName").val();
+        imageLink = snap.child("imageLink").val();
+        shmkrId = snap.child("shoeMakerID").val();
 
             firebase.database()
                 .ref("users/" + shmkrId)
@@ -103,9 +104,78 @@
                     shmkrName = snap.val().storeName;
                 
 
-            $("#category-view").append('<div class="card"><div class="product-image"><div class="product-overlay"><a href="#" class="view-product-details" onclick="ProductPopup('+ prodID +')">View Details</a></div><img src="images/1.jpg"></div><div class="card-content"><p class="shoe-name">' + prodName + '</p><p class="shoe-maker" id="shoemaker">' + shmkrName + '</p><p class="shoe-price"> ₱' + prodPrice +  '.00</p></div></div></div>');
+            $("#category-view").append('<div class="card"><div class="product-image"><div class="product-overlay"><a href="#" class="view-product-details" onclick="ProductPopup('+ prodID +')">View Details</a></div><img src=" ' + imageLink + ' "></div><div class="card-content"><p class="shoe-name">' + prodName + '</p><p class="shoe-maker" id="shoemaker">' + shmkrName + '</p><p class="shoe-price"> ₱' + prodPrice +  '.00</p></div></div></div>');
             });
         });
+
+        function ProductPopup(id) {
+        console.log("Clicked!");
+        addprodId = id;
+
+            firebase.database()
+            .ref("products/" + id)
+            .on("value", function (snap) {
+            vwProdName = snap.val().prodName;
+            vwProdPrice = snap.val().prodPrice;
+            vwImageLink = snap.val().imageLink;
+            vwProdDesc = snap.val().prodDesc;
+
+            shmkrId = snap.child("shoeMakerID").val();
+
+            firebase.database()
+                .ref("users/" + shmkrId)
+                .on("value", function (snap) {
+                shmkrName = snap.val().storeName;
+                
+                document.getElementById("shoemakerName").innerHTML = shmkrName;
+                });
+
+        //alert(user);
+            document.getElementById("shoeName").innerHTML = vwProdName;
+            document.getElementById("shoePrice").innerHTML = vwProdPrice;
+            document.getElementById("shoeDesc").innerHTML = vwProdDesc;
+            document.getElementById("imageLink").src = vwImageLink;
+            console.log(vwProdName, vwProdPrice)
+
+        });
+
+
+        document.getElementById("popup_product").style.display = "block";
+        document.getElementById("bgoverlay").style.display = "block";
+        }
+
+
+
+        function ClosePopup() {
+        document.getElementById("popup_product").style.display = "none";
+        document.getElementById("bgoverlay").style.display = "none";
+        }
+
+
+
+        addToCart.onclick = function () {
+
+        var cProdName = vwProdName;
+        var cProdPrice = vwProdPrice;
+        var cProdDesc = vwProdDesc;
+        var cImageLink = vwImageLink;
+        var orderid = orderID.toString() + addprodId;
+
+            firebase
+            .database()
+            .ref("users/" + userID + "/cart/" + orderID.toString())
+            .set({
+                userID: userID,
+                orderID: orderid,
+                prodId: addprodId,
+                prodName: cProdName,
+                prodDesc: cProdDesc,
+                prodPrice: cProdPrice,
+                imageLink: cImageLink,
+                shoemakerName: shmkrName
+            });
+        alert("Product added to cart");
+        };
     </script>
     
 </body>
