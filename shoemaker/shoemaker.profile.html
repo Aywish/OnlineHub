@@ -145,6 +145,7 @@
             var prodID = snap.child("prodId").val();
             prodPrice = snap.child("prodPrice").val();
             prodName = snap.child("prodName").val();
+            prodImgLink = snap.child("imageLink").val();
             var shmkrId = snap.child("shoeMakerID").val();
                 firebase.database()
                 .ref("users/" + shmkrId)
@@ -163,7 +164,7 @@
                     // shoemaker-address
                     
 
-                    $("#card-products").append('<div class="card"><div class="product-image"><div class="product-overlay"><a href="#" class="view-product-details" onclick="ProductPopup('+ prodID +')">View Details</a></div><img src="images/1.jpg"></div><div class="card-content"><p class="shoe-name">' + prodName + '</p><p class="shoe-maker">' + shmkrName + '</p><p class="shoe-price">₱'+ prodPrice + '.00</p><div class="product-size sizes"><input type="radio" name="shoe-size" id="sizeA"><label for="sizeA">5</label><input type="radio" name="shoe-size" id="sizeB"><label for="sizeB">6</label><input type="radio" name="shoe-size" id="sizeC"><label for="sizeC">7</label><input type="radio" name="shoe-size" id="sizeD"><label for="sizeD">8</label><input type="radio" name="shoe-size" id="sizeE"><label for="sizeE">9</label></div></div></div>');
+                    $("#card-products").append('<div class="card"><div class="product-image"><div class="product-overlay"><a href="#" class="view-product-details" onclick="ProductPopup('+ prodID +')">View Details</a></div><img src=" ' + prodImgLink + ' "></div><div class="card-content"><p class="shoe-name">' + prodName + '</p><p class="shoe-maker">' + shmkrName + '</p><p class="shoe-price">₱'+ prodPrice + '.00</p><div class="product-size sizes"><input type="radio" name="shoe-size" id="sizeA"><label for="sizeA">5</label><input type="radio" name="shoe-size" id="sizeB"><label for="sizeB">6</label><input type="radio" name="shoe-size" id="sizeC"><label for="sizeC">7</label><input type="radio" name="shoe-size" id="sizeD"><label for="sizeD">8</label><input type="radio" name="shoe-size" id="sizeE"><label for="sizeE">9</label></div></div></div>');
 
                 });
             });

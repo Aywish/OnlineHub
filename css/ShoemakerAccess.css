@@ -625,6 +625,24 @@ input[type="checkbox"]:checked + label, input[type="checkbox"]:hover + label{
         margin: 10px;
     }
 
+
+    .upload-progress{
+        margin-right: 30px;
+        font-size: 1.5em;
+    }
+    .upload-progress h4{
+        margin-left: 15px;
+    }
+
+    .upload-progress .uploadProgress{
+        width: 300px;
+        height: 20px;
+        margin-right: 50px;
+        text-align: center;
+        transition: all .3s;
+        font-size: 1em;
+    }
+
     .product-colorsize{
         margin-right: 20px;
         font-size: 1.5em;
@@ -827,7 +845,7 @@ p{
     .product-img{
         display: flex;
     }
-    
+
     #display_image{
         width: 100px;
         height: 100px;
@@ -841,6 +859,42 @@ p{
     }
       
     #display_image:hover, #display_image:hover ~ #display_image span{
+        background-color: rgba(0,0,0,0.5);
+        transition: 0.1s;
+        color: white;
+    }
+    
+    #display_image_add{
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        background-position: center;
+        background-size: cover;
+        background-color: rgba(0,0,0,0);
+        justify-content: center;
+        box-sizing: border-box;
+        margin: 10px;
+    }
+      
+    #display_image_add:hover, #display_image_add:hover ~ #display_image_add span{
+        background-color: rgba(0,0,0,0.5);
+        transition: 0.1s;
+        color: white;
+    }
+
+    #display_image_edit{
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        background-position: center;
+        background-size: cover;
+        background-color: rgba(0,0,0,0);
+        justify-content: center;
+        box-sizing: border-box;
+        margin: 10px;
+    }
+      
+    #display_image_edit:hover, #display_image_edit:hover ~ #display_image_edit span{
         background-color: rgba(0,0,0,0.5);
         transition: 0.1s;
         color: white;
@@ -872,7 +926,21 @@ p{
         margin: auto;
         display: flex;
         justify-content: center;
-    }    
+    }
+
+    #display_image_add span{
+        font-size: 15px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    #display_image_edit span{
+        font-size: 15px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+    }
 
     .popup .product-colorsize table{
         margin: 0;
@@ -885,6 +953,22 @@ p{
     }
 
   .product-left .big-img #display_image{
+        width: 350px;
+        height: 350px;
+        vertical-align: middle;
+        margin: 10px;
+        padding-top: 120px;
+    }
+
+    .product-left .big-img #display_image_add{
+        width: 350px;
+        height: 350px;
+        vertical-align: middle;
+        margin: 10px;
+        padding-top: 120px;
+    }
+
+    .product-left .big-img #display_image_edit{
         width: 350px;
         height: 350px;
         vertical-align: middle;

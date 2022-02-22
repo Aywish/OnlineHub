@@ -30,26 +30,16 @@
             }
 
             //colorpicker
-            let colorInput = document.querySelector("#color");
-            let hexInput = document.querySelector("#hex");
-            colorInput.addEventListener('input',()=>{
-                let color = colorInput.value;
-                hexInput.value = color;
-                document.querySelector('i').style.color = color;
-            });
+            function colorInputCaller() {
+                let colorInput = document.querySelector("#color");
+                let hexInput = document.querySelector("#hex");
+                colorInput.addEventListener('input',()=>{
+                    let color = colorInput.value;
+                    hexInput.value = color;
+                    document.querySelector('i').style.color = color;
+                });
+            }
 
-            //add image
-            const image_input = document.querySelector("#image_input");
-            var uploaded_image;
-
-            image_input.addEventListener('change', function() {
-            const reader = new FileReader();
-            reader.addEventListener('load', () => {
-                uploaded_image = reader.result;
-                document.querySelector("#display_image").style.backgroundImage = `url(${uploaded_image})`;
-            });
-            reader.readAsDataURL(this.files[0]);
-            });
         </script>
 
         <!--jquery-->
@@ -106,38 +96,19 @@
                 <div class="popup-content">
                     <div class="popup-section product-left">
                         <div class="product-left product-img">
-                            <div class="product-img small-img">
-                                <div id="display_image">
-                                    <input type="file" id="image_input">
-                                    <label for="image_input" class="add-image">
-                                        <i class="bi bi-plus-circle-dotted"></i>
-                                    </label>
-                                    <span>Add Image</span>
-                                </div>
-                                <div id="display_image">
-                                    <input type="file" id="image_input">
-                                    <label for="image_input" class="add-image">
-                                        <i class="bi bi-plus-circle-dotted"></i>
-                                    </label>
-                                    <span>Add Image</span>
-                                </div>
-                                <div id="display_image">
-                                    <input type="file" id="image_input">
-                                    <label for="image_input" class="add-image">
-                                        <i class="bi bi-plus-circle-dotted"></i>
-                                    </label>
-                                    <span>Add Image</span>
-                                </div>
-                            </div>
                             <div class="product-img big-img">
-                                <div id="display_image">
-                                    <input type="file" id="image_input">
-                                    <label for="image_input" class="add-image">
+                                <div id="display_image_edit">
+                                    <input type="file" id="image_input_edit">
+                                    <label for="image_input_edit" class="add-image">
                                         <i class="bi bi-plus-circle-dotted"></i>
                                     </label>
                                     <span>Add Image</span>
                                 </div>
                             </div>
+                        </div>
+                        <div class="product-left upload-progress">
+                            <h4>Upload Progress</h4>
+                            <label class="uploadProgress" id="upProgressEdit"></label>
                         </div>
                         <div class="product-left product-colorsize">
                             <table>
@@ -182,14 +153,18 @@
                     <div class="popup-section product-left">
                         <div class="product-left product-img">                    
                             <div  class="product-img big-img">
-                                <div id="display_image">
-                                    <input type="file" id="image_input">
-                                    <label for="image_input" class="add-image">
+                                <div id="display_image_add">
+                                    <input type="file" id="image_input_add">
+                                    <label for="image_input_add" class="add-image">
                                         <i class="bi bi-plus-circle-dotted"></i>
                                     </label>
                                     <span>Add Image</span>
                                 </div>
                             </div>
+                        </div>
+                        <div class="product-left upload-progress">
+                            <h4>Upload Progress</h4>
+                            <label class="uploadProgress" id="upProgressAdd"></label>
                         </div>
                         <div class="product-left product-colorsize">
                             <table>
@@ -211,7 +186,7 @@
                     <div class="popup-section product-right" style="margin-top: 50px;">
                         <input type="text" class="fields" placeholder="Shoe Name" id="addProd_ShoeName">
                         <br>
-                        <input type="text"  class="fields"  placeholder="Price" id="addProd_ShoePrice">
+                        <input type="text"  class="fields"  placeholder="Price" id="addProd_ShoePrice" required>
                         <br>
                         <select name="categories" id="addProd_ShoeCategory"  class="fields">
                             <option value="" disabled selected>Category</option>
@@ -222,6 +197,7 @@
                             <option value="flatsandals">Flat Sandals</option>
                             <option value="indoorslippers">Indoor Slippers</option>
                           </select>
+
                         <br>
                         <div class="description">
                             <input type="textarea"  class="fields-desc"  placeholder="Description" id="addProd_ShoeDescription">
@@ -255,24 +231,81 @@
                 shoeDescription = document.getElementById("addProd_ShoeDescription").value;
             }
 
-            //Create
-            document.getElementById("btnAddProduct").onclick = function () {
-                readAddForm();
+            // LOAD IMAGE
+            const image_input_add = document.querySelector("#image_input_add");
+            var uploaded_image;
 
-                firebase
-                .database()
-                .ref("products/" + prodID_var.toString())
-                .set({
-                    shoeMakerID: shmkrId,
-                    prodId: prodID_var,
-                    prodName: shoeName,
-                    prodPrice: parseFloat(shoePrice),
-                    prodCategory: shoeCategory,
-                    prodDesc: shoeDescription,
+            image_input_add.addEventListener('change', function() {
+                const reader = new FileReader();
+                reader.addEventListener('load', () => {
+                    uploaded_image = reader.result;
+                    document.querySelector("#display_image_add").style.backgroundImage = `url(${uploaded_image})`;
                 });
-                alert("Product Added!");
-                location.reload();
-            };
+                reader.readAsDataURL(this.files[0]);
+            });
+
+            
+            const image_input_edit = document.querySelector("#image_input_edit");
+            var uploaded_image;
+
+            image_input_edit.addEventListener('change', function() {
+                const reader = new FileReader();
+                reader.addEventListener('load', () => {
+                    uploaded_image = reader.result;
+                    document.querySelector("#display_image_edit").style.backgroundImage = `url(${uploaded_image})`;
+                });
+                reader.readAsDataURL(this.files[0]);
+            });
+
+
+            //Create
+
+            const saveProduct = document.querySelector("#btnAddProduct");
+            saveProduct.addEventListener('click', function(e) {
+                readAddForm();
+                colorInputCaller();
+                e.preventDefault();
+
+                const storage = firebase.storage();
+                const storageRef = storage.ref();
+
+                var file = image_input_add.files[0];
+                var name = prodID_var;
+                var imgId = prodID_var;
+                var metadata = {
+                    contentType: file.type
+                }
+
+                var uploadTask = storageRef.child(shmkrId + "/shoemakerProducts/" + prodID_var).put(file, metadata);
+
+                uploadTask.on('state_changed', function(snapshot){
+                    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    document.getElementById("upProgressAdd").innerHTML = 'Upload ' + progress + ' %';
+                })
+
+                uploadTask.then(snapshot => snapshot.ref.getDownloadURL())
+                .then(url => {
+                    imgUrl = url;
+
+                    firebase
+                    .database()
+                    .ref("products/" + prodID_var.toString())
+                    .set({
+                        shoeMakerID: shmkrId,
+                        prodId: prodID_var,
+                        prodName: shoeName,
+                        prodPrice: parseFloat(shoePrice),
+                        prodCategory: shoeCategory,
+                        prodDesc: shoeDescription,
+                        imageID: imgId,
+                        imageName: name,
+                        imageLink: imgUrl
+                    });
+                    alert("Product Added!");
+                    ClosePopup();
+                });
+                
+            });
 
             firebase.database()
                 .ref("users/" + shmkrId)
@@ -287,9 +320,10 @@
                 var cProdId = snap.child("prodId").val();
                 var cProdName = snap.child("prodName").val();
                 var cProdPrice = snap.child("prodPrice").val();
+                var cImageLink = snap.child("imageLink").val();
 
 
-                $("#product-View").append('<tr><td><img class="tblImage" src="images/1.jpg"></td><td><p>' + cProdName + '<p></td><td><p>' + cProdPrice + '</p></td><td><button class="button-actions" onclick="EditPopup(' + cProdId + ')"><i class="bi bi-pencil"></i><span>EDIT</span></button><button class="button-actions" onclick="deleteProd(' + cProdId + ')"><i class="bi bi-trash"></i><span>DELETE</span></button></td></tr>');
+                $("#product-View").append('<tr><td><img class="tblImage" src=" ' + cImageLink + ' "></td><td><p>' + cProdName + '<p></td><td><p>' + cProdPrice + '</p></td><td><button class="button-actions" onclick="EditPopup(' + cProdId + ')"><i class="bi bi-pencil"></i><span>EDIT</span></button><button class="button-actions" onclick="deleteProd(' + cProdId + ')"><i class="bi bi-trash"></i><span>DELETE</span></button></td></tr>');
 
             });
 
@@ -328,21 +362,50 @@
 
 
             // UPDATE THE DATA IN THE DATABASE
-            document.getElementById("saveEdit").onclick = function () {
-            readCrudForm();
+            const saveEdit = document.querySelector("#saveEdit");
+            saveEdit.addEventListener('click', function(e) {
+                readCrudForm();
+                // colorInputCaller();
+                e.preventDefault();
+
+                const storage = firebase.storage();
+                const storageRef = storage.ref();
+
+                var file = image_input_edit.files[0];
+                var name = prodID_var;
+                var imgId = prodID_var;
+                var metadata = {
+                    contentType: file.type
+                }
+
+                var uploadTask = storageRef.child(shmkrId + "/shoemakerProducts/" + prodID_var).put(file, metadata);
+
+                uploadTask.on('state_changed', function(snapshot){
+                    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    document.getElementById("upProgressEdit").innerHTML = 'Upload ' + progress + ' %';
+                })
+
+                uploadTask.then(snapshot => snapshot.ref.getDownloadURL())
+                .then(url => {
+                    imgUrl = url;
+
                 
-            firebase
-                .database()
-                .ref("products/" + editprodId)
-                .update({
-                //   prodId: rollV,
-                prodName: name_var,
-                prodPrice: parseFloat(price_var),
-                prodDesc: desc_var,
+                firebase
+                    .database()
+                    .ref("products/" + editprodId)
+                    .update({
+                    //   prodId: rollV,
+                    prodName: name_var,
+                    prodPrice: parseFloat(price_var),
+                    prodDesc: desc_var,
+                    imageID: imgId,
+                    imageName: name,
+                    imageLink: imgUrl
+                    });
+                alert("Product Updated");
+                location.reload();
                 });
-            alert("Product Updated");
-            location.reload();
-            };
+            });
 
 
             // DELETE PRODUCT IN THE DATABASE
@@ -358,6 +421,7 @@
                         .ref("products/" + editprodId)
                         .remove();
                     alert("Product Deleted");
+                    location.reload();
                 } else {
                     alert("You cancelled!");
                 }
