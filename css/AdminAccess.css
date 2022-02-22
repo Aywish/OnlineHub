@@ -229,6 +229,12 @@ label #sidebar_btn:hover{
     cursor: pointer;
 }
 
+.uploadProgress{
+    margin-left: 40%;
+    font-size: 1.5em;
+}
+
+
 .addshoemaker{
     display: flex;
     position: absolute;

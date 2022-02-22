@@ -25,7 +25,7 @@
 
         function ClosePopup() {
             document.getElementById("popup_addSM").style.display = "none";
-            document.getElementById("popup_viewSM").style.display = "none";
+            // document.getElementById("popup_viewSM").style.display = "none";
             document.getElementById("bgoverlay").style.display = "none";
         }
     </script>
@@ -62,7 +62,7 @@
                     <form action="" class="popup-form">
                         <h5>Store Information</h5>
                             <input type="text" placeholder="Full Store Name" class="storeName" id="storename">
-                            <input type="text" placeholder="Registration Number" class="storeName" id="uid" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            <input type="text" placeholder="Registration Number" class="storeName" id="regnum" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                         <h5>Full Name</h5>
                             <input type="text" placeholder="First Name" class="fullName" id="firstname">
                             <input type="text" placeholder="Middle Name" class="fullName" id="middlename">
@@ -86,7 +86,7 @@
         </div>
 
         <!--VIEW SHOEMAKER POPUP-->
-        <div class="popup" id="popup_viewSM">
+        <!-- <div class="popup" id="popup_viewSM">
             <div class="popup-scrollable">
                 <i class="bi bi-x" onclick="ClosePopup()"></i>
                 <div class="popup-content">
@@ -155,10 +155,10 @@
                 </div>
             </div>
             <div class="addshoemaker">
-                <a href="#" id="addshoemaker">EDIT SHOEMAKER</a>
+                <a href="#" id="addshoemaker">EDIT SHOEMAKER</a> -->
                 <!--popup content will be like for add shoemaker and button will change to "SAVE CHANGES"... backend database data will also be updated-->
-            </div>
-        </div>
+            <!-- </div>
+        </div> -->
         <!--END OF POPUP-->
 
         <div class="table">
@@ -178,13 +178,14 @@
             
             var userId = localStorage.getItem("userID");
 
-            var storeName, firstName, middleName, lastName, suffix, houseNo, stName, brgy, city, postalCode, contactNo, email, viewshmkrId;
+            var storeName, regNum, firstName, middleName, lastName, suffix, houseNo, stName, brgy, city, postalCode, contactNo, email, viewshmkrId;
 
             
             var shmkrReference = firebase.database().ref().child("users/").orderByChild('accountType').equalTo("shoemaker");
             shmkrReference.on("child_added", snap => {
                 var shmkrId = snap.child("uid").val();
                 var shopName = snap.child("storeName").val();
+                var regNum = snap.child("registrationNum").val();
                 var fName = snap.child("firstName").val();
                 var lName = snap.child("lastName").val();
                 var hNo = snap.child("houseNo").val();
@@ -193,18 +194,19 @@
                 var pCode = snap.child("postalCode").val();
                 var stName = snap.child("streetName").val();
                 
-                $("#admin-shmkrview").append('<tr><td>' + shmkrId + '</td><td><p>' + shopName + '</p></td><td><p>' + fName + ' ' + lName + '</p></td><td><p>' + hNo + ' ' + stName + ' '  + brgy + ', ' + city + ', ' + pCode + '</p></td><td><button class="button-actions" onclick="OpenPopupView(' + shmkrId + ')"><i class="bi bi-eye"></i><span>VIEW</span></button><button class="button-actions"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
+                $("#admin-shmkrview").append('<tr><td>' + regNum + '</td><td><p>' + shopName + '</p></td><td><p>' + fName + ' ' + lName + '</p></td><td><p>' + hNo + ' ' + stName + ' '  + brgy + ', ' + city + ', ' + pCode + '</p></td><td><button class="button-actions" onclick="OpenPopupView(' + shmkrId + ')"><i class="bi bi-eye"></i><span>VIEW</span></button><button class="button-actions"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
             });
 
             function readAddForm() {
                 storeName = document.getElementById("storename").value;
+                regNum = document.getElementById("regnum").value;
                 firstName = document.getElementById("firstname").value;
                 middleName = document.getElementById("middlename").value;
                 lastName = document.getElementById("lastname").value;
                 suffix = document.getElementById("suffix").value;
                 houseNo = document.getElementById("houseno").value;
                 stName = document.getElementById("streetname").value;
-                brgy = document.getElementById("baranggay").value;
+                brgy = document.getElementById("barangay").value;
                 city = document.getElementById("city").value;
                 postalCode = document.getElementById("postalcode").value;
                 contactNo = document.getElementById("mobilenumber").value;
@@ -226,6 +228,7 @@
                             .set({
                             uid: user.uid,
                             storeName: storeName,
+                            registrationNum: regNum,
                             firstName: firstName,
                             middleName: middleName,
                             lastName: lastName,
@@ -240,35 +243,36 @@
                             accountType: "shoemaker"
                         });
                 alert("Shoemaker Added!");
+                ClosePopup();
                 });
             };
 
 
-            function OpenPopupView(id) {
-                viewshmkrId = id;
+            // function OpenPopupView(id) {
+            //     viewshmkrId = id;
 
-                firebase.database()
-                    .ref("users/" + id)
-                    .on("value", function (snap) {
-                        vwsname = snap.val().storeName;
-                        vwfname = snap.val().firstName;
-                        vwmname = snap.val().middleName;
-                        vwlname = snap.val().lastName;
-                        vwsuffix = snap.val().suffix;
-                        vwhno = snap.val().houseNo;
-                        vwstname = snap.val().stname;
-                        vwbrgy = snap.val().barangay;
-                        vwcity = snap.val().city;
-                        vwpcode = snap.val().postalCode;
-                        vwcno = snap.val().contactNo;
-                        vwemail = snap.val().email;
+            //     firebase.database()
+            //         .ref("users/" + id)
+            //         .on("value", function (snap) {
+            //             vwsname = snap.val().storeName;
+            //             vwfname = snap.val().firstName;
+            //             vwmname = snap.val().middleName;
+            //             vwlname = snap.val().lastName;
+            //             vwsuffix = snap.val().suffix;
+            //             vwhno = snap.val().houseNo;
+            //             vwstname = snap.val().stname;
+            //             vwbrgy = snap.val().barangay;
+            //             vwcity = snap.val().city;
+            //             vwpcode = snap.val().postalCode;
+            //             vwcno = snap.val().contactNo;
+            //             vwemail = snap.val().email;
 
 
-                    });
+            //         });
                 
-                document.getElementById("popup_viewSM").style.display = "block";
-                document.getElementById("bgoverlay").style.display = "block";
-            };
+            //     document.getElementById("popup_viewSM").style.display = "block";
+            //     document.getElementById("bgoverlay").style.display = "block";
+            // };
         </script>
         
     </body>
