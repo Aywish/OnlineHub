@@ -3,6 +3,7 @@ var custUser, shmkrId;
 var addprodId, vwProdName, vwProdPrice, vwProdSize, vwProdColor;
 
 var CustLogout = document.getElementById("custlogout");
+var userID = localStorage.getItem("userID");
 
 
 //Check if user is logged in
@@ -15,13 +16,7 @@ firebase.auth().onAuthStateChanged(function(custUser) {
 });
 
 
-//#region ID Generator YEARMONTHDAYHOURSMINUTESSECONDS
-var today = new Date();
-var time = new Date().getFullYear() + "" + new Date().getMonth()  + 1 + "" + new Date().getDate()  + "" + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
-var orderID = time;
-var userID = localStorage.getItem("userID");
 
-//#endregion
 
 //#region show products from database
 var product = firebase.database().ref().child("products/");
@@ -88,7 +83,14 @@ function ClosePopup() {
 
 addToCart.onclick = function () {
   
-  var orderid = orderID.toString() + addprodId;
+  //#region ID Generator YEARMONTHDAYHOURSMINUTESSECONDS
+  var today = new Date();
+  var time = new Date().getFullYear() + "" + new Date().getMonth()  + 1 + "" + new Date().getDate()  + "" + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
+  var orderID = time;
+
+  //#endregion
+  
+  var orderid = orderID.toString();
 
   var cProdName = vwProdName;
   var cProdPrice = vwProdPrice;
