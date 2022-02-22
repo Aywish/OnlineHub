@@ -16,14 +16,14 @@
         <script type="text/javascript">
             //popups
             function ViewOrderPending() {
+                btnOrderCompleted = "ACCEPT ORDER"
+                document.getElementById("btnOrder").innerHTML = btnOrderCompleted;
                 document.getElementById("view_order").style.display = "block";
                 document.getElementById("bgoverlay").style.display = "block";
             }
             function ViewOrderAccepted() {
                 btnOrderCompleted = "COMPLETE ORDER"
-                txtOstatus = "Accepted"
                 document.getElementById("btnOrder").innerHTML = btnOrderCompleted;
-                document.getElementById("txtOrderStatus").innerHTML = txtOstatus;
                 document.getElementById("view_order").style.display = "block";
                 document.getElementById("bgoverlay").style.display = "block";
             }
@@ -43,78 +43,44 @@
         </div>
 
         <div class="table-status">
-            <table>
+            <table class="orderstatus">
                 <tr>
-                    <th><h4 class="tblHeader">SHOE TYPE</h4></th>
-                    <th><h4 class="tblHeader">SHOE DETAILS</h4></th>
+                    <th><h4 class="tblHeader">IMAGE</h4></th>
+                    <th><h4 class="tblHeader">SHOE NAME/TYPE</h4></th>
+                    <th><h4 class="tblHeader">PRICE</h4></th>
                     <th><h4 class="tblHeader">ORDER TYPE</h4></th>
                     <th><h4 class="tblHeader">STATUS</h4></th>
                     <th><h4 class="tblHeader">ACTIONS</h4></th>
                 </tr>
                 <tr class="order-rows">
-                    <td><p>Topsider</p></td>
-                    <td>
-                        <table class="specs">
-                            <tr class="spec-row">
-                                <td class="spec-title">Material: </td>
-                                <td class="spec-value">Leather</td>
-                            </tr>
-                            <tr class="spec-row">
-                                <td class="spec-title">Size: </td>
-                                <td class="spec-value">39</td>
-                            </tr>
-                            <tr class="spec-row">
-                                <td class="spec-title">Qty: </td>
-                                <td class="spec-value">3</td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td><p>Retail</p></td>
-                    <td id="pendingaccepted"><p>Pending</p></td>
-                    <td>
-                        <button class="button-actions" onclick="ViewOrderPending()">
-                            <i class="bi bi-eye"></i>
-                            <span>VIEW</span>
-                        </button>
-                        <!--<button class="button-actions">
-                            <i class="bi bi-chat-dots"></i>
-                            <span>MESSAGE</span>
-                        </button>-->
-                    </td>
-                </tr>
-
-                <tr class="order-rows">
-                    <td><p>Topsider</p></td>
-                    <td>
-                        <table class="specs">
-                            <tr class="spec-row">
-                                <td class="spec-title">Material: </td>
-                                <td class="spec-value">Leather</td>
-                            </tr>
-                            <tr class="spec-row">
-                                <td class="spec-title">Size: </td>
-                                <td class="spec-value">39</td>
-                            </tr>
-                            <tr class="spec-row">
-                                <td class="spec-title">Qty: </td>
-                                <td class="spec-value">3</td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td><p>Retail</p></td>
-                    <td id="pendingaccepted"><p>Accepted</p></td>
+                    <td><img class="product-image" src="images/1.jpg"></td>
+                    <td>Birkenstock (Madrid)</td>
+                    <td>₱245.00</td>
+                    <td>RTW</td>
+                    <td id="pendingaccepted">Accepted</td>
                     <td>
                         <button class="button-actions" onclick="ViewOrderAccepted()">
                             <i class="bi bi-eye"></i>
                             <span>VIEW</span>
                         </button>
-                        <!--<button class="button-actions">
-                            <i class="bi bi-chat-dots"></i>
-                            <span>MESSAGE</span>
-                        </button>-->
                     </td>
-                </tr> 
+                </tr>
+
+                <tr class="order-rows">
+                    <td><img class="product-image" src="images/2.jpg"></td>
+                    <td>Topsider</td>
+                    <td>₱13000.00</td>
+                    <td>Custom</td>
+                    <td id="pendingaccepted">Pending</td>
+                    <td>
+                        <button class="button-actions" onclick="ViewOrderPending()">
+                            <i class="bi bi-eye"></i>
+                            <span>VIEW</span>
+                        </button>
+                    </td>
+                </tr>
             </table>
+        </div>
 
             <!--VIEW ORDER PENDING-->
         <div class="popup" id="view_order">

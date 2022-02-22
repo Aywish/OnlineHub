@@ -766,6 +766,22 @@ th, td, p{
     text-align: center;
 }
 
+.product-image{
+    height: 60px;
+    width: 100px;
+    object-fit: cover;
+    box-sizing: border-box;
+    margin:auto;
+    display:block;
+    
+}
+
+.vieworder-img{
+    border: 1px solid;
+    margin: 20px;
+    height: 250px;
+}
+
 .tblImage{
     height: 60px;
     width: 100px;
