@@ -20,9 +20,15 @@
                 document.getElementById("bgoverlay").style.display = "block";
                 document.getElementById("view_order").style.display = "block";
             }
-            function ViewOrder() {
+            function ViewOrderCustom() {
                 document.getElementById("edit_order").style.display = "none";
                 document.getElementById("view_order").style.display = "block";
+                document.getElementById("bgoverlay").style.display = "block";
+                document.getElementById("view_order").style.display = "block";
+            }
+            function ViewOrderRTW() {
+                document.getElementById("edit_order").style.display = "none";
+                document.getElementById("view_orderRTW").style.display = "block";
                 document.getElementById("bgoverlay").style.display = "block";
                 document.getElementById("view_order").style.display = "block";
             }
@@ -65,7 +71,7 @@
                     <td>RTW</td>
                     <td id="pendingaccepted">Accepted</td>
                     <td>
-                        <button class="button-actions" onclick="ViewOrder()">
+                        <button class="button-actions" onclick="ViewOrderRTW()">
                             <i class="bi bi-eye"></i>
                             <span>VIEW</span>
                         </button>
@@ -117,7 +123,7 @@
                     <td>Custom</td>
                     <td id="pendingaccepted">Completed</td>
                     <td>
-                        <button class="button-actions" onclick="ViewOrder()">
+                        <button class="button-actions" onclick="ViewOrderCustom()">
                             <i class="bi bi-eye"></i>
                             <span>VIEW</span>
                         </button>
@@ -129,7 +135,7 @@
                 </tr>
             </table>
 
-            <!--VIEW ORDER PENDING-->
+            <!--VIEW ORDER CUSTOM-->
         <div class="popup" id="view_order">
             <div class="popup-scrollable">
                 <i class="bi bi-x" onclick="ClosePopup()"></i>
@@ -164,15 +170,7 @@
                                 <th><h4 class="tblHeader">ORDER TYPE</h4></th>
                                 <td><p>Custom</p></td>
                             </tr> 
-                            <tr>
-                                <th><h4 class="tblHeader">SIZE</h4></th>
-                                <td><p>7</p></td>
-                            </tr> 
-                            <tr>
-                                <th><h4 class="tblHeader">QUANTITY</h4></th>
-                                <td><p>350</p></td>
-                            </tr> 
-                        </table>
+                            </table>
                     </div>
                     <div class="vieworder-img">
                         <img src="" alt="custom order image">
@@ -183,6 +181,18 @@
                                 <th><h4 class="tblHeader">SHOE TYPE</h4></th>
                                 <td><p>Topsider</p></td>
                             </tr>
+                            <tr>
+                                <th><h4 class="tblHeader">SHOE MAKER</h4></th>
+                                <td><p>Tatay Oly Shoes</p></td>
+                            </tr>
+                            <tr>
+                                <th><h4 class="tblHeader">SIZE</h4></th>
+                                <td><p>7</p></td>
+                            </tr> 
+                            <tr>
+                                <th><h4 class="tblHeader">QUANTITY</h4></th>
+                                <td><p>350</p></td>
+                            </tr> 
                             <tr>
                                 <th><h4 class="tblHeader">MATERIAL</h4></th>
                                 <td><p>Leather</p></td>
@@ -210,10 +220,78 @@
                         </table>
                     </div>
                 </div>
-            <div class="editorder" id="edit_order">
-                <a href="OrderCustom.html" id="btnOrder">EDIT ORDER</a>
+        </div>
+        </div>
+
+            <!--VIEW ORDER RTW-->
+            <div class="popup" id="view_orderRTW">
+                <div class="popup-scrollable">
+                    <i class="bi bi-x" onclick="ClosePopup()"></i>
+                    <div class="custom-content">
+                        <div class="table-view order-details">
+                            <table>
+                                <tr>
+                                    <th><h4 class="tblHeader">CUSTOMER NAME</h4></th>
+                                    <td><p>Juan Dela Cruz</p></td>
+                                </tr>
+                                <tr>
+                                    <th><h4 class="tblHeader">CONTACT NUMBER</h4></th>
+                                    <td><p>+639876543210</p></td>
+                                </tr>
+                                <tr>
+                                    <th><h4 class="tblHeader">ADDRESS</h4></th>
+                                    <td><p>123 Sample St. San Roque, Marikina City, 1801</p></td>
+                                </tr>
+                                <tr>
+                                    <th><h4 class="tblHeader">ORDER STATUS</h4></th>
+                                    <td><p>Accepted</p></td>
+                                </tr>
+                                <tr>
+                                    <th><h4 class="tblHeader">DATE ORDERED</h4></th>
+                                    <td><p>February 14, 2022</p></td>
+                                </tr>
+                                <tr>
+                                    <th><h4 class="tblHeader">DATE COMPLETED</h4></th>
+                                    <td><p>N/A</p></td>
+                                </tr> 
+                                <tr>
+                                    <th><h4 class="tblHeader">ORDER TYPE</h4></th>
+                                    <td><p>RTW</p></td>
+                                </tr> 
+                            </table>
+                        </div>
+                        <div class="vieworder-img">
+                            <img src="" alt="custom order image">
+                        </div>
+                        <div class="table-view">
+                            <table>
+                                <tr>
+                                    <th><h4 class="tblHeader">SHOE NAME</h4></th>
+                                    <td><p>Birkenstock (Madrid)</p></td>
+                                </tr>
+                                <tr>
+                                    <th><h4 class="tblHeader">SHOE MAKER</h4></th>
+                                    <td><p>Inches Footwear</p></td>
+                                </tr>
+                                <tr>
+                                    <th><h4 class="tblHeader">SIZE</h4></th>
+                                    <td><p>9</p></td>
+                                </tr> 
+                                <tr>
+                                    <th><h4 class="tblHeader">QUANTITY</h4></th>
+                                    <td><p>2</p></td>
+                                </tr> 
+                                <tr>
+                                    <th><h4 class="tblHeader">COLOR</h4></th>
+                                    <td><p>Black</p></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                <div class="editorder" id="edit_order">
+                    <a href="OrderCustom.html" id="btnOrder">EDIT ORDER</a>
+                </div>
             </div>
-        </div>
-        </div>
+            </div>
     </body>
 </html>
