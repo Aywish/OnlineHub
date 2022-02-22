@@ -1,5 +1,7 @@
 var custUser, shmkrId;
 
+var addprodId, vwProdName, vwProdPrice, vwProdSize, vwProdColor;
+
 var CustLogout = document.getElementById("custlogout");
 
 
@@ -12,15 +14,16 @@ firebase.auth().onAuthStateChanged(function(custUser) {
   }
 });
 
-var addprodId, vwProdName, vwProdPrice;
 
-//ID Generator YEARMONTHDAYHOURSMINUTESSECONDS
+//#region ID Generator YEARMONTHDAYHOURSMINUTESSECONDS
 var today = new Date();
 var time = new Date().getFullYear() + "" + new Date().getMonth()  + 1 + "" + new Date().getDate()  + "" + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
 var orderID = time;
 var userID = localStorage.getItem("userID");
 
+//#endregion
 
+//#region show products from database
 var product = firebase.database().ref().child("products/");
 
 product.on("child_added", snap => {
@@ -40,6 +43,7 @@ product.on("child_added", snap => {
   });
 });
 
+//#endregion
 
 
 function ProductPopup(id) {
@@ -76,21 +80,21 @@ function ProductPopup(id) {
   document.getElementById("bgoverlay").style.display = "block";
 }
 
-
-
 function ClosePopup() {
   document.getElementById("popup_product").style.display = "none";
   document.getElementById("bgoverlay").style.display = "none";
 }
 
 
-
 addToCart.onclick = function () {
+  
+  var orderid = orderID.toString() + addprodId;
 
   var cProdName = vwProdName;
   var cProdPrice = vwProdPrice;
   var cProdDesc = vwProdDesc;
-  var orderid = orderID.toString() + addprodId;
+  var cProdSize = vwProdSize; 
+  var cProdColor = vwProdColor;
   console.log(orderid, cProdName, cProdPrice, addprodId);
 
   firebase
@@ -103,14 +107,85 @@ addToCart.onclick = function () {
     prodName: cProdName,
     prodDesc: cProdDesc,
     prodPrice: cProdPrice,
+    prodSize: cProdSize,
+    prodColor: cProdColor,
     shoemakerName: shmkrName
   });
   alert("Product added to cart");
 };
 
+//#region Color Selector
+
+$(document).ready(function(){
+  $('#color1').click(function(){
+      vwProdColor = "Brown";
+      console.log("Color Selected: " + vwProdColor);
+  });
+});
+
+$(document).ready(function(){
+  $('#color2').click(function(){
+      vwProdColor = "Black";
+      console.log("Color Selected: " + vwProdColor);
+  });
+});
+
+$(document).ready(function(){
+  $('#color3').click(function(){
+      vwProdColor = "Tan";
+      console.log("Color Selected: " + vwProdColor);
+  });
+});
+
+$(document).ready(function(){
+  $('#color4').click(function(){
+      vwProdColor = "White";
+      console.log("Color Selected: " + vwProdColor);
+  });
+});
+
+//#endregion
+
+//#region Size Selector
+
+$(document).ready(function(){
+  $('#sizeA').click(function(){
+      vwProdSize = 5;
+      // console.log("Size Selected: " + vwProdSize);
+  });
+});
+
+$(document).ready(function(){
+  $('#sizeB').click(function(){
+      vwProdSize = 6;
+      console.log("Size Selected: " + vwProdSize);
+  });
+});
+
+$(document).ready(function(){
+  $('#sizeC').click(function(){
+      vwProdSize = 7;
+      console.log("Size Selected: " + vwProdSize);
+  });
+});
+
+$(document).ready(function(){
+  $('#sizeD').click(function(){
+      vwProdSize = 8;
+      console.log("Size Selected: " + vwProdSize);
+  });
+});
+
+$(document).ready(function(){
+  $('#sizeE').click(function(){
+      vwProdSize = 9;
+      console.log("Size Selected: " + vwProdSize);
+  });
+});
+
+//#endregion
 
 function showCart() {
-
 
   var x = document.getElementById("showCart");
   if (x.style.display === "none") {
@@ -137,9 +212,7 @@ function showCart() {
   }
 }
 
-
 addToFullCart.onclick = function () {
-
 
   var cartReference = firebase.database().ref().child("users/" + userID + "/cart/");
   cartReference.on("child_added", snap => {
@@ -178,90 +251,93 @@ firebase.database()
         };
       });
 
+
+//#region Including Pages
   
-  
-      $(document).ready(function(){
-        $('.shmkr1').click(function(){
-            $("#check").prop("checked", true);
-            $('#content_page').load('includes/tatayolyprofilePUBLIC.html');
-            $('.selector').removeClass('selected')
-            $('.shmkr1').toggleClass('selected')
-        });
-      });
+$(document).ready(function(){
+  $('.shmkr1').click(function(){
+      $("#check").prop("checked", true);
+      $('#content_page').load('includes/tatayolyprofilePUBLIC.html');
+      $('.selector').removeClass('selected')
+      $('.shmkr1').toggleClass('selected')
+  });
+});
 
-      $(document).ready(function(){
-        $('.shmkr2').click(function(){
-            $("#check").prop("checked", true);
-            $('#content_page').load('includes/inchesfootwearprofilePUBLIC.html');
-            $('.selector').removeClass('selected')
-            $('.shmkr2').toggleClass('selected')
-        });
-      });
+$(document).ready(function(){
+  $('.shmkr2').click(function(){
+      $("#check").prop("checked", true);
+      $('#content_page').load('includes/inchesfootwearprofilePUBLIC.html');
+      $('.selector').removeClass('selected')
+      $('.shmkr2').toggleClass('selected')
+  });
+});
 
-      $(document).ready(function(){
-        $('.category1').click(function(){
-            $("#check").prop("checked", true);
-            $('#content_page').load('includes/category1.html');
-            $('.selector').removeClass('selected')
-            $('.category1').toggleClass('selected')
-        });
-      });
+$(document).ready(function(){
+  $('.category1').click(function(){
+      $("#check").prop("checked", true);
+      $('#content_page').load('includes/category1.html');
+      $('.selector').removeClass('selected')
+      $('.category1').toggleClass('selected')
+  });
+});
 
-      $(document).ready(function(){
-        $('.category2').click(function(){
-            $("#check").prop("checked", true);
-            $('#content_page').load('includes/category2.html');
-            $('.selector').removeClass('selected')
-            $('.category2').toggleClass('selected')
-        });
-      });
+$(document).ready(function(){
+  $('.category2').click(function(){
+      $("#check").prop("checked", true);
+      $('#content_page').load('includes/category2.html');
+      $('.selector').removeClass('selected')
+      $('.category2').toggleClass('selected')
+  });
+});
 
-      $(document).ready(function(){
-        $('.category3').click(function(){
-            $("#check").prop("checked", true);
-            $('#content_page').load('includes/category3.html');
-            $('.selector').removeClass('selected')
-            $('.category3').toggleClass('selected')
-        });
-      });
+$(document).ready(function(){
+  $('.category3').click(function(){
+      $("#check").prop("checked", true);
+      $('#content_page').load('includes/category3.html');
+      $('.selector').removeClass('selected')
+      $('.category3').toggleClass('selected')
+  });
+});
 
-      $(document).ready(function(){
-        $('.category4').click(function(){
-            $("#check").prop("checked", true);
-            $('#content_page').load('includes/category4.html');
-            $('.selector').removeClass('selected')
-            $('.category4').toggleClass('selected')
-        });
-      });
+$(document).ready(function(){
+  $('.category4').click(function(){
+      $("#check").prop("checked", true);
+      $('#content_page').load('includes/category4.html');
+      $('.selector').removeClass('selected')
+      $('.category4').toggleClass('selected')
+  });
+});
 
-      $(document).ready(function(){
-        $('.category5').click(function(){
-            $("#check").prop("checked", true);
-            $('#content_page').load('includes/category5.html');
-            $('.selector').removeClass('selected')
-            $('.category5').toggleClass('selected')
-        });
-      });
+$(document).ready(function(){
+  $('.category5').click(function(){
+      $("#check").prop("checked", true);
+      $('#content_page').load('includes/category5.html');
+      $('.selector').removeClass('selected')
+      $('.category5').toggleClass('selected')
+  });
+});
 
-      $(document).ready(function(){
-        $('.category6').click(function(){
-            $("#check").prop("checked", true);
-            $('#content_page').load('includes/category6.html');
-            $('.selector').removeClass('selected')
-            $('.category6').toggleClass('selected')
-        });
-      });
+$(document).ready(function(){
+  $('.category6').click(function(){
+      $("#check").prop("checked", true);
+      $('#content_page').load('includes/category6.html');
+      $('.selector').removeClass('selected')
+      $('.category6').toggleClass('selected')
+  });
+});
 
-  CustLogout.onclick = function () {
+//#endregion
 
-    firebase.auth().signOut().then(() => {
-  
-      location.href='index.html';  
-      localStorage.clear();
-  
-    }).catch((error) => {
-      console.log(error);
-      // An error happened.
-    });
-  };
+CustLogout.onclick = function () {
+
+  firebase.auth().signOut().then(() => {
+
+    location.href='index.html';  
+    localStorage.clear();
+
+  }).catch((error) => {
+    console.log(error);
+    // An error happened.
+  });
+};
       
