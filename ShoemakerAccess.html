@@ -90,8 +90,12 @@
         $(document).ready(function(){
             $('.reports_selector').click(function(){
                 $('#content_page').load('shoemaker/shoemaker.reports.html');
-                $('.selector').removeClass('selected')
-                $('.reports_selector').toggleClass('selected')
+                $('.selector').removeClass('selected');
+                $('.reports_selector').toggleClass('selected');
+                google.load("visualization", "1", {packages:["corechart"]});
+                google.setOnLoadCallback(dailyViews);
+                google.setOnLoadCallback(products);
+                google.setOnLoadCallback(customerAge);
             });
         });
 

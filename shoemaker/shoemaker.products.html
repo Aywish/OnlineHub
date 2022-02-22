@@ -183,12 +183,21 @@
                         </div>
                     </div>
         
-                    <div class="popup-section product-right">
-                        <input type="text" class="fields" placeholder="Shoe Name" id="addProd_ShoeName" required>
+                    <div class="popup-section product-right" style="margin-top: 50px;">
+                        <input type="text" class="fields" placeholder="Shoe Name" id="addProd_ShoeName">
                         <br>
                         <input type="text"  class="fields"  placeholder="Price" id="addProd_ShoePrice" required>
                         <br>
-                        <input type="text"  class="fields"  placeholder="Category" id="addProd_ShoeCategory" required>
+                        <select name="categories" id="addProd_ShoeCategory"  class="fields">
+                            <option value="" disabled selected>Category</option>
+                            <option value="lacedup">Laced Up</option>
+                            <option value="sneakers">Sneakers</option>
+                            <option value="Sandals">Sandals</option>
+                            <option value="menshoes">Men Shoes</option>
+                            <option value="flatsandals">Flat Sandals</option>
+                            <option value="indoorslippers">Indoor Slippers</option>
+                          </select>
+
                         <br>
                         <div class="description">
                             <input type="textarea"  class="fields-desc"  placeholder="Description" id="addProd_ShoeDescription">
