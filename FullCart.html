@@ -59,22 +59,51 @@
 
     <!--CONTENT-->
     <div class="content">
-        <div class="left-content">
-            <h1>Shopping Cart.</h1>
-               
-            <div class="table">
-                
-                <table class="cart-items" id="cart-items">
+        <h1>Shopping Cart.</h1> 
+        <div class="shopfullcontent">
+            <div class="left-content">
+                <div class="table">
+                    <table class="cart-items" id="cart-items">
                     
-                </table>
+                    </table>
+                </div>
             </div>
-    
-        </div>
 
-                    
-                </form>
+            <div class="right-content">
+                <div class="info-box">
+                    <form>
+                        <div class="form-title">
+                            <i class="bi bi-bag-fill"></i>
+                            <span> COMPLETE ORDER</span>
+                        </div>
+                        <br>
+                        <br>
+                        <table>
+                            <tr>
+                                <td class="label"><p>Name</p></td>
+                                <td><input type="text" class="fields" id="txtName"></td>
+                            </tr>
+                            <tr>
+                                <td class="label"><p>Phone</p></td>
+                                <td><input type="text" class="fields" id="txtNumber"></td>
+                            </tr>
+                            <tr>
+                                <td class="label"><p>Address</p></td>
+                                <td>
+                                    <!--input saved address here-->
+                                </td>
+                            </tr>
+                        </table>
+
+                        <button class="button-actions">
+                            <span>SUBMIT ORDER</span>
+                        </button>
+
+                    </form>
+                </div>
             </div>
         </div>
+            
     </div>
 
     <p id="custhiddenId"></p>

@@ -78,6 +78,11 @@ header {
     margin-top: 100px;
 }
 
+.shopfullcontent{
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
 /*LEFT AREA*/
 
 .left-content{
@@ -183,12 +188,14 @@ header {
     font-size: 14px;
 }
 
+/*RIGHT AREA*/
+
 .info-box{
     width: 550px;
     height: 500px;
     background-color: white;
     border-radius: 25px;
-    margin: 40px;
+    margin: 60px;
 }
 
 .info-box form{
@@ -219,6 +226,26 @@ header {
     padding-top: 15px;
 }
 
+.button-actions{
+    width: 200px;
+    padding: 5px;
+    font-size: 13px;
+    border-radius: 25px;
+    background-color: #aa6023;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    margin: auto;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.button-actions:hover{
+    background-color: #212529;
+}
 
 button#custlogout  {
 	background: none;
