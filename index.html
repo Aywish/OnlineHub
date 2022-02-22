@@ -7,7 +7,7 @@
 
     <script>
         //interchanging banner
-        var x = 0, y = 0, z = 0;
+        var x = 0;
         var gradient = "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0), rgba(0,0,0,0), #e5e5e5), ";
         var buttonLink = "index.html";
 
@@ -38,14 +38,12 @@
             ]
 
             bannerImg.style.background = bannerImgArray[x];
-            bannerTitle.innerHTML = bannerTitleArray[y];
-            bannerSubtitle.innerHTML = bannerSubtitleArray[z];
-            bannerButtons.innerHTML = bannerButtonsArray[z];
+            bannerTitle.innerHTML = bannerTitleArray[x];
+            bannerSubtitle.innerHTML = bannerSubtitleArray[x];
+            bannerButtons.innerHTML = bannerButtonsArray[x];
 
             x = (x+1)%bannerImgArray.length;
-            y = (y+1)%bannerTitleArray.length;
-            z = (z+1)%bannerSubtitleArray.length;
-            a = (a+1)%bannerButtonsArray.length
+
         }
         setInterval(bannerchange, 5000);
     </script>
