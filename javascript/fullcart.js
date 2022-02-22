@@ -21,11 +21,12 @@ cartReference.on("child_added", snap => {
   var oID = snap.child("orderID").val();
   var prodName = snap.child("prodName").val();
   var prodPrice = snap.child("prodPrice").val();
+  var prodColor = snap.child("prodColor").val();
+  var prodSize = snap.child("prodSize").val();
   var cshmkrName = snap.child("shoemakerName").val();
 
 
-  $(".cart-items").append('<tr><td class="checkbox"><input type="checkbox" name=""></td><td><img class="product-image" src="images/1.jpg"></td><td class="prod-details"><p class="shoename cart-col2">' + prodName + '</p><p class="shoemaker cart-col2">' + cshmkrName + '</p> </td><td><table class="specs"><tr class="spec-row"><td class="spec-title">Color: </td> <td class="spec-value">White</td></tr><tr class="spec-row"><td class="spec-title">Size: </td><td class="spec-value">6</td></tr>  <tr class="spec-row"><td class="spec-title">Qty: </td><td class="spec-value">1</td></tr></table></td><td><p class="price"> ₱' + prodPrice + '.00</p><button class="delete-button" onclick="deleteOrder(' + oID + ')">DELETE</button></td></tr>');
-
+  $(".cart-items").append('<tr><td class="checkbox"><input type="checkbox" name=""></td><td><img class="product-image" src="images/1.jpg"></td><td class="prod-details"><p class="shoename cart-col2">' + prodName + '</p><p class="shoemaker cart-col2">' + cshmkrName + '</p> </td><td><table class="specs"><tr class="spec-row"><td class="spec-title">Color: </td> <td class="spec-value"> '+ prodColor+ '</td></tr><tr class="spec-row"><td class="spec-title">Size: </td><td class="spec-value"> ' + prodSize + ' </td></tr>  <tr class="spec-row"><td class="spec-title">Qty: </td><td class="spec-value">1</td></tr></table></td><td><p class="price"> ₱' + prodPrice + '.00</p><button class="delete-button" onclick="deleteOrder(' + oID + ')">DELETE</button></td></tr>');
 });
 
 
