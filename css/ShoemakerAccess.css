@@ -561,7 +561,7 @@ input[type="checkbox"]:checked + label, input[type="checkbox"]:hover + label{
         background-color: white;
         width: 50%;
         min-width: 430px;
-        height: 800px;
+        height: 80%;
         position: absolute;
         margin: auto;
         z-index: 3;
@@ -572,7 +572,7 @@ input[type="checkbox"]:checked + label, input[type="checkbox"]:hover + label{
 
     .popup-scrollable{
         background-color: white;
-        height: 750px;
+        height: 95%;
         overflow-y:auto;
         overflow-x: hidden;
         margin: auto;
@@ -603,7 +603,8 @@ input[type="checkbox"]:checked + label, input[type="checkbox"]:hover + label{
     .popup-content{
         margin-top: 25px;
     }
-    .popup .product-left{
+
+    .popup .product-left, .popup .product-right{
         display: table;
         margin-bottom: 20px;
     }
@@ -877,32 +878,13 @@ p{
 
     .popup .popup-content {
         height: 350px;
-        display: flex;
+        display: inline-flex;
         flex-wrap: wrap;
     }
     
     .popup .popup-content .popup-section {
         flex: 1;
         padding: 25px; 
-    }
-
-
-    .product-right .shoe-name{
-        font-size: 1.50em;
-        font-weight: bold;
-        margin: 0;
-    }
-
-    .product-right .shoe-maker{
-        font-size: 12px;
-        color: gray;
-        margin: 0;
-    }
-
-    .product-right .shoe-price{
-        color: #aa6023;
-        font-size: 1.45em;
-        margin: 0;
     }
 
     p{
@@ -952,7 +934,7 @@ p{
     }
 
     .fields { 
-        width: 400px;
+        width: 350px;
         padding-left: 10px;
         border: 1px solid #212529;
         border-radius: 25px;
@@ -961,7 +943,7 @@ p{
     }
 
     .fields-desc { 
-        width: 400px;
+        width: 350px;
         height: 200px;
         padding-left: 10px;
         border: 1px solid #212529;
