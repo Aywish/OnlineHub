@@ -192,14 +192,19 @@ header {
 
 .info-box{
     width: 550px;
-    height: 450px;
+    height: 400px;
     background-color: white;
     border-radius: 25px;
     margin: 60px;
 }
 
-.info-box form{
-    padding: 30px;
+.info-box .form-title{
+    padding-left: 30px;
+    padding-top: 30px;
+}
+
+#infoTable {
+    margin-left: 20px;
 }
 
 .fields{
@@ -246,7 +251,7 @@ header {
     position: relative;
     margin: auto;
     display: block;
-    margin-top: 30px;
+    margin-top: 50px;
     margin-bottom: 5px;
 }
 

@@ -52,7 +52,9 @@ info.on("value", function (snap) {
       var city = snap.val().city;
       var pCode = snap.val().postalCode;
 
-      $("#infoTable").append('<tr><td class="label"><p>Name</p></td><td class="infoFields"><input type="text" class="fields" id="txtName"></td></tr><tr><td class="label"><p>Contact No</p></td><td class="infoFields"><input type="text" class="fields" id="txtNumber"></td></tr><tr><td class="label"><p>Address</p></td><td class="label"><p id="txtAddress">' + hNo + ' ' + stName + ', ' + brgy + ', ' + city + ', ' + pCode + '</p></td></tr>');
+      var address = hNo + ' ' + stName + ', ' + brgy + ', ' + city + ', ' + pCode;
+
+      document.getElementById("txtAddress").innerHTML = address;
     });
 
     document.getElementById("txtName").value = fullName;
