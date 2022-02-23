@@ -2,6 +2,7 @@ var userID = localStorage.getItem("userID");
 var custUser, productChecked;
 
 var CustLogout = document.getElementById("custlogout");
+var submitOrder = document.getElementById("btnSubmitOrder");
 
 
 //Check if user is logged in
@@ -27,12 +28,137 @@ cartReference.on("child_added", snap => {
   var cshmkrName = snap.child("shoemakerName").val();
 
 
-  $(".cart-items").append('<tr><td class="checkbox"><input type="checkbox" id="' + prodId + '"  onclick="orderTBS(' + oID + ')"></td><td><img class="product-image" src=" ' + imageLink + ' "></td><td class="prod-details"><p class="shoename cart-col2">' + prodName + '</p><p class="shoemaker cart-col2">' + cshmkrName + '</p> </td><td><table class="specs"><tr class="spec-row"><td class="spec-title">Color: </td> <td class="spec-value"> '+ prodColor + '</td></tr><tr class="spec-row"><td class="spec-title">Size: </td><td class="spec-value"> ' + prodSize + ' </td></tr>  <tr class="spec-row"><td class="spec-title">Qty: </td><td class="spec-value"> ' + orderQty + ' </td></tr></table></td><td><p class="price"> ₱' + prodPrice + '.00</p><button class="delete-button" onclick="deleteOrder(' + oID + ')">DELETE</button></td></tr>');
+  $(".cart-items").append('<tr><td class="checkbox"><input type="checkbox" class="selection" name="selection"></td><td><img class="product-image" src=" ' + imageLink + ' "></td><td class="prod-details"><p class="shoename cart-col2">' + prodName + '</p><p class="shoemaker cart-col2">' + cshmkrName + '</p><p class="id">' + prodId + '</p> <p class="oid">' + oID + '</p></td><td><table class="specs"><tr class="spec-row"><td class="spec-title">Color: </td> <td class="color-value"> '+ prodColor + '</td></tr><tr class="spec-row"><td class="spec-title">Size: </td><td class="size-value"> ' + prodSize + ' </td></tr>  <tr class="spec-row"><td class="spec-title">Qty: </td><td class="qty-value"> ' + orderQty + ' </td></tr></table></td><td><p class="price" value="' + prodPrice + '"> ₱' + prodPrice + '.00</p><button class="delete-button" onclick="deleteOrder(' + oID + ')">DELETE</button></td></tr>');
 });
 
-function orderTBS(id) {
+//Index getter
+$("#btnSubmitOrder").click(function () {
+  var checked = [];
+
+$("input[name='selection']").each(function (i) {
+  if(this.checked){
+      checked.push(parseInt($(this).val()));
+      //alert("The index is " + i + " and the value is " + $(this).val());
+      productChecked = i;
+  }
+  });
+});
+
+function checkItemSelected(){
+  //#region ID Generator YEARMONTHDAYHOURSMINUTESSECONDS
+  var today = new Date();
+  var time = new Date().getFullYear() + "" + new Date().getMonth()  + 1 + "" + new Date().getDate()  + "" + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
+  var orderID = time;
+ 
+  //#endregion
+ 
+   var inputs = document.getElementsByTagName("input");
+   var imageLinks = document.getElementsByTagName("img");
+   var prodIds = document.getElementsByClassName("id");
+   var oid = document.getElementsByClassName("oid");
+   var prodNames = document.getElementsByClassName("shoename cart-col2");
+   var prodPrices = document.getElementsByClassName("price");
+   var prodColors = document.getElementsByClassName("color-value");
+   var prodSizes = document.getElementsByClassName("size-value");
+   var orderQtys = document.getElementsByClassName("qty-value");
+   var cshmkrNames = document.getElementsByClassName("shoemaker cart-col2");
+   
+   var inputObj;
+   var selectedCount = 0;
+
+   for(var counter = 0 ; counter < inputs.length ; counter++) {
+    inputObj = inputs[counter];
+    var type = inputObj.getAttribute("type");
+    if (type == 'checkbox' && inputObj.checked) {
+      selectedCount++;
+    }
+  }
+  //alert(selectedCount);
+
+
+  if(selectedCount > 1){
+    for(var count = 0 ; count < selectedCount ; count++) {
+    
+      var savedOrderID = orderID.toString();
+      var orderid = orderID.toString() + count.toString();
+      var currOrderID =  oid[count].innerHTML;
+      var orderQuantity = orderQtys[count].innerHTML;
+      var cProdID = prodIds[count].innerHTML;
+      var cProdName = prodNames[count].innerHTML;
+      var cProdPrice = prodPrices[count].getAttribute("value");
+      var cImageLink = imageLinks[count].getAttribute("src");
+      var cProdSize = prodSizes[count].innerHTML;
+      var cProdColor = prodColors[count].innerHTML;
+      var shmkrName = cshmkrNames[count].innerHTML;
   
+      console.log("Item #" + count + " Name: " + cProdName);
+      
+      firebase
+      .database()
+      .ref("users/" + userID + "/orders/" + orderid)
+      .set({
+        userID: userID,
+        orderID: savedOrderID,
+        prodId: cProdID,
+        prodName: cProdName.trim(),
+        prodPrice: parseInt(cProdPrice.trim()),
+        prodSize: parseInt(cProdSize.trim()),
+        imageLink: cImageLink.trim(),
+        prodColor: cProdColor.trim(),
+        prodQty: parseInt(orderQuantity.trim()),
+        shoemakerName: shmkrName.trim()
+      });
+      var orderReference = firebase.database().ref().child("users/" + userID + "/cart/" + currOrderID)
+      orderReference.remove();
+    }
+    alert("Ordered Successfully");
+    location.reload();
+  }
+  else{
+      var savedOrderID = orderID.toString();
+      var orderid = orderID.toString();
+      var currOrderID =  oid[productChecked].innerHTML;
+      var orderQuantity = orderQtys[productChecked].innerHTML;
+      var cProdID = prodIds[productChecked].innerHTML;
+      var cProdName = prodNames[productChecked].innerHTML;
+      var cProdPrice = prodPrices[productChecked].getAttribute("value");
+      var cImageLink = imageLinks[productChecked].getAttribute("src");
+      var cProdSize = prodSizes[productChecked].innerHTML;
+      var cProdColor = prodColors[productChecked].innerHTML;
+      var shmkrName = cshmkrNames[productChecked].innerHTML;
+  
+      console.log("Item #" + productChecked + " Name: " + cProdName);
+      
+      firebase
+       .database()
+       .ref("users/" + userID + "/orders/" + orderid)
+       .set({
+         userID: userID,
+         orderID: savedOrderID,
+         prodId: cProdID,
+         prodName: cProdName.trim(),
+         prodPrice: parseInt(cProdPrice.trim()),
+         prodSize: parseInt(cProdSize.trim()),
+         imageLink: cImageLink.trim(),
+         prodColor: cProdColor.trim(),
+         prodQty: parseInt(orderQuantity.trim()),
+         shoemakerName: shmkrName.trim()
+       });
+       alert("Ordered Successfully");
+
+       var orderReference = firebase.database().ref().child("users/" + userID + "/cart/" + currOrderID)
+       orderReference.remove();
+       //does not add yet to shoemakers Orders
+       location.reload();
+  }
 }
+
+submitOrder.onclick = function () {
+ 
+   checkItemSelected();
+
+};
+ 
 
 var info = firebase.database().ref("users/" + userID);
 info.on("value", function (snap) {
