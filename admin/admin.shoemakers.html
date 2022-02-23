@@ -248,31 +248,31 @@
             };
 
 
-            // function OpenPopupView(id) {
-            //     viewshmkrId = id;
+            function OpenPopupView(id) {
+                viewshmkrId = id;
 
-            //     firebase.database()
-            //         .ref("users/" + id)
-            //         .on("value", function (snap) {
-            //             vwsname = snap.val().storeName;
-            //             vwfname = snap.val().firstName;
-            //             vwmname = snap.val().middleName;
-            //             vwlname = snap.val().lastName;
-            //             vwsuffix = snap.val().suffix;
-            //             vwhno = snap.val().houseNo;
-            //             vwstname = snap.val().stname;
-            //             vwbrgy = snap.val().barangay;
-            //             vwcity = snap.val().city;
-            //             vwpcode = snap.val().postalCode;
-            //             vwcno = snap.val().contactNo;
-            //             vwemail = snap.val().email;
+                firebase.database()
+                    .ref("users/" + id)
+                    .on("value", function (snap) {
+                        vwsname = snap.val().storeName;
+                        vwfname = snap.val().firstName;
+                        vwmname = snap.val().middleName;
+                        vwlname = snap.val().lastName;
+                        vwsuffix = snap.val().suffix;
+                        vwhno = snap.val().houseNo;
+                        vwstname = snap.val().stname;
+                        vwbrgy = snap.val().barangay;
+                        vwcity = snap.val().city;
+                        vwpcode = snap.val().postalCode;
+                        vwcno = snap.val().contactNo;
+                        vwemail = snap.val().email;
 
 
-            //         });
+                    });
                 
-            //     document.getElementById("popup_viewSM").style.display = "block";
-            //     document.getElementById("bgoverlay").style.display = "block";
-            // };
+                document.getElementById("popup_viewSM").style.display = "block";
+                document.getElementById("bgoverlay").style.display = "block";
+            };
         </script>
         
     </body>
