@@ -28,7 +28,7 @@ cartReference.on("child_added", snap => {
   var cshmkrName = snap.child("shoemakerName").val();
 
 
-  $(".cart-items").append('<tr><td class="checkbox"><input type="checkbox" class="selection" name="selection"></td><td><img class="product-image" src=" ' + imageLink + ' "></td><td class="prod-details"><p class="shoename cart-col2">' + prodName + '</p><p class="shoemaker cart-col2">' + cshmkrName + '</p><p class="id">' + prodId + '</p> <p class="oid">' + oID + '</p></td><td><table class="specs"><tr class="spec-row"><td class="spec-title">Color: </td> <td class="color-value"> '+ prodColor + '</td></tr><tr class="spec-row"><td class="spec-title">Size: </td><td class="size-value"> ' + prodSize + ' </td></tr>  <tr class="spec-row"><td class="spec-title">Qty: </td><td class="qty-value"> ' + orderQty + ' </td></tr></table></td><td><p class="price" value="' + prodPrice + '"> ₱' + prodPrice + '.00</p><button class="delete-button" onclick="deleteOrder(' + oID + ')">DELETE</button></td></tr>');
+  $(".cart-items").append('<tr><td class="checkbox"><input type="checkbox" class="selection" name="selection"></td><td><img class="product-image" src=" ' + imageLink + ' "></td><td class="prod-details"><p class="shoename cart-col2">' + prodName + '</p><p class="shoemaker cart-col2">' + cshmkrName + '</p><p style="display:none" class="imageLink">' + imageLink + '</p><p style="display:none" class="id">' + prodId + '</p> <p style="display:none"  class="oid">' + oID + '</p></td><td><table class="specs"><tr class="spec-row"><td class="spec-title">Color: </td> <td class="color-value"> '+ prodColor + '</td></tr><tr class="spec-row"><td class="spec-title">Size: </td><td class="size-value"> ' + prodSize + ' </td></tr>  <tr class="spec-row"><td class="spec-title">Qty: </td><td class="qty-value"> ' + orderQty + ' </td></tr></table></td><td><p class="price" value="' + prodPrice + '"> ₱' + prodPrice + '.00</p><button class="delete-button" onclick="deleteOrder(' + oID + ')">DELETE</button></td></tr>');
 });
 
 //Index getter
@@ -53,7 +53,7 @@ function checkItemSelected(){
   //#endregion
  
    var inputs = document.getElementsByTagName("input");
-   var imageLinks = document.getElementsByTagName("img");
+   var imageLinks = document.getElementsByClassName("imageLink");
    var prodIds = document.getElementsByClassName("id");
    var oid = document.getElementsByClassName("oid");
    var prodNames = document.getElementsByClassName("shoename cart-col2");
@@ -86,7 +86,7 @@ function checkItemSelected(){
       var cProdID = prodIds[count].innerHTML;
       var cProdName = prodNames[count].innerHTML;
       var cProdPrice = prodPrices[count].getAttribute("value");
-      var cImageLink = imageLinks[count].getAttribute("src");
+      var cImageLink = imageLinks[count].innerHTML;
       var cProdSize = prodSizes[count].innerHTML;
       var cProdColor = prodColors[count].innerHTML;
       var shmkrName = cshmkrNames[count].innerHTML;
@@ -106,7 +106,9 @@ function checkItemSelected(){
         imageLink: cImageLink.trim(),
         prodColor: cProdColor.trim(),
         prodQty: parseInt(orderQuantity.trim()),
-        shoemakerName: shmkrName.trim()
+        shoemakerName: shmkrName.trim(),
+        status: "Pending",
+        orderType: "RTW"
       });
       var orderReference = firebase.database().ref().child("users/" + userID + "/cart/" + currOrderID)
       orderReference.remove();
@@ -122,7 +124,7 @@ function checkItemSelected(){
       var cProdID = prodIds[productChecked].innerHTML;
       var cProdName = prodNames[productChecked].innerHTML;
       var cProdPrice = prodPrices[productChecked].getAttribute("value");
-      var cImageLink = imageLinks[productChecked].getAttribute("src");
+      var cImageLink = imageLinks[productChecked].innerHTML;
       var cProdSize = prodSizes[productChecked].innerHTML;
       var cProdColor = prodColors[productChecked].innerHTML;
       var shmkrName = cshmkrNames[productChecked].innerHTML;
@@ -142,7 +144,9 @@ function checkItemSelected(){
          imageLink: cImageLink.trim(),
          prodColor: cProdColor.trim(),
          prodQty: parseInt(orderQuantity.trim()),
-         shoemakerName: shmkrName.trim()
+         shoemakerName: shmkrName.trim(),
+         status: "Pending",
+         orderType: "RTW"
        });
        alert("Ordered Successfully");
 
