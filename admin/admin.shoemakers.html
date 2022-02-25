@@ -18,14 +18,14 @@
             document.getElementById("bgoverlay").style.display = "block";
         }
 
-        function OpenPopupView() {
-            document.getElementById("popup_viewSM").style.display = "block";
-            document.getElementById("bgoverlay").style.display = "block";
-        }
+        // function OpenPopupView() {
+        //     document.getElementById("popup_viewSM").style.display = "block";
+        //     document.getElementById("bgoverlay").style.display = "block";
+        // }
 
         function ClosePopup() {
             document.getElementById("popup_addSM").style.display = "none";
-            // document.getElementById("popup_viewSM").style.display = "none";
+            document.getElementById("popup_viewSM").style.display = "none";
             document.getElementById("bgoverlay").style.display = "none";
         }
     </script>
@@ -86,7 +86,7 @@
         </div>
 
         <!--VIEW SHOEMAKER POPUP-->
-        <!-- <div class="popup" id="popup_viewSM">
+        <div class="popup" id="popup_viewSM">
             <div class="popup-scrollable">
                 <i class="bi bi-x" onclick="ClosePopup()"></i>
                 <div class="popup-content">
@@ -154,11 +154,11 @@
                     </form>
                 </div>
             </div>
-            <div class="addshoemaker">
+            <!-- <div class="addshoemaker">
                 <a href="#" id="addshoemaker">EDIT SHOEMAKER</a> -->
                 <!--popup content will be like for add shoemaker and button will change to "SAVE CHANGES"... backend database data will also be updated-->
-            <!-- </div>
-        </div> -->
+            <!-- </div> -->
+        </div>
         <!--END OF POPUP-->
 
         <div class="table">
@@ -193,10 +193,11 @@
                 var city = snap.child("city").val();
                 var pCode = snap.child("postalCode").val();
                 var stName = snap.child("streetName").val();
-                
-                $("#admin-shmkrview").append('<tr><td>' + regNum + '</td><td><p>' + shopName + '</p></td><td><p>' + fName + ' ' + lName + '</p></td><td><p>' + hNo + ' ' + stName + ' '  + brgy + ', ' + city + ', ' + pCode + '</p></td><td><button class="button-actions" onclick="OpenPopupView(' + shmkrId + ')"><i class="bi bi-eye"></i><span>VIEW</span></button><button class="button-actions"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
+
+                $("#admin-shmkrview").append('<tr><td>' + regNum + '</td><td><p>' + shopName + '</p></td><td><p>' + fName + ' ' + lName + '</p></td><td><p>' + hNo + ' ' + stName + ' '  + brgy + ', ' + city + ', ' + pCode + '</p></td><td><button class="button-actions" id="popupView"><i class="bi bi-eye"></i><span>VIEW</span></button><button class="button-actions"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
             });
 
+            
             function readAddForm() {
                 storeName = document.getElementById("storename").value;
                 regNum = document.getElementById("regnum").value;
@@ -213,6 +214,7 @@
                 email = document.getElementById("email").value;
             };
     
+
 
             addshoemaker.onclick = function () {
                 readAddForm();
@@ -247,32 +249,38 @@
                 });
             };
 
+            // function OpenPopupView(id) {
+            //     viewshmkrId = id;
 
-            function OpenPopupView(id) {
-                viewshmkrId = id;
-
-                firebase.database()
-                    .ref("users/" + id)
-                    .on("value", function (snap) {
-                        vwsname = snap.val().storeName;
-                        vwfname = snap.val().firstName;
-                        vwmname = snap.val().middleName;
-                        vwlname = snap.val().lastName;
-                        vwsuffix = snap.val().suffix;
-                        vwhno = snap.val().houseNo;
-                        vwstname = snap.val().stname;
-                        vwbrgy = snap.val().barangay;
-                        vwcity = snap.val().city;
-                        vwpcode = snap.val().postalCode;
-                        vwcno = snap.val().contactNo;
-                        vwemail = snap.val().email;
+            //     firebase.database()
+            //         .ref("users/" + viewshmkrId)
+            //         .on("value", function (snap) {
+            //             vwsname = snap.val().storeName;
+            //             vwfname = snap.val().firstName;
+            //             vwmname = snap.val().middleName;
+            //             vwlname = snap.val().lastName;
+            //             vwsuffix = snap.val().suffix;
+            //             vwhno = snap.val().houseNo;
+            //             vwstname = snap.val().stname;
+            //             vwbrgy = snap.val().barangay;
+            //             vwcity = snap.val().city;
+            //             vwpcode = snap.val().postalCode;
+            //             vwcno = snap.val().contactNo;
+            //             vwemail = snap.val().email;
 
 
-                    });
+            //         });
                 
-                document.getElementById("popup_viewSM").style.display = "block";
-                document.getElementById("bgoverlay").style.display = "block";
-            };
+            //     document.getElementById("popup_viewSM").style.display = "block";
+            //     document.getElementById("bgoverlay").style.display = "block";
+            // };
+
+
+            $(function(){
+                $("#popupView").click(function(){
+                    console.log("clicked")
+            });
+        });
         </script>
         
     </body>
