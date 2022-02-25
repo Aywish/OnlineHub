@@ -746,7 +746,7 @@ input[type="file"], input[type="radio"]{
     flex-wrap: wrap;
 }
 
-.addbanner, .editbanner{
+.editbanner{
     display: flex;
     position: absolute;
     bottom: 0;
@@ -754,7 +754,27 @@ input[type="file"], input[type="radio"]{
     background-color: #212529;    
 }
 
-.addbanner a, .editbanner a{
+.editbanner a{
+    text-align: center;
+    background-color: #212529;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 15px;
+    margin: auto;
+}
+
+.add{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #212529;    
+}
+
+.add a{
     text-align: center;
     background-color: #212529;
     color: #fff;
