@@ -294,6 +294,26 @@
                     document.getElementById("viewCN").innerHTML = vwcno;
                     document.getElementById("viewEmail").innerHTML = vwemail;
             };
+
+             //Get Value Attribute value 
+             $(document).on('click', "#deleteButton", function () {
+                //alert($(this).val());
+                shoemakerID = $(this).val();
+                deleteShoemaker();
+            });
+
+            function deleteShoemaker()
+            {
+                var shoemakerReference = firebase.database().ref().child("users/" + shoemakerID);
+                warning = "Are you sure you want to delete this shoemaker? This action can't be undone.";
+
+                if (confirm(warning) == true) {
+                    shoemakerReference.remove();
+
+                    alert("Shoemaker Account Deleted");
+                }
+                location.reload();
+            }
         </script>
         
     </body>
