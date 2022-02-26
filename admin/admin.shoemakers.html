@@ -11,24 +11,25 @@
         <link rel="stylesheet" href="../css/AdminAccess.css">
 
         <!--javascript -->
-    <script type="text/javascript">
-        //popup
-        function OpenPopup() {
-            document.getElementById("popup_addSM").style.display = "block";
-            document.getElementById("bgoverlay").style.display = "block";
-        }
 
-        // function OpenPopupView() {
-        //     document.getElementById("popup_viewSM").style.display = "block";
-        //     document.getElementById("bgoverlay").style.display = "block";
-        // }
+        <script type="text/javascript">
+            //popup
+            function OpenPopup() {
+                document.getElementById("popup_addSM").style.display = "block";
+                document.getElementById("bgoverlay").style.display = "block";
+            }
 
-        function ClosePopup() {
-            document.getElementById("popup_addSM").style.display = "none";
-            document.getElementById("popup_viewSM").style.display = "none";
-            document.getElementById("bgoverlay").style.display = "none";
-        }
-    </script>
+            // function OpenPopupView() {
+            //     document.getElementById("popup_viewSM").style.display = "block";
+            //     document.getElementById("bgoverlay").style.display = "block";
+            // }
+
+            function ClosePopup() {
+                document.getElementById("popup_addSM").style.display = "none";
+                document.getElementById("popup_viewSM").style.display = "none";
+                document.getElementById("bgoverlay").style.display = "none";
+            }
+        </script>
     
         <!-- icons -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
@@ -102,53 +103,53 @@
                             <table class="shoemakers_view shoemakers_fullname">
                                 <tr>
                                     <th>First Name:</th>
-                                    <td>Rolando</td>
+                                    <td id="viewFName">Rolando</td>
                                 </tr>
                                 <tr>
                                     <th>Middle Name:</th>
-                                    <td></td>
+                                    <td id="viewMName"></td>
                                 </tr>
                                 <tr>
                                     <th>Last Name:</th>
-                                    <td>Santos</td>
+                                    <td id="viewLName">Santos</td>
                                 </tr>
                                 <tr>
                                     <th>Suffix:</th>
-                                    <td>Sr.</td>
+                                    <td id="viewSuffix">Sr.</td>
                                 </tr>
                             </table>
                         <h5>Complete Address</h5>
                             <table class="shoemakers_view shoemakers_fulladdress">
                                 <tr>
                                     <th>House No:</th>
-                                    <td>365</td>
+                                    <td id="viewHNo">365</td>
                                 </tr>
                                 <tr>
                                     <th>Street Name:</th>
-                                    <td>J.P. Rizal</td>
+                                    <td id="viewSN">J.P. Rizal</td>
                                 </tr>
                                 <tr>
                                     <th>Baranggay:</th>
-                                    <td>Sto. Niño</td>
+                                    <td id="viewBrgy">Sto. Niño</td>
                                 </tr>
                                 <tr>
                                     <th>City:</th>
-                                    <td>Marikina</td>
+                                    <td id="viewCity">Marikina</td>
                                 </tr>
                                 <tr>
                                     <th>Postal Code:</th>
-                                    <td>1800</td>
+                                    <td id="viewPC">1800</td>
                                 </tr>
                             </table>
                         <h5>Contact Information</h5>
                         <table class="shoemakers_view shoemakers_fulladdress">
                             <tr>
                                 <th>Mobile Number:</th>
-                                <td>+639876543210</td>
+                                <td id="viewCN">+639876543210</td>
                             </tr>
                             <tr>
                                 <th>Email Address:</th>
-                                <td>tatayoly@gmail.com</td>
+                                <td id="viewEmail">tatayoly@gmail.com</td>
                             </tr>
                         </table>
                     </form>
@@ -178,12 +179,13 @@
             
             var userId = localStorage.getItem("userID");
 
-            var storeName, regNum, firstName, middleName, lastName, suffix, houseNo, stName, brgy, city, postalCode, contactNo, email, viewshmkrId;
+            var storeName, regNum, firstName, middleName, lastName, suffix, houseNo, stName, brgy, city, postalCode, contactNo, email, viewshmkrId, shoemakerID;
 
             
             var shmkrReference = firebase.database().ref().child("users/").orderByChild('accountType').equalTo("shoemaker");
+
             shmkrReference.on("child_added", snap => {
-                var shmkrId = snap.child("uid").val();
+                const shmkrId = snap.child("uid").val();
                 var shopName = snap.child("storeName").val();
                 var regNum = snap.child("registrationNum").val();
                 var fName = snap.child("firstName").val();
@@ -194,10 +196,9 @@
                 var pCode = snap.child("postalCode").val();
                 var stName = snap.child("streetName").val();
 
-                $("#admin-shmkrview").append('<tr><td>' + regNum + '</td><td><p>' + shopName + '</p></td><td><p>' + fName + ' ' + lName + '</p></td><td><p>' + hNo + ' ' + stName + ' '  + brgy + ', ' + city + ', ' + pCode + '</p></td><td><button class="button-actions" id="popupView"><i class="bi bi-eye"></i><span>VIEW</span></button><button class="button-actions"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
+                $("#admin-shmkrview").append('<tr><td>' + regNum + '</td><td><p>' + shopName + '</p></td><td><p>' + fName + ' ' + lName + '</p></td><td><p>' + hNo + ' ' + stName + ' '  + brgy + ', ' + city + ', ' + pCode + '</p></td><td><button class="button-actions" id="viewButton" value="' + shmkrId + '"><i class="bi bi-eye"></i><span>VIEW</span></button><button class="button-actions" id="deleteButton" value="' + shmkrId + '"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
             });
 
-            
             function readAddForm() {
                 storeName = document.getElementById("storename").value;
                 regNum = document.getElementById("regnum").value;
@@ -214,8 +215,6 @@
                 email = document.getElementById("email").value;
             };
     
-
-
             addshoemaker.onclick = function () {
                 readAddForm();
 
@@ -249,38 +248,52 @@
                 });
             };
 
-            // function OpenPopupView(id) {
-            //     viewshmkrId = id;
-
-            //     firebase.database()
-            //         .ref("users/" + viewshmkrId)
-            //         .on("value", function (snap) {
-            //             vwsname = snap.val().storeName;
-            //             vwfname = snap.val().firstName;
-            //             vwmname = snap.val().middleName;
-            //             vwlname = snap.val().lastName;
-            //             vwsuffix = snap.val().suffix;
-            //             vwhno = snap.val().houseNo;
-            //             vwstname = snap.val().stname;
-            //             vwbrgy = snap.val().barangay;
-            //             vwcity = snap.val().city;
-            //             vwpcode = snap.val().postalCode;
-            //             vwcno = snap.val().contactNo;
-            //             vwemail = snap.val().email;
-
-
-            //         });
-                
-            //     document.getElementById("popup_viewSM").style.display = "block";
-            //     document.getElementById("bgoverlay").style.display = "block";
-            // };
-
-
-            $(function(){
-                $("#popupView").click(function(){
-                    console.log("clicked")
+            //Get Value Attribute value 
+            $(document).on('click', "#viewButton", function () {
+                //alert($(this).val());
+                shoemakerID = $(this).val();
+                viewShoemakerPopup();
             });
-        });
+
+            function viewShoemakerPopup(){
+            
+                console.log("Clicked! SMID is: " + String(shoemakerID));
+
+                    firebase.database()
+                        .ref("users/" + shoemakerID)
+                        .on("value", function (snap) {
+                            vwsname = snap.val().storeName;
+                            vwregnum = snap.val().registrationNum;
+                            vwfname = snap.val().firstName;
+                            vwmname = snap.val().middleName;
+                            vwlname = snap.val().lastName;
+                            vwsuffix = snap.val().suffix;
+                            vwhno = snap.val().houseNo;
+                            vwstname = snap.val().streetName;
+                            vwbrgy = snap.val().barangay;
+                            vwcity = snap.val().city;
+                            vwpcode = snap.val().postalCode;
+                            vwcno = snap.val().contactNo;
+                            vwemail = snap.val().email;
+                        });
+                    
+                    document.getElementById("popup_viewSM").style.display = "block";
+                    document.getElementById("bgoverlay").style.display = "block";
+
+                    document.getElementById("shoemaker_storename").innerHTML = vwsname;
+                    document.getElementById("shoemaker_storeid").innerHTML = vwregnum;
+                    document.getElementById("viewFName").innerHTML = vwfname;
+                    document.getElementById("viewMName").innerHTML = vwmname;
+                    document.getElementById("viewLName").innerHTML = vwlname;
+                    document.getElementById("viewSuffix").innerHTML = vwsuffix;
+                    document.getElementById("viewHNo").innerHTML = vwhno;
+                    document.getElementById("viewSN").innerHTML = vwstname;
+                    document.getElementById("viewBrgy").innerHTML = vwbrgy;
+                    document.getElementById("viewCity").innerHTML = vwcity;
+                    document.getElementById("viewPC").innerHTML = vwpcode;
+                    document.getElementById("viewCN").innerHTML = vwcno;
+                    document.getElementById("viewEmail").innerHTML = vwemail;
+            };
         </script>
         
     </body>

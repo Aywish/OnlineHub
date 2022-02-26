@@ -31,18 +31,18 @@ cartReference.on("child_added", snap => {
   $(".cart-items").append('<tr><td class="checkbox"><input type="checkbox" class="selection" name="selection"></td><td><img class="product-image" src=" ' + imageLink + ' "></td><td class="prod-details"><p class="shoename cart-col2">' + prodName + '</p><p class="shoemaker cart-col2">' + cshmkrName + '</p><p style="display:none" class="imageLink">' + imageLink + '</p><p style="display:none" class="id">' + prodId + '</p> <p style="display:none"  class="oid">' + oID + '</p></td><td><table class="specs"><tr class="spec-row"><td class="spec-title">Color: </td> <td class="color-value"> '+ prodColor + '</td></tr><tr class="spec-row"><td class="spec-title">Size: </td><td class="size-value"> ' + prodSize + ' </td></tr>  <tr class="spec-row"><td class="spec-title">Qty: </td><td class="qty-value"> ' + orderQty + ' </td></tr></table></td><td><p class="price" value="' + prodPrice + '"> ₱' + prodPrice + '.00</p><button class="delete-button" onclick="deleteOrder(' + oID + ')">DELETE</button></td></tr>');
 });
 
-//Index getter
-$("#btnSubmitOrder").click(function () {
-  var checked = [];
+  //Index getter
+  $("#btnSubmitOrder").click(function () {
+    var checked = [];
 
-$("input[name='selection']").each(function (i) {
-  if(this.checked){
-      checked.push(parseInt($(this).val()));
-      //alert("The index is " + i + " and the value is " + $(this).val());
-      productChecked = i;
-  }
+    $("input[name='selection']").each(function (i) {
+      if(this.checked){
+          checked.push(parseInt($(this).val()));
+          //alert("The index is " + i + " and the value is " + $(this).val());
+          productChecked = i;
+      }
+    });
   });
-});
 
 function checkItemSelected(){
   //#region ID Generator YEARMONTHDAYHOURSMINUTESSECONDS
@@ -158,9 +158,7 @@ function checkItemSelected(){
 }
 
 submitOrder.onclick = function () {
- 
    checkItemSelected();
-
 };
  
 
