@@ -297,6 +297,11 @@ input[type=text]{
     margin-left: 10%;
 }
 
+.credentialH{
+    text-align: center;
+    margin-top: 20px;
+}
+
 #houseno, #postalcode{
     width: 20%;
 

@@ -78,6 +78,7 @@
                         <h5>Contact Information</h5>
                             <input type="text" placeholder="Mobile Number" class="contact" id="mobilenumber" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                             <input type="text" placeholder="Email Address" class="contact" id="email">
+                        <br>
                     </form>
                 </div>
             </div>
@@ -152,13 +153,13 @@
                                 <td id="viewEmail">tatayoly@gmail.com</td>
                             </tr>
                         </table>
+                        <br><br>
+                        <h4 class="credentialH">LOGIN CREDENTIAL TO BE USED UPON FIRST LOGIN</h4>
+                        <h5 class="credentialH" id="lcEmail"></h5>
+                        <h5 class="credentialH" id="lcPass"></h5>
                     </form>
                 </div>
             </div>
-            <!-- <div class="addshoemaker">
-                <a href="#" id="addshoemaker">EDIT SHOEMAKER</a> -->
-                <!--popup content will be like for add shoemaker and button will change to "SAVE CHANGES"... backend database data will also be updated-->
-            <!-- </div> -->
         </div>
         <!--END OF POPUP-->
 
@@ -213,12 +214,14 @@
                 postalCode = document.getElementById("postalcode").value;
                 contactNo = document.getElementById("mobilenumber").value;
                 email = document.getElementById("email").value;
+                pass = "password" + regNum;
             };
+            
     
             addshoemaker.onclick = function () {
                 readAddForm();
 
-                firebase.auth().createUserWithEmailAndPassword(email, "password" + storeName)
+                firebase.auth().createUserWithEmailAndPassword(email, pass)
                     .then((userCredential) => {
                         // Signed up 
                         var user = userCredential.user;
@@ -241,6 +244,7 @@
                             postalCode: postalCode,
                             contactNo: contactNo,
                             email: email,
+                            password: pass,
                             accountType: "shoemaker"
                         });
                 alert("Shoemaker Added!");
@@ -275,6 +279,7 @@
                             vwpcode = snap.val().postalCode;
                             vwcno = snap.val().contactNo;
                             vwemail = snap.val().email;
+                            pass = snap.val().password;
                         });
                     
                     document.getElementById("popup_viewSM").style.display = "block";
@@ -293,6 +298,8 @@
                     document.getElementById("viewPC").innerHTML = vwpcode;
                     document.getElementById("viewCN").innerHTML = vwcno;
                     document.getElementById("viewEmail").innerHTML = vwemail;
+                    document.getElementById("lcEmail").innerHTML = "EMAIL: " + vwemail;
+                    document.getElementById("lcPass").innerHTML = "PASSWORD: " + pass;
             };
 
              //Get Value Attribute value 
