@@ -20,10 +20,10 @@
                 document.getElementById("bgoverlay").style.display = "block";
             }
 
-            function editBanner() {
-                document.getElementById("edit_banner").style.display = "block";
-                document.getElementById("bgoverlay").style.display = "block";
-            }
+            // function editBanner() {
+            //     document.getElementById("edit_banner").style.display = "block";
+            //     document.getElementById("bgoverlay").style.display = "block";
+            // }
 
             function ClosePopup() {
                 
@@ -88,7 +88,7 @@
         </div>
 
         <div class="table">
-            <table>
+            <table id="bannerView">
                 <tr>
                     <th><h4 class="admin-tblHeader">IMAGE</h4></th>
                     <th><h4 class="admin-tblHeader">TITLE</h4></th>
@@ -96,54 +96,8 @@
                     <th><h4 class="admin-tblHeader">BUTTONS</h4></th>
                     <th><h4 class="admin-tblHeader">ACTIONS</h4></th>
                 </tr>
-                <tr>
-                    <td><img class="admin-image" src="images/2.jpg"></td>
-                    <td><p>HEADLINE</p></td>
-                    <td><p>Lorem ipsum dolor sit amet.</p></td>
-                    <td><p>SHOP NOW</p></td>
-                    <td>
-                        <button class="button-actions"  onclick="editBanner()">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                            <span>EDIT</span>
-                        </button>
-                        <button class="button-actions">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                            <span>DELETE</span>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img class="admin-image" src="images/1.jpg"></td>
-                    <td><p>SEE HOW WE DO IT!</p></td>
-                    <td><p></p></td>
-                    <td><p>DISCOVER SHOPS</p> <br> <p>MARIKINA NEWS</p></td>
-                    <td>
-                        <button class="button-actions" onclick="editBanner()">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                            <span>EDIT</span>
-                        </button>
-                        <button class="button-actions">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                            <span>DELETE</span>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img class="admin-image" src="images/1.jpg"></td>
-                    <td><p>QUALITY PRODUCTS</p></td>
-                    <td><p>Sample subtitle.</p></td>
-                    <td><p></p></td>
-                    <td>
-                        <button class="button-actions">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                            <span>EDIT</span>
-                        </button>
-                        <button class="button-actions">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                            <span>DELETE</span>
-                        </button>
-                    </td>
-                </tr>
+                
+
             </table>
         </div>
 
@@ -152,16 +106,21 @@
             <div class="popup-scrollable">
                 <i class="bi bi-x" onclick="ClosePopup()"></i>
                 <div class="popup-content">
-                    <div id="display_image">
-                        <input type="file" id="image_input">
-                        <label for="image_input" class="add-image">
+                    <div id="display_image_edit">
+                        <input type="file" id="image_input_edit">
+                        <label for="image_input_edit" class="add-image">
                             <i class="bi bi-plus-circle-dotted"></i>
                         </label>
                         <span>Add Image</span>
                     </div>
-                    <input type="text" class="fields" placeholder="Title">
+                    <input type="text" class="fields" placeholder="Title" id="eBannerTitle">
                     <br>
-                    <input type="text"  class="fields"  placeholder="Subtitle">
+                    <input type="text"  class="fields"  placeholder="Subtitle" id="eBannerSubtitle">
+                    <br>
+                    <div class="product-left upload-progress">
+                        <h4>Upload Progress</h4>
+                        <label class="uploadProgress" id="upProgressEdit"></label>
+                    </div>
                     <div class="add-actions">
                         <table class="banner-buttonAdd" id="">
                             <tr>
@@ -170,8 +129,8 @@
                                 <th>Action</th>
                             </tr>
                             <tr id=''>
-                                <td><input type="text" name='url0'  placeholder='Insert website URL' id='' class='col1'/></td>
-                                <td><input type="text" name='btn0' placeholder="Button" id='' class='col2'/></td>
+                                <td><input type="text" name='url0'  placeholder='Insert website URL' id='e_url_value' class='col1'/></td>
+                                <td><input type="text" name='btn0' placeholder="Button" id='e_action_value' class='col2'/></td>
                                 <td><a class="banner-button-options">Edit Button</a></td>
                             </tr>
                             
@@ -183,23 +142,30 @@
                 <a href="#" id="editbanner">SAVE CHANGES</a>
             </div>
         </div>
+
+
         <!--ADD BANNER POPUP-->
         <div class="popup" id="add_banner">
             <div class="popup-scrollable">
                 <i class="bi bi-x" onclick="ClosePopup()"></i>
                 <div class="popup-content">
                     <div class="firstrow">
-                        <div id="display_image">
-                            <input type="file" id="image_input">
-                            <label for="image_input" class="add-image">
+                        <div id="display_image_add">
+                            <input type="file" id="image_input_add">
+                            <label for="image_input_add" class="add-image">
                                 <i class="bi bi-plus-circle-dotted"></i>
                             </label>
                             <span>Add Image</span>
                         </div>
                         <div class="input-fields">
-                            <input type="text" class="fields" placeholder="Title">
+                            <input type="text" class="fields" placeholder="Title" id="bannerTitle">
                             <br>
-                            <input type="text"  class="fields"  placeholder="Subtitle">
+                            <input type="text"  class="fields"  placeholder="Subtitle" id="bannerSubtitle">
+                            <br>
+                            <div class="product-left upload-progress">
+                                <h4>Upload Progress</h4>
+                                <label class="uploadProgress" id="upProgressAdd"></label>
+                            </div>
                         </div>
                     </div>
                     <div class="add-actions">
@@ -226,6 +192,204 @@
         </div>
         <!--END OF POPUP-->
 
+
+        <script>
+        
+        var adminId = localStorage.getItem("userID");
+        var today = new Date();
+        var time = new Date().getFullYear() + "" + new Date().getMonth()  + 1 + "" + new Date().getDate()  + "" + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
+
+        var bannerID_var = time;
+
+        const image_input_add = document.querySelector("#image_input_add");
+            var uploaded_image, bTitle, bSubtitle, urlVal, actionVal;
+
+            image_input_add.addEventListener('change', function() {
+                const reader = new FileReader();
+                reader.addEventListener('load', () => {
+                    uploaded_image = reader.result;
+                    document.querySelector("#display_image_add").style.backgroundImage = `url(${uploaded_image})`;
+                });
+                reader.readAsDataURL(this.files[0]);
+            });
+
+        const image_input_edit = document.querySelector("#image_input_edit");
+            var uploaded_image;
+
+            image_input_edit.addEventListener('change', function() {
+                const reader = new FileReader();
+                reader.addEventListener('load', () => {
+                    uploaded_image = reader.result;
+                    document.querySelector("#display_image_edit").style.backgroundImage = `url(${uploaded_image})`;
+                });
+                reader.readAsDataURL(this.files[0]);
+            });
+
+
+            function readAddForm() {
+                bTitle = document.getElementById("bannerTitle").value;
+                bSubtitle = document.getElementById("bannerSubtitle").value;
+                urlVal = document.getElementById("url_value").value;
+                actionVal = document.getElementById("action_value").value;
+            }
+
+            const saveBanner = document.querySelector("#addbanner");
+            saveBanner.addEventListener('click', function(e) {
+                readAddForm();
+                e.preventDefault();
+
+                const storage = firebase.storage();
+                const storageRef = storage.ref();
+
+                var file = image_input_add.files[0];
+                var name = bannerID_var;
+                var imgId = bannerID_var;
+                var metadata = {
+                    contentType: file.type
+                }
+
+                var uploadTask = storageRef.child(adminId + "/adminBanner/" + bannerID_var).put(file, metadata);
+
+                uploadTask.on('state_changed', function(snapshot){
+                    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    document.getElementById("upProgressAdd").innerHTML = 'Upload ' + progress + ' %';
+                })
+
+                uploadTask.then(snapshot => snapshot.ref.getDownloadURL())
+                .then(url => {
+                    imgUrl = url;
+
+                    firebase
+                    .database()
+                    .ref("adminBanner/" + bannerID_var.toString())
+                    .set({
+                        adminID: adminId,
+                        bannerId: bannerID_var,
+                        bannerTitle: bTitle,
+                        bannerSubtitle: bSubtitle,
+                        urlValue: urlVal,
+                        actionValue: actionVal,
+                        imageID: imgId,
+                        imageName: name,
+                        imageLink: imgUrl
+                    });
+                    alert("Banner Added!");
+                    ClosePopup();
+                });
+            });
+
+
+            var bannerReference = firebase.database().ref().child("adminBanner/");
+            bannerReference.on("child_added", snap => {
+                var cBannerId = snap.child("bannerId").val();
+                var cBannerTitle = snap.child("bannerTitle").val();
+                var cBannerSubtitle = snap.child("bannerSubtitle").val();
+                var cUrlValue = snap.child("urlValue").val();
+                var cActionValue = snap.child("actionValue").val();
+                var cImageLink = snap.child("imageLink").val();
+
+                $("#bannerView").append('<tr><td><img class="admin-image" src=" ' + cImageLink + ' "></td><td><p>' + cBannerTitle + '</p></td><td><p>' + cBannerSubtitle + '</p></td><td><p>' + cActionValue + '</p></td><td><p></p></td><td><button class="button-actions" onclick="EditPopup(' + cBannerId + ')"><i class="fa fa-pencil" aria-hidden="true"></i><span>EDIT</span></button><button class="button-actions" onclick="deleteBanner(' + cBannerId + ')"><i class="fa fa-trash" aria-hidden="true"></i><span>DELETE</span></button></td></tr>');
+            });
+
+
+
+            function EditPopup(id) {
+                editBannerId = id;
+                console.log("dfg")
+
+                firebase
+                    .database()
+                    .ref("adminBanner/" + editBannerId)
+                    .on("value", function (snap) {
+                        vwTitle = snap.val().bannerTitle;
+                        vwSubtitle = snap.val().bannerSubtitle;
+                        vwUrl = snap.val().urlValue;
+                        vwAction = snap.val().actionValue;
+
+                        document.getElementById("eBannerTitle").value = vwTitle;
+                        document.getElementById("eBannerSubtitle").value = vwSubtitle;
+                        document.getElementById("e_url_value").value = vwUrl;
+                        document.getElementById("e_action_value").value = vwAction;
+                    });
+                    
+                document.getElementById("edit_banner").style.display = "block";
+                document.getElementById("bgoverlay").style.display = "block";
+            };
+
+
+
+            function readEditForm() {
+                Title = document.getElementById("eBannerTitle").value;
+                Subtitle = document.getElementById("eBannerSubtitle").value;
+                Url = document.getElementById("e_url_value").value;
+                Action = document.getElementById("e_action_value").value;
+            };
+
+
+            const editBanner = document.querySelector("#editbanner");
+            editBanner.addEventListener('click', function(e) {
+                readEditForm();
+                e.preventDefault();
+
+                const storage = firebase.storage();
+                const storageRef = storage.ref();
+
+                var file = image_input_edit.files[0];
+                var name = bannerID_var;
+                var imgId = bannerID_var;
+                var metadata = {
+                    contentType: file.type
+                }
+
+                var uploadTask = storageRef.child(adminId + "/adminBanner/" + bannerID_var).put(file, metadata);
+
+                uploadTask.on('state_changed', function(snapshot){
+                    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    document.getElementById("upProgressEdit").innerHTML = 'Upload ' + progress + ' %';
+                })
+
+                uploadTask.then(snapshot => snapshot.ref.getDownloadURL())
+                .then(url => {
+                    imgUrl = url;
+
+                    firebase
+                    .database()
+                    .ref("adminBanner/" + editBannerId)
+                    .update({
+                        bannerTitle: Title,
+                        bannerSubtitle: Subtitle,
+                        urlValue: Url,
+                        actionValue: Action,
+                        imageID: imgId,
+                        imageName: name,
+                        imageLink: imgUrl
+                    });
+                    alert("Banner Updated!");
+                    ClosePopup();
+                });
+            });
+
+
+            function deleteBanner(id) {
+                deleteBannerId = id;
+                readEditForm();
+                
+                warning = "Delete this banner?";
+
+                if (confirm(warning) == true) {
+                    firebase
+                        .database()
+                        .ref("adminBanner/" + deleteBannerId)
+                        .remove();
+                    alert("Banner Deleted");
+                    location.reload();
+                } else {
+                    alert("You cancelled!");
+                }
+            
+            };
+
+        </script>
         
         </body>
 </html>
