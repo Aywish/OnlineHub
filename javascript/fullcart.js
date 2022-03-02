@@ -98,7 +98,8 @@ function checkItemSelected(){
       .ref("users/" + userID + "/orders/" + orderid)
       .set({
         userID: userID,
-        orderID: savedOrderID,
+        orderID: orderid,
+        groupOrderID: savedOrderID,
         prodId: cProdID,
         prodName: cProdName.trim(),
         prodPrice: parseInt(cProdPrice.trim()),
@@ -137,6 +138,7 @@ function checkItemSelected(){
        .set({
          userID: userID,
          orderID: savedOrderID,
+         groupOrderID: savedOrderID,
          prodId: cProdID,
          prodName: cProdName.trim(),
          prodPrice: parseInt(cProdPrice.trim()),
