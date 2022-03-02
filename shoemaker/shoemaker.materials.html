@@ -13,22 +13,7 @@
 
         <!--javascript -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                var i=0;
-                $("#add_custom").click(function(){
-                    var strShoetype = $("#txtShoetype").val();
-                    var strShoepart = $("#txtShoepart").val();
-                    var strMaterial = $("#txtMaterial").val();
-                    var strColor = $("#txtColor").val();
-                    var strQuantity = $("#txtQuantity").val();
-                    $('#material_row'+i).html("<td><p>" + strShoetype + "</p></td><td><p>" + strShoepart + "</p></td><td><p>" + strMaterial + "</p></td><td><p>" + strColor + "</p></td><td><input type='number' class='form-control' id='txtQuantity' value='1' min='1'></td><td><button class='button-actions'><i class='bi bi-trash'></i><span> DELETE</span></button></td>");
-
-                    $('#tab_logic').append('<tr id="material_row'+(i+1)+'"></tr>');
-                    i++; 
-                });
-            });
-        </script>
+        
     </head>
     <body>
         <div class="bgoverlay" id="bgoverlay">
@@ -40,7 +25,7 @@
         </div>
 
         <div class="table">
-            <table id="tab_logic">
+            <table class="tab_logic">
                 <tr>
                     <th><h4 class="tblHeader">SHOE TYPE</h4></th>
                     <th><h4 class="tblHeader">SHOE PART</h4></th>
@@ -80,9 +65,83 @@
                     </td>
                     <td><label for="add" class="button-actions" id="add_custom"><i class="bi bi-plus-circle"></i><span> ADD</span></label></td>
                 </tr>
-                <tr id="material_row0">
-                </tr>
             </table>
         </div>
+
+        <script>
+            
+            var userID = localStorage.getItem("userID");
+
+            var CustLogout = document.getElementById("custlogout");
+
+            var today = new Date();
+            var time = new Date().getFullYear() + "" + new Date().getMonth()  + 1 + "" + new Date().getDate()  + "" + today.getHours() + "" + today.getMinutes() + "" + today.getSeconds();
+            var materialID = time;
+
+
+            function readAddForm(){
+                shoetype = document.getElementById("txtShoetype").value;
+                shoepart = document.getElementById("txtShoepart").value;
+                shoematerial = document.getElementById("txtMaterial").value;
+                shoecolor = document.getElementById("txtColor").value;
+                shoequantity = document.getElementById("txtQuantity").value;
+            }
+
+            add_custom.onclick = function() {
+                readAddForm();
+
+                firebase
+                    .database()
+                    .ref("users/" + userID + "/materials/" + materialID)
+                    .set({
+                        shoeType: shoetype,
+                        shoePart: shoepart,
+                        shoeMaterial: shoematerial,
+                        shoeColor: shoecolor,
+                        shoeQuantity: shoequantity,
+                        materialId: materialID
+                    });
+                alert("Material Added Successfully");
+
+                document.getElementById("txtShoetype").value = "";
+                document.getElementById("txtShoepart").value = "";
+                document.getElementById("txtMaterial").value = "";
+                document.getElementById("txtColor").value = "";
+                document.getElementById("txtQuantity").value = "";
+            }
+
+            var materialData = firebase.database().ref().child("users/" + userID + "/materials/");
+            materialData.on("child_added", snap => {
+                var vwShoetype = snap.child("shoeType").val();
+                var vwShoepart = snap.child("shoePart").val();
+                var vwShoematerial = snap.child("shoeMaterial").val();
+                var vwShoecolor = snap.child("shoeColor").val();
+                var vwShoequantity = snap.child("shoeQuantity").val();
+                var vwMaterialId = snap.child("materialId").val();
+
+                $('.tab_logic').append('<tr><td><p>' + vwShoetype + '</p></td><td><p>' + vwShoepart + '</p></td><td><p>' + vwShoematerial + '</p></td><td><p>' + vwShoecolor + '</p></td><td><input type="number" class="form-control" id="txtQuantity" value="' + vwShoequantity + '" min="1"></td><td><button class="button-actions" onclick="deleteMaterial(' + vwMaterialId + ')"><i class="bi bi-trash"></i><span> DELETE</span></button></td></tr>');
+            });
+
+
+            function deleteMaterial(id) {
+            var materialId = id;
+
+            warning = "Delete this material?";
+
+                if (confirm(warning) == true) {
+                    firebase
+                        .database()
+                        .ref("users/" + userID + "/materials/" + materialId)
+                        .remove();
+                    alert("Material Deleted");
+                    location.reload();
+                }
+                else {
+                    alert("You cancelled!");
+                }
+            };
+        </script>
+
+
     </body>
 </html>
