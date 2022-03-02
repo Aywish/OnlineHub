@@ -118,7 +118,8 @@ addToCart.onclick = function () {
     imageLink: cImageLink,
     prodColor: cProdColor,
     prodQty: orderQuantity,
-    shoemakerName: shmkrName
+    shoemakerName: shmkrName,
+    shoemakerId: shmkrId
   });
   alert("Product added to cart");
   ClosePopup();

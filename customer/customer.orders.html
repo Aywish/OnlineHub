@@ -23,12 +23,12 @@
                 document.getElementById("bgoverlay").style.display = "block";
                 document.getElementById("view_order").style.display = "block";
             }
-            // function ViewOrderCustom() {
-            //     document.getElementById("edit_order").style.display = "none";
-            //     document.getElementById("view_order").style.display = "block";
-            //     document.getElementById("bgoverlay").style.display = "block";
-            //     document.getElementById("view_order").style.display = "block";
-            // }
+            function ViewOrderCustom() {
+                document.getElementById("edit_order").style.display = "none";
+                document.getElementById("view_order").style.display = "block";
+                document.getElementById("bgoverlay").style.display = "block";
+                document.getElementById("view_order").style.display = "block";
+            }
             function ViewOrderRTW() {
                 document.getElementById("edit_order").style.display = "none";
                 document.getElementById("completedrating").style.display = "none";
@@ -104,23 +104,23 @@
             }
 
 
-            // var customOrdersReference = firebase.database().ref().child("users/" + userID + "/customOrders/");
+            var customOrdersReference = firebase.database().ref().child("users/" + userID + "/customOrders/");
 
-            // customOrdersReference.on("child_added", snap => {
-            // var oID = snap.child("orderID").val();
-            // var prodId = snap.child("prodId").val();
-            // var prodName = snap.child("prodName").val();
-            // var prodPrice = snap.child("prodPrice").val();
-            // var prodColor = snap.child("prodColor").val();
-            // var prodSize = snap.child("prodSize").val();
-            // var orderQty = snap.child("prodQty").val();
-            // var imageLink = snap.child("imageLink").val();
-            // var cshmkrName = snap.child("shoemakerName").val();
-            // var orderStatus = snap.child("status").val();
-            // var orderType = snap.child("orderType").val();
+            customOrdersReference.on("child_added", snap => {
+            var oID = snap.child("orderID").val();
+            var prodId = snap.child("prodId").val();
+            var prodName = snap.child("prodName").val();
+            var prodPrice = snap.child("prodPrice").val();
+            var prodColor = snap.child("prodColor").val();
+            var prodSize = snap.child("prodSize").val();
+            var orderQty = snap.child("prodQty").val();
+            var imageLink = snap.child("imageLink").val();
+            var cshmkrName = snap.child("shoemakerName").val();
+            var orderStatus = snap.child("status").val();
+            var orderType = snap.child("orderType").val();
             
-            // $(".orderstatus").append('<tr class="order-rows"><td><img class="product-image" src=" ' + imageLink + ' "></td><td><table class="specs"><tr class="spec-row"><td class="spec-title"><h6> ' + prodName + '</h6></td></tr><tr class="spec-row"><td class="spec-value"> ' + cshmkrName + ' </td></tr></table></td><td>₱' + prodPrice + '.00</td><td> Custom Order </td><td id="pendingaccepted"> ' + orderStatus + ' </td><td><button class="button-actions" onclick="ViewOrderCustom()"><i class="bi bi-eye"></i><span>VIEW</span></button></td></tr> ');
-            // });
+            $(".orderstatus").append('<tr class="order-rows"><td><img class="product-image" src=" ' + imageLink + ' "></td><td><table class="specs"><tr class="spec-row"><td class="spec-title"><h6> ' + prodName + '</h6></td></tr><tr class="spec-row"><td class="spec-value"> ' + cshmkrName + ' </td></tr></table></td><td>₱' + prodPrice + '.00</td><td> Custom Order </td><td id="pendingaccepted"> ' + orderStatus + ' </td><td><button class="button-actions" onclick="ViewOrderCustom()"><i class="bi bi-eye"></i><span>VIEW</span></button></td></tr> ');
+            });
 
         </script>
     </head>
@@ -148,7 +148,7 @@
         </div>
 
             <!--VIEW ORDER CUSTOM-->
-        <!-- <div class="popup" id="view_order">
+        <div class="popup" id="view_order">
             <div class="popup-scrollable">
                 <i class="bi bi-x" onclick="ClosePopup()"></i>
                 <div class="custom-content">
@@ -236,7 +236,7 @@
                         </table>
                     </div>
                 </div>
-        </div> -->
+        </div>
 
         </div>
             <!--VIEW ORDER RTW-->
