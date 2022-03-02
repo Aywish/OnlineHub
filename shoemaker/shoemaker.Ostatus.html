@@ -15,20 +15,16 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript">
             //popups
-            function ViewOrderPending() {
-                btnOrderCompleted = "ACCEPT ORDER"
-                document.getElementById("btnOrder").innerHTML = btnOrderCompleted;
-                document.getElementById("view_order").style.display = "block";
+            function ViewRTWOrderPending() {
+                document.getElementById("view_porderRTW").style.display = "block";
                 document.getElementById("bgoverlay").style.display = "block";
             }
-            function ViewOrderAccepted() {
-                btnOrderCompleted = "COMPLETE ORDER"
-                document.getElementById("btnOrder").innerHTML = btnOrderCompleted;
+            function ViewRTWOrderAccepted() {
                 document.getElementById("view_order").style.display = "block";
                 document.getElementById("bgoverlay").style.display = "block";
             }
             function ClosePopup() {
-                document.getElementById("view_order").style.display = "none";
+                document.getElementById("view_porderRTW").style.display = "none";
                 document.getElementById("bgoverlay").style.display = "none";
             }
         </script>
@@ -52,7 +48,7 @@
                     <th><h4 class="tblHeader">STATUS</h4></th>
                     <th><h4 class="tblHeader">ACTIONS</h4></th>
                 </tr>
-                <tr class="order-rows">
+                <!-- <tr class="order-rows">
                     <td><img class="product-image" src="images/1.jpg"></td>
                     <td>Birkenstock (Madrid)</td>
                     <td>₱245.00</td>
@@ -64,29 +60,29 @@
                             <span>VIEW</span>
                         </button>
                     </td>
-                </tr>
+                </tr> -->
 
-                <tr class="order-rows">
-                    <td><img class="product-image" src="images/2.jpg"></td>
-                    <td>Topsider</td>
-                    <td>₱13000.00</td>
-                    <td>Custom</td>
-                    <td id="pendingaccepted">Pending</td>
-                    <td>
-                        <button class="button-actions" onclick="ViewOrderPending()">
-                            <i class="bi bi-eye"></i>
-                            <span>VIEW</span>
-                        </button>
-                    </td>
-                </tr>
+                
             </table>
         </div>
 
-            <!--VIEW ORDER PENDING-->
-        <div class="popup" id="view_order">
+        <!--VIEW ORDER RTW-->
+        <div class="popup" id="view_porderRTW">
             <div class="popup-scrollable">
                 <i class="bi bi-x" onclick="ClosePopup()"></i>
-                <div class="custom-content">
+                <div class="pending-rtworder-content">
+                    
+                </div>
+            <div class="addtocart">
+                <a href="#" id="btnAcceptOrder">ACCEPT ORDER</a>
+            </div>
+        </div>
+
+            <!--VIEW ORDER PENDING-->
+        <!-- <div class="popup" id="view_order">
+            <div class="popup-scrollable">
+                <i class="bi bi-x" onclick="ClosePopup()"></i>
+                <div class="complete-order-content">
                     <div class="table-view order-details">
                         <table>
                             <tr>
@@ -149,9 +145,87 @@
                     </div>
                 </div>
             <div class="addtocart">
-                <a href="#" id="btnOrder">ACCEPT ORDER</a>
+                <a href="#" id="btnCompleteOrder">COMPLETE ORDER</a>
             </div>
+        </div> -->
+
+
         </div>
-        </div>
+
+        <script>
+
+            var fName, lName, cNum, fullName, uId;
+
+            var orderReference = firebase.database().ref().child("users/").orderByChild('accountType').equalTo("user");
+            orderReference.on("child_added", snap => {
+                const userId = snap.child("uid").val();
+                fName = snap.child("firstName").val();
+                lName = snap.child("lastName").val();
+                cNum = snap.child("contactNo").val();
+
+                fullName = fName + ' ' + lName;
+
+                var orderReference = firebase.database().ref("users/" + userId + "/orders/")
+                    .on("child_added", snap => {
+                        
+                        vwoid = snap.child("orderID").val();
+                        vwprodname = snap.child("prodName").val();
+                        vwotype = snap.child("orderType").val();
+                        vwoqty = snap.child("prodQty").val();
+                        vwostatus = snap.child("status").val();
+                        vwoprice = snap.child("prodPrice").val();
+                        vwosize = snap.child("prodSize").val();
+                        vwocolor = snap.child("prodColor").val();
+                        vwoshmkrname = snap.child("shoemakerName").val();
+                        vwimglink = snap.child("imageLink").val();
+                        
+                        $(".orderstatus").append('<tr class="order-rows"><td><img class="product-image" src="' + vwimglink + '"></td><td>' + vwprodname + '</td><td>' + vwoprice + '</td><td>' + vwotype + '</td> <td id="pendingaccepted">' + vwostatus + '</td><td><button class="button-actions" onclick="ViewRTWOrderPending(' + vwoid + ')"><i class="bi bi-eye"></i><span>VIEW</span></button></td></tr>');
+                    });
+            });
+
+
+            function ViewRTWOrderPending(id) {
+                viewpopup = id;
+
+                var orderPopupReference = firebase.database().ref().child("users/").orderByChild('accountType').equalTo("user");
+                orderPopupReference.on("child_added", snap => {
+                    const userId = snap.child("uid").val();
+                    fName = snap.child("firstName").val();
+                    lName = snap.child("lastName").val();
+                    cNum = snap.child("contactNo").val();
+
+                    fullName = fName + ' ' + lName;
+
+                    firebase.database().ref("users/" + userId + "/orders/" + viewpopup)
+                        .on("value", function (snap) {
+                            vwuid = snap.val().userID;
+                            pname = snap.val().prodName;
+                            type = snap.val().orderType;
+                            qty = snap.val().prodQty;
+                            status = snap.val().status;
+                            price = snap.val().prodPrice;
+                            size = snap.val().prodSize;
+                            color = snap.val().prodColor;
+                            shmkrname = snap.val().shoemakerName;
+                            imglink = snap.val().imageLink;
+
+                            
+                            $(".pending-rtworder-content").html('<div class="table-view order-details"><table><tr><th><h4 class="tblHeader">CUSTOMER NAME</h4></th><td><p>' + fullName + '</p></td></tr><tr><th><h4 class="tblHeader">CONTACT NUMBER</h4></th><td><p>' + cNum + '</p></td></tr><tr><th><h4 class="tblHeader">ORDER STATUS</h4></th><td><p>' + status + '</p></td></tr><tr><th><h4 class="tblHeader">DATE ORDERED</h4></th><td><p>February 14, 2022</p></td></tr><tr><th><h4 class="tblHeader">DATE COMPLETED</h4></th><td><p>N/A</p></td></tr><tr><th><h4 class="tblHeader">ORDER TYPE</h4></th><td><p>' + type + '</p></td></tr><tr><th><h4 class="tblHeader">PRICE</h4></th><td><p>₱' + price + '.00</p></td></tr></table></div><div class="vieworder-img"><img src="' + imglink + '" alt="order image"></div><div class="table-view"><table><tr><th><h4 class="tblHeader">SHOE NAME</h4></th><td><p>' + pname + '</p></td></tr><tr><th><h4 class="tblHeader">SHOE MAKER</h4></th><td><p>' + shmkrname + '</p></td></tr><tr><th><h4 class="tblHeader">SIZE</h4></th><td><p>' + size + '</p></td></tr><tr><th><h4 class="tblHeader">QUANTITY</h4></th><td><p>' + qty + '</p></td></tr><tr><th><h4 class="tblHeader">COLOR</h4></th><td><p>' + color + '</p></td></tr></table></div>');
+                            });
+                        
+                    document.getElementById("view_porderRTW").style.display = "block";
+                    document.getElementById("bgoverlay").style.display = "block";
+                });
+            };
+
+            const acceptOrder = document.querySelector("#btnRTWOrder");
+            acceptOrder.addEventListener('click', function(e) {
+
+                firebase.database().ref("users/" + userId + "/orders/" + viewpopup)
+                    .update({
+                        status: "Accepted"
+                    });
+            });
+        </script>
     </body>
 </html>

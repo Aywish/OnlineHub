@@ -147,6 +147,7 @@ function checkItemSelected(){
          prodColor: cProdColor.trim(),
          prodQty: parseInt(orderQuantity.trim()),
          shoemakerName: shmkrName.trim(),
+         shoemakerId: shmkrid,
          status: "Pending",
          orderType: "RTW"
        });
