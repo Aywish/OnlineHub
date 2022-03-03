@@ -59,7 +59,6 @@ function readCustomizedData() {
   outSoleColor = document.getElementById("finalOS").innerHTML;
   threadColor = document.getElementById("finalTH").innerHTML;
   orderQuantity = document.getElementById("quantity").value;
-  // alert(upperLeatherColor + shoeLaceColor + eyeletColor + outSoleColor + threadColor + " qty: " + orderQuantity);
 }
 
 
@@ -96,38 +95,18 @@ submitOrder.onclick = function () {
   var cProdDesc = "Order Custom";
   var orderid = orderID.toString();
   var cProdType = "Topsider";
-  console.log(orderid, cProdName, cProdPrice, cProdDesc);
+
 
   firebase
   .database()
-  .ref("users/" + selectedShoemakerID + "/orders/" + orderID.toString())
-  .set({
-      custID: userID,
-      custName: fullname,
-      custEmail: email, 
-      custContactNum: contact,
-      prodId: orderid,
-      prodName: cProdName,
-      prodPrice: cProdPrice,
-      prodDesc: cProdDesc,
-      prodType: cProdType,
-      prodQuantity: orderQuantity,
-      prodCustom_UpperLeather: upperLeatherColor,
-      prodCustom_ShoeLace: shoeLaceColor,
-      prodCustom_OutSole: outSoleColor, 
-      prodCustom_Thread: threadColor,
-      prodCustom_Eyelet: eyeletColor
-  });
-
-  //Add To Customer's Own Collection
-  firebase
-  .database()
-  .ref("users/" + userID + "/customOrders/" + orderID.toString())
+  .ref("customOrders/" + orderID.toString())
   .set({
     shoemakerID: selectedShoemakerID, 
     shoemakerName: shmkrName,
+    userID: userID,
     orderID: orderid,
     orderStatus: "Pending",
+    orderType: "Custom",
     prodName: cProdName,
     prodPrice: cProdPrice,
     prodDesc: cProdDesc,

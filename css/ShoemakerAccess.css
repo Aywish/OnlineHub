@@ -1021,6 +1021,19 @@ p{
         margin: auto;
     }
 
+    #btnCancelOrder{
+        text-align: center;
+        background-color: #212529;
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 14px;
+        padding: 15px;
+        width: 150px;
+        margin: 30% 43%;
+    }
+
     input[type=color] { 
         border-radius: 50%;
         overflow: hidden;

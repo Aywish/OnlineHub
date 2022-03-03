@@ -33,6 +33,7 @@
             }
             function ClosePopup() {
                 document.getElementById("view_porderRTW").style.display = "none";
+                document.getElementById("view_porderCustom").style.display = "none";
                 document.getElementById("bgoverlay").style.display = "none";
             }
         </script>
@@ -111,38 +112,7 @@
                     <div class="product-img big-img custom-img" style="border: 1px solid;">
                         <img src="" alt="custom order image">
                     </div>
-                    <div class="table-view">
-                        <table>
-                            <tr>
-                                <th><h4 class="tblHeader">SHOE TYPE</h4></th>
-                                <td><p>Topsider</p></td>
-                            </tr>
-                            <tr>
-                                <th><h4 class="tblHeader">MATERIAL</h4></th>
-                                <td><p>Leather</p></td>
-                            </tr>
-                            <tr>
-                                <th><h4 class="tblHeader">UPPER LEATHER</h4></th>
-                                <td><p>WHITE</p></td>
-                            </tr>
-                            <tr>
-                                <th><h4 class="tblHeader">SHOELACE</h4></th>
-                                <td><p>WHITE</p></td>
-                            </tr>
-                            <tr>
-                                <th><h4 class="tblHeader">EYELET</h4></th>
-                                <td><p>WHITE</p></td>
-                            </tr>
-                            <tr>
-                                <th><h4 class="tblHeader">OUT SOLE</h4></th>
-                                <td><p>WHITE</p></td>
-                            </tr>
-                            <tr>
-                                <th><h4 class="tblHeader">THREAD</h4></th>
-                                <td><p>WHITE</p></td>
-                            </tr>
-                        </table>
-                    </div>
+                    
                 </div>
             <div class="addtocart">
                 <a href="#" id="btnCompleteOrder">COMPLETE ORDER</a>
@@ -178,21 +148,11 @@
                     vwoshmkrname = snap.child("shoemakerName").val();
                     vwimglink = snap.child("imageLink").val();
                     
-                    if(vwotype == "RTW"){
-                        if(vwostatus == "Pending"){
-                            $(".orderstatus").append('<tr class="order-rows"><td><img class="product-image" src="' + vwimglink + '"></td><td>' + vwprodname + '</td><td>' + vwoprice + '</td><td>' + vwotype + '</td> <td id="pendingaccepted">' + vwostatus + '</td><td><button class="button-actions" onclick="ViewRTWOrderPending(' + vwoid + ')"><i class="bi bi-eye"></i><span>VIEW</span></button></td></tr>');
-                        }
-                        else{
-                            $(".orderstatus").append('<tr class="order-rows"><td><img class="product-image" src="' + vwimglink + '"></td><td>' + vwprodname + '</td><td>₱' + vwoprice + '.00</td><td>' + vwotype + '</td><td id="pendingaccepted">' + vwostatus + '</td><td><button class="button-actions" onclick="ViewRTWOrderAccepted(' + vwoid + ')"><i class="bi bi-eye"></i><span>VIEW</span></button></td></tr>');
-                        }
+                    if(vwostatus == "Pending"){
+                        $(".orderstatus").append('<tr class="order-rows"><td><img class="product-image" src="' + vwimglink + '"></td><td>' + vwprodname + '</td><td>' + vwoprice + '</td><td>' + vwotype + '</td> <td id="pendingaccepted">' + vwostatus + '</td><td><button class="button-actions" onclick="ViewRTWOrderPending(' + vwoid + ')"><i class="bi bi-eye"></i><span>VIEW</span></button></td></tr>');
                     }
                     else{
-                        if(vwostatus == "Pending"){
-                            $(".orderstatus").append('<tr class="order-rows"><td><img class="product-image" src="' + vwimglink + '"></td><td>' + vwprodname + '</td><td>' + vwoprice + '</td><td>' + vwotype + '</td> <td id="pendingaccepted">' + vwostatus + '</td><td><button class="button-actions" onclick="ViewCustomOrderPending(' + vwoid + ')"><i class="bi bi-eye"></i><span>VIEW</span></button></td></tr>');
-                        }
-                        else{
-                            $(".orderstatus").append('<tr class="order-rows"><td><img class="product-image" src="' + vwimglink + '"></td><td>' + vwprodname + '</td><td>₱' + vwoprice + '.00</td><td>' + vwotype + '</td><td id="pendingaccepted">' + vwostatus + '</td><td><button class="button-actions" onclick="ViewCustomOrderAccepted(' + vwoid + ')"><i class="bi bi-eye"></i><span>VIEW</span></button></td></tr>');
-                        }
+                        $(".orderstatus").append('<tr class="order-rows"><td><img class="product-image" src="' + vwimglink + '"></td><td>' + vwprodname + '</td><td>₱' + vwoprice + '.00</td><td>' + vwotype + '</td><td id="pendingaccepted">' + vwostatus + '</td><td><button class="button-actions" onclick="ViewRTWOrderAccepted(' + vwoid + ')"><i class="bi bi-eye"></i><span>VIEW</span></button></td></tr>');
                     }
                 });
 
@@ -277,9 +237,9 @@
                             color = snap.val().prodColor;
                             shmkrname = snap.val().shoemakerName;
                             imglink = snap.val().imageLink;
-
                             
-                            $(".popup-scrollable").html('<i class="bi bi-x" onclick="ClosePopup()"></i><div class="pending-rtworder-content"><div class="table-view order-details"><table><tr><th><h4 class="tblHeader">CUSTOMER NAME</h4></th><td><p>' + fullName + '</p></td></tr><tr><th><h4 class="tblHeader">CONTACT NUMBER</h4></th><td><p>' + cNum + '</p></td></tr><tr><th><h4 class="tblHeader">ORDER STATUS</h4></th><td><p>' + status + '</p></td></tr><tr><th><h4 class="tblHeader">DATE ORDERED</h4></th><td><p>February 14, 2022</p></td></tr><tr><th><h4 class="tblHeader">DATE COMPLETED</h4></th><td><p>N/A</p></td></tr><tr><th><h4 class="tblHeader">ORDER TYPE</h4></th><td><p>' + type + '</p></td></tr><tr><th><h4 class="tblHeader">PRICE</h4></th><td><p>₱' + price + '.00</p></td></tr></table></div><div class="vieworder-img"><img src="' + imglink + '" alt="order image"></div><div class="table-view"><table><tr><th><h4 class="tblHeader">SHOE NAME</h4></th><td><p>' + pname + '</p></td></tr><tr><th><h4 class="tblHeader">SHOE MAKER</h4></th><td><p>' + shmkrname + '</p></td></tr><tr><th><h4 class="tblHeader">SIZE</h4></th><td><p>' + size + '</p></td></tr><tr><th><h4 class="tblHeader">QUANTITY</h4></th><td><p>' + qty + '</p></td></tr><tr><th><h4 class="tblHeader">COLOR</h4></th><td><p>' + color + '</p></td></tr></table></div></div><div class="addtocart"><a href="#" id="btnCompleteOrder" onclick="CompleteOrder(' + vwoid + ')">COMPLETE ORDER</a></div>');
+                            
+                            $(".popup-scrollable").html('<i class="bi bi-x" onclick="ClosePopup()"></i><div class="pending-rtworder-content"><div class="table-view order-details"><table><tr><th><h4 class="tblHeader">CUSTOMER NAME</h4></th><td><p>' + fullName + '</p></td></tr><tr><th><h4 class="tblHeader">CONTACT NUMBER</h4></th><td><p>' + cNum + '</p></td></tr><tr><th><h4 class="tblHeader">ORDER STATUS</h4></th><td><p>' + status + '</p></td></tr><tr><th><h4 class="tblHeader">DATE ORDERED</h4></th><td><p>February 14, 2022</p></td></tr><tr><th><h4 class="tblHeader">DATE COMPLETED</h4></th><td><p>N/A</p></td></tr><tr><th><h4 class="tblHeader">ORDER TYPE</h4></th><td><p>' + type + '</p></td></tr><tr><th><h4 class="tblHeader">PRICE</h4></th><td><p>₱' + price + '.00</p></td></tr></table></div><div class="vieworder-img"><img src="' + imglink + '" alt="order image"></div><div class="table-view"><table><tr><th><h4 class="tblHeader">SHOE NAME</h4></th><td><p>' + pname + '</p></td></tr><tr><th><h4 class="tblHeader">SHOE MAKER</h4></th><td><p>' + shmkrname + '</p></td></tr><tr><th><h4 class="tblHeader">SIZE</h4></th><td><p>' + size + '</p></td></tr><tr><th><h4 class="tblHeader">QUANTITY</h4></th><td><p>' + qty + '</p></td></tr><tr><th><h4 class="tblHeader">COLOR</h4></th><td><p>' + color + '</p></td></tr></table></div></div><div class="addtocart"><a href="#" id="btnAcceptOrder" onclick="AcceptOrder(' + vwoid + ')">ACCEPT ORDER</a></div>');
                             
                         });
                     document.getElementById("view_porderRTW").style.display = "block";
@@ -307,6 +267,27 @@
             };
 
 
+            var orderReference = firebase.database().ref().child("customOrders/").orderByChild('shoemakerName').equalTo(store);
+                orderReference.on("child_added", snap => {
+                    vwoid = snap.child("orderID").val();
+                    vwprodname = snap.child("prodName").val();
+                    vwotype = snap.child("orderType").val();
+                    vwoqty = snap.child("prodQty").val();
+                    vwostatus = snap.child("orderStatus").val();
+                    vwoprice = snap.child("prodPrice").val();
+                    vwosize = snap.child("prodSize").val();
+                    vwocolor = snap.child("prodColor").val();
+                    vwoshmkrname = snap.child("shoemakerName").val();
+                    vwimglink = snap.child("imageLink").val();
+                    
+                    if(vwostatus == "Pending"){
+                        $(".orderstatus").append('<tr class="order-rows"><td><img class="product-image" src="' + vwimglink + '"></td><td>' + vwprodname + '</td><td>' + vwoprice + '</td><td>' + vwotype + '</td> <td id="pendingaccepted">' + vwostatus + '</td><td><button class="button-actions" onclick="ViewCustomOrderPending(' + vwoid + ')"><i class="bi bi-eye"></i><span>VIEW</span></button></td></tr>');
+                    }
+                    else{
+                        $(".orderstatus").append('<tr class="order-rows"><td><img class="product-image" src="' + vwimglink + '"></td><td>' + vwprodname + '</td><td>₱' + vwoprice + '.00</td><td>' + vwotype + '</td><td id="pendingaccepted">' + vwostatus + '</td><td><button class="button-actions" onclick="ViewCustomOrderAccepted(' + vwoid + ')"><i class="bi bi-eye"></i><span>VIEW</span></button></td></tr>');
+                    }
+                });
+
             function ViewCustomOrderPending(oid) {
                 viewpopup = oid;
 
@@ -325,22 +306,124 @@
                             oid = snap.val().orderID;
                             pname = snap.val().prodName;
                             type = snap.val().orderType;
-                            qty = snap.val().prodQty;
-                            status = snap.val().status;
+                            qty = snap.val().prodQuantity;
+                            status = snap.val().orderStatus;
                             price = snap.val().prodPrice;
-                            size = snap.val().prodSize;
-                            color = snap.val().prodColor;
+                            prodtype = snap.val().prodType;
                             shmkrname = snap.val().shoemakerName;
-                            imglink = snap.val().imageLink;
+                            eyelet = snap.val().prodCustom_Eyelet;
+                            outsole = snap.val().prodCustom_OutSole;
+                            shoelace = snap.val().prodCustom_ShoeLace;
+                            thread = snap.val().prodCustom_Thread;
+                            upperleather = snap.val().prodCustom_UpperLeather;
 
                             
-                            $(".popup-scrollable").html('<i class="bi bi-x" onclick="ClosePopup()"></i><div class="pending-rtworder-content"><div class="table-view order-details"><table><tr><th><h4 class="tblHeader">CUSTOMER NAME</h4></th><td><p>' + fullName + '</p></td></tr><tr><th><h4 class="tblHeader">CONTACT NUMBER</h4></th><td><p>' + cNum + '</p></td></tr><tr><th><h4 class="tblHeader">ORDER STATUS</h4></th><td><p>' + status + '</p></td></tr><tr><th><h4 class="tblHeader">DATE ORDERED</h4></th><td><p>February 14, 2022</p></td></tr><tr><th><h4 class="tblHeader">DATE COMPLETED</h4></th><td><p>N/A</p></td></tr><tr><th><h4 class="tblHeader">ORDER TYPE</h4></th><td><p>' + type + '</p></td></tr><tr><th><h4 class="tblHeader">PRICE</h4></th><td><p>₱' + price + '.00</p></td></tr></table></div><div class="vieworder-img"><img src="' + imglink + '" alt="order image"></div><div class="table-view"><table><tr><th><h4 class="tblHeader">SHOE NAME</h4></th><td><p>' + pname + '</p></td></tr><tr><th><h4 class="tblHeader">SHOE MAKER</h4></th><td><p>' + shmkrname + '</p></td></tr><tr><th><h4 class="tblHeader">SIZE</h4></th><td><p>' + size + '</p></td></tr><tr><th><h4 class="tblHeader">QUANTITY</h4></th><td><p>' + qty + '</p></td></tr><tr><th><h4 class="tblHeader">COLOR</h4></th><td><p>' + color + '</p></td></tr></table></div></div><div class="addtocart"><a href="#" id="btnAcceptOrder" onclick="AcceptOrder(' + vwoid + ')">ACCEPT ORDER</a></div>');
+                            $(".popup-scrollable").html('<i class="bi bi-x" onclick="ClosePopup()"></i><div class="pending-rtworder-content"><div class="table-view order-details"><table><tr><th><h4 class="tblHeader">CUSTOMER NAME</h4></th><td><p>' + fullName + '</p></td></tr><tr><th><h4 class="tblHeader">CONTACT NUMBER</h4></th><td><p>' + cNum + '</p></td></tr><tr><th><h4 class="tblHeader">ORDER STATUS</h4></th><td><p>' + status + '</p></td></tr><tr><th><h4 class="tblHeader">DATE ORDERED</h4></th><td><p>February 14, 2022</p></td></tr><tr><th><h4 class="tblHeader">DATE COMPLETED</h4></th><td><p>N/A</p></td></tr><tr><th><h4 class="tblHeader">ORDER TYPE</h4></th><td><p>' + type + '</p></td></tr><tr><th><h4 class="tblHeader">PRICE</h4></th><td><p>₱' + price + '.00</p></td></tr></table></div><a href="#" id="btnCancelOrder" onclick="CancelOrder(' + vwoid + ')">CANCEL ORDER</a><div class="vieworder-img"><img src="" alt="order image"></div><div class="table-view"><table><tr><th><h4 class="tblHeader">SHOE TYPE</h4></th><td><p>' + prodtype + '</p></td></tr><tr><th><h4 class="tblHeader">MATERIAL</h4></th><td><p>Leather</p></td></tr><tr><th><h4 class="tblHeader">UPPER LEATHER</h4></th><td><p>' + upperleather + '</p></td></tr><tr><th><h4 class="tblHeader">SHOELACE</h4></th><td><p>' + shoelace + '</p></td></tr><tr><th><h4 class="tblHeader">EYELET</h4></th><td><p>' + eyelet + '</p></td></tr><tr><th><h4 class="tblHeader">OUT SOLE</h4></th><td><p>' + outsole + '</p></td></tr><tr><th><h4 class="tblHeader">THREAD</h4></th><td><p>' + thread + '</p></td></tr></table></div><div class="addtocart"><a href="#" id="btnAcceptOrder" onclick="AcceptOrder(' + vwoid + ')">ACCEPT ORDER</a></div>');
                             });
-                        
-                    document.getElementById("view_porderRTW").style.display = "block";
+                    document.getElementById("view_porderCustom").style.display = "block";
                     document.getElementById("bgoverlay").style.display = "block";
                 });
             };
+
+            function AcceptOrder(uid) {
+                    var pendingOrderPopupReference = firebase.database().ref().child("users/").orderByChild('accountType').equalTo("user");
+                    pendingOrderPopupReference.on("child_added", snap => {
+                        const userId = snap.child("uid").val();
+                        fName = snap.child("firstName").val();
+                        lName = snap.child("lastName").val();
+                        cNum = snap.child("contactNo").val();
+                        uId = userId;
+                        fullName = fName + ' ' + lName;
+
+                        firebase.database().ref("customOrders/" + uid)
+                            .update({
+                                orderStatus: "Accepted"
+                            });
+                            location.reload();
+                    });
+                };
+
+                function CancelOrder(uid) {
+                    var pendingOrderPopupReference = firebase.database().ref().child("users/").orderByChild('accountType').equalTo("user");
+                    pendingOrderPopupReference.on("child_added", snap => {
+                        const userId = snap.child("uid").val();
+                        fName = snap.child("firstName").val();
+                        lName = snap.child("lastName").val();
+                        cNum = snap.child("contactNo").val();
+                        uId = userId;
+                        fullName = fName + ' ' + lName;
+
+
+                        warning = "Cancel this order?";
+
+                            if (confirm(warning) == true) {
+                                
+                                firebase.database().ref("customOrders/" + uid)
+                                    .update({
+                                        orderStatus: "Cancelled"
+                                    });
+                                    location.reload();
+                            } else {
+                                alert("You cancelled!");
+                            }
+                    });
+                };
+
+                function ViewCustomOrderAccepted(oid) {
+                    viewpopup = oid;
+
+                        var pendingOrderPopupReference = firebase.database().ref().child("users/").orderByChild('accountType').equalTo("user");
+                        pendingOrderPopupReference.on("child_added", snap => {
+                            const userId = snap.child("uid").val();
+                            fName = snap.child("firstName").val();
+                            lName = snap.child("lastName").val();
+                            cNum = snap.child("contactNo").val();
+                            uId = userId;
+                            fullName = fName + ' ' + lName;
+
+                            firebase.database().ref("customOrders/" + viewpopup)
+                                .on("value", function (snap) {
+                                    vwuid = snap.val().userID;
+                                    oid = snap.val().orderID;
+                                    pname = snap.val().prodName;
+                                    type = snap.val().orderType;
+                                    qty = snap.val().prodQuantity;
+                                    status = snap.val().orderStatus;
+                                    price = snap.val().prodPrice;
+                                    prodtype = snap.val().prodType;
+                                    shmkrname = snap.val().shoemakerName;
+                                    eyelet = snap.val().prodCustom_Eyelet;
+                                    outsole = snap.val().prodCustom_OutSole;
+                                    shoelace = snap.val().prodCustom_ShoeLace;
+                                    thread = snap.val().prodCustom_Thread;
+                                    upperleather = snap.val().prodCustom_UpperLeather;
+
+                                    
+                                    $(".popup-scrollable").html('<i class="bi bi-x" onclick="ClosePopup()"></i><div class="pending-rtworder-content"><div class="table-view order-details"><table><tr><th><h4 class="tblHeader">CUSTOMER NAME</h4></th><td><p>' + fullName + '</p></td></tr><tr><th><h4 class="tblHeader">CONTACT NUMBER</h4></th><td><p>' + cNum + '</p></td></tr><tr><th><h4 class="tblHeader">ORDER STATUS</h4></th><td><p>' + status + '</p></td></tr><tr><th><h4 class="tblHeader">DATE ORDERED</h4></th><td><p>February 14, 2022</p></td></tr><tr><th><h4 class="tblHeader">DATE COMPLETED</h4></th><td><p>N/A</p></td></tr><tr><th><h4 class="tblHeader">ORDER TYPE</h4></th><td><p>' + type + '</p></td></tr><tr><th><h4 class="tblHeader">PRICE</h4></th><td><p>₱' + price + '.00</p></td></tr></table></div><div class="vieworder-img"><img src="" alt="order image"></div><div class="table-view"><table><tr><th><h4 class="tblHeader">SHOE TYPE</h4></th><td><p>' + prodtype + '</p></td></tr><tr><th><h4 class="tblHeader">MATERIAL</h4></th><td><p>Leather</p></td></tr><tr><th><h4 class="tblHeader">UPPER LEATHER</h4></th><td><p>' + upperleather + '</p></td></tr><tr><th><h4 class="tblHeader">SHOELACE</h4></th><td><p>' + shoelace + '</p></td></tr><tr><th><h4 class="tblHeader">EYELET</h4></th><td><p>' + eyelet + '</p></td></tr><tr><th><h4 class="tblHeader">OUT SOLE</h4></th><td><p>' + outsole + '</p></td></tr><tr><th><h4 class="tblHeader">THREAD</h4></th><td><p>' + thread + '</p></td></tr></table></div><div class="addtocart"><a href="#" id="btnAcceptOrder" onclick="CompleteOrder(' + vwoid + ')">COMPLETE ORDER</a></div>');
+                                    });
+                            document.getElementById("view_porderCustom").style.display = "block";
+                            document.getElementById("bgoverlay").style.display = "block";
+                        });
+                    };
+
+
+                    function CompleteOrder(uid) {
+                        var completeOrderPopupReference = firebase.database().ref().child("users/").orderByChild('accountType').equalTo("user");
+                        completeOrderPopupReference.on("child_added", snap => {
+                            const userId = snap.child("uid").val();
+                            fName = snap.child("firstName").val();
+                            lName = snap.child("lastName").val();
+                            cNum = snap.child("contactNo").val();
+                            uId = userId;
+                            fullName = fName + ' ' + lName;
+
+                            firebase.database().ref("customOrders/" + uid)
+                                .update({
+                                    orderStatus: "Completed"
+                                });
+                                location.reload();
+                        });
+                    };
         </script>
 
     </body>
