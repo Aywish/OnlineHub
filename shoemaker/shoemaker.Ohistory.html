@@ -15,11 +15,11 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript">
             //popups
-            function ViewOrderCustom() {
+            function ViewCustomOrder() {
                 document.getElementById("view_orderCustom").style.display = "block";
                 document.getElementById("bgoverlay").style.display = "block";
             }
-            function ViewOrderRTW() {
+            function ViewRTWOrder() {
                 document.getElementById("view_orderRTW").style.display = "block";
                 document.getElementById("bgoverlay").style.display = "block";
             }
@@ -50,33 +50,7 @@
                     <th><h4 class="tblHeader">ACTIONS</h4></th>
                 </tr>
                 
-                <tr class="order-rows">
-                    <td><img class="product-image" src="images/2.jpg"></td>
-                    <td>Topsider</td>
-                    <td>₱12500.00</td>
-                    <td>Custom</td>
-                    <td id="pendingaccepted">Completed</td>
-                    <td>
-                        <button class="button-actions" onclick="ViewOrderCustom()">
-                            <i class="bi bi-eye"></i>
-                            <span>VIEW</span>
-                        </button>
-                    </td>
-                </tr>
 
-                <tr class="order-rows">
-                    <td><img class="product-image" src="images/1.jpg"></td>
-                    <td>Indoor/Bedroom Slippers</td>
-                    <td>₱100.00</td>
-                    <td>RTW</td>
-                    <td id="pendingaccepted">Completed</td>
-                    <td>
-                        <button class="button-actions" onclick="ViewOrderRTW()">
-                            <i class="bi bi-eye"></i>
-                            <span>VIEW</span>
-                        </button>
-                    </td>
-                </tr>
             </table>
         </div>
 
@@ -175,75 +149,78 @@
             <!--VIEW ORDER RTW-->
             <div class="popup" id="view_orderRTW">
                 <div class="popup-scrollable">
-                    <i class="bi bi-x" onclick="ClosePopup()"></i>
-                    <div class="custom-content">
-                        <div class="table-view order-details">
-                            <table>
-                                <tr>
-                                    <th><h4 class="tblHeader">CUSTOMER NAME</h4></th>
-                                    <td><p>Juan Dela Cruz</p></td>
-                                </tr>
-                                <tr>
-                                    <th><h4 class="tblHeader">CONTACT NUMBER</h4></th>
-                                    <td><p>+639876543210</p></td>
-                                </tr>
-                                <tr>
-                                    <th><h4 class="tblHeader">ADDRESS</h4></th>
-                                    <td><p>123 Sample St. San Roque, Marikina City, 1801</p></td>
-                                </tr>
-                                <tr>
-                                    <th><h4 class="tblHeader">ORDER STATUS</h4></th>
-                                    <td><p>Accepted</p></td>
-                                </tr>
-                                <tr>
-                                    <th><h4 class="tblHeader">DATE ORDERED</h4></th>
-                                    <td><p>February 14, 2022</p></td>
-                                </tr>
-                                <tr>
-                                    <th><h4 class="tblHeader">DATE COMPLETED</h4></th>
-                                    <td><p>N/A</p></td>
-                                </tr> 
-                                <tr>
-                                    <th><h4 class="tblHeader">ORDER TYPE</h4></th>
-                                    <td><p>RTW</p></td>
-                                </tr> 
-                                <tr>
-                                    <th><h4 class="tblHeader">PRICE</h4></th>
-                                    <td><p>₱245.00</p></td>
-                                </tr> 
-                            </table>
-                        </div>
-                        <div class="vieworder-img">
-                            <img src="" alt="custom order image">
-                        </div>
-                        <div class="table-view">
-                            <table>
-                                <tr>
-                                    <th><h4 class="tblHeader">SHOE NAME</h4></th>
-                                    <td><p>Birkenstock (Madrid)</p></td>
-                                </tr>
-                                <tr>
-                                    <th><h4 class="tblHeader">SHOE MAKER</h4></th>
-                                    <td><p>Inches Footwear</p></td>
-                                </tr>
-                                <tr>
-                                    <th><h4 class="tblHeader">SIZE</h4></th>
-                                    <td><p>9</p></td>
-                                </tr> 
-                                <tr>
-                                    <th><h4 class="tblHeader">QUANTITY</h4></th>
-                                    <td><p>2</p></td>
-                                </tr> 
-                                <tr>
-                                    <th><h4 class="tblHeader">COLOR</h4></th>
-                                    <td><p>Black</p></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                <div class="editorder" id="edit_order">
-                    <a href="OrderCustom.html" id="btnOrder">EDIT ORDER</a>
-                </div>
+
             </div>
+
+            <script>
+
+                var shmkrID = localStorage.getItem("userID");
+
+                var fName, lName, cNum, fullName, uId, store;  
+
+                firebase.database().ref("users/" + shmkrID)
+                    .on("value", function (snap) {
+                        store = snap.val().storeName;
+
+                    console.log(store)
+                });
+
+
+                var orderReference = firebase.database().ref().child("orders/").orderByChild('shoemakerName').equalTo(store);
+                    orderReference.on("child_added", snap => {
+                        vwoid = snap.child("orderID").val();
+                        vwprodname = snap.child("prodName").val();
+                        vwotype = snap.child("orderType").val();
+                        vwoqty = snap.child("prodQty").val();
+                        vwostatus = snap.child("status").val();
+                        vwoprice = snap.child("prodPrice").val();
+                        vwosize = snap.child("prodSize").val();
+                        vwocolor = snap.child("prodColor").val();
+                        vwoshmkrname = snap.child("shoemakerName").val();
+                        vwimglink = snap.child("imageLink").val();
+                        
+                        if(vwotype == "RTW"){
+                            $(".orderstatus").append('<tr class="order-rows"><td><img class="product-image" src="' + vwimglink + '"></td><td>' + vwprodname + '</td><td>₱' + vwoprice + '.00</td><td>' + vwotype + '</td><td id="pendingaccepted">' + vwostatus + '</td><td><button class="button-actions" onclick="ViewRTWOrder(' + vwoid + ')"><i class="bi bi-eye"></i><span>VIEW</span></button></td></tr>');
+                        }
+                        else{
+                            $(".orderstatus").append('<tr class="order-rows"><td><img class="product-image" src="' + vwimglink + '"></td><td>' + vwprodname + '</td><td>₱' + vwoprice + '.00</td><td>' + vwotype + '</td><td id="pendingaccepted">' + vwostatus + '</td><td><button class="button-actions" onclick="ViewCustomOrder(' + vwoid + ')"><i class="bi bi-eye"></i><span>VIEW</span></button></td></tr>');
+                        }
+                    });
+
+                function ViewRTWOrder(oid) {
+                    viewpopup = oid;
+
+                        var pendingOrderPopupReference = firebase.database().ref().child("users/").orderByChild('accountType').equalTo("user");
+                        pendingOrderPopupReference.on("child_added", snap => {
+                            const userId = snap.child("uid").val();
+                            fName = snap.child("firstName").val();
+                            lName = snap.child("lastName").val();
+                            cNum = snap.child("contactNo").val();
+                            uId = userId;
+                            fullName = fName + ' ' + lName;
+
+                            firebase.database().ref("orders/" + viewpopup)
+                                .on("value", function (snap) {
+                                    vwuid = snap.val().userID;
+                                    oid = snap.val().orderID;
+                                    pname = snap.val().prodName;
+                                    type = snap.val().orderType;
+                                    qty = snap.val().prodQty;
+                                    status = snap.val().status;
+                                    price = snap.val().prodPrice;
+                                    size = snap.val().prodSize;
+                                    color = snap.val().prodColor;
+                                    shmkrname = snap.val().shoemakerName;
+                                    imglink = snap.val().imageLink;
+
+                                    
+                                    $(".popup-scrollable").html('<i class="bi bi-x" onclick="ClosePopup()"></i><div class="pending-rtworder-content"><div class="table-view order-details"><table><tr><th><h4 class="tblHeader">CUSTOMER NAME</h4></th><td><p>' + fullName + '</p></td></tr><tr><th><h4 class="tblHeader">CONTACT NUMBER</h4></th><td><p>' + cNum + '</p></td></tr><tr><th><h4 class="tblHeader">ORDER STATUS</h4></th><td><p>' + status + '</p></td></tr><tr><th><h4 class="tblHeader">DATE ORDERED</h4></th><td><p>February 14, 2022</p></td></tr><tr><th><h4 class="tblHeader">DATE COMPLETED</h4></th><td><p>N/A</p></td></tr><tr><th><h4 class="tblHeader">ORDER TYPE</h4></th><td><p>' + type + '</p></td></tr><tr><th><h4 class="tblHeader">PRICE</h4></th><td><p>₱' + price + '.00</p></td></tr></table></div><div class="vieworder-img"><img src="' + imglink + '" alt="order image"></div><div class="table-view"><table><tr><th><h4 class="tblHeader">SHOE NAME</h4></th><td><p>' + pname + '</p></td></tr><tr><th><h4 class="tblHeader">SHOE MAKER</h4></th><td><p>' + shmkrname + '</p></td></tr><tr><th><h4 class="tblHeader">SIZE</h4></th><td><p>' + size + '</p></td></tr><tr><th><h4 class="tblHeader">QUANTITY</h4></th><td><p>' + qty + '</p></td></tr><tr><th><h4 class="tblHeader">COLOR</h4></th><td><p>' + color + '</p></td></tr></table></div></div>');
+                                    
+                                });
+                            document.getElementById("view_orderRTW").style.display = "block";
+                            document.getElementById("bgoverlay").style.display = "block";
+                        });
+                    };
+            </script>
     </body>
 </html>

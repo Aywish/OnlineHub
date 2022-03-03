@@ -825,6 +825,11 @@ p{
     height: 250px;
 }
 
+.vieworder-img img{
+    height: 100%;
+    width: 100%;
+}
+
 /*STAR RATING*/
 fieldset{
     width: 180px;

@@ -26,9 +26,12 @@ cartReference.on("child_added", snap => {
   var orderQty = snap.child("prodQty").val();
   var imageLink = snap.child("imageLink").val();
   var cshmkrName = snap.child("shoemakerName").val();
+  var cshmkrId = snap.child("shoemakerId").val();
+
+  console.log(cshmkrId)
 
 
-  $(".cart-items").append('<tr><td class="checkbox"><input type="checkbox" class="selection" name="selection"></td><td><img class="product-image" src=" ' + imageLink + ' "></td><td class="prod-details"><p class="shoename cart-col2">' + prodName + '</p><p class="shoemaker cart-col2">' + cshmkrName + '</p><p style="display:none" class="imageLink">' + imageLink + '</p><p style="display:none" class="id">' + prodId + '</p> <p style="display:none"  class="oid">' + oID + '</p></td><td><table class="specs"><tr class="spec-row"><td class="spec-title">Color: </td> <td class="color-value"> '+ prodColor + '</td></tr><tr class="spec-row"><td class="spec-title">Size: </td><td class="size-value"> ' + prodSize + ' </td></tr>  <tr class="spec-row"><td class="spec-title">Qty: </td><td class="qty-value"> ' + orderQty + ' </td></tr></table></td><td><p class="price" value="' + prodPrice + '"> ₱' + prodPrice + '.00</p><button class="delete-button" onclick="deleteOrder(' + oID + ')">DELETE</button></td></tr>');
+  $(".cart-items").append('<tr><td class="checkbox"><input type="checkbox" class="selection" name="selection"></td><td><img class="product-image" src=" ' + imageLink + ' "></td><td class="prod-details"><p class="shoename cart-col2">' + prodName + '</p><p class="shoemaker cart-col2">' + cshmkrName + '</p><p style="display:none" class="imageLink">' + imageLink + '</p><p style="display:none" class="id">' + prodId + '</p> <p style="display:none"  class="oid">' + oID + '</p></td><td><table class="specs"><tr class="spec-row"><td class="spec-title">Color: </td> <td class="color-value"> '+ prodColor + '</td></tr><tr class="spec-row"><td class="spec-title">Size: </td><td class="size-value"> ' + prodSize + ' </td></tr>  <tr class="spec-row"><td class="spec-title">Qty: </td><td class="qty-value"> ' + orderQty + ' </td></tr></table></td><td><p class="price" value="' + prodPrice + '"> ₱' + prodPrice + '.00</p><button class="delete-button" onclick="deleteOrder(' + oID + ')">DELETE</button></td><p class="hiddenShmkrId"> ' + cshmkrId + ' </p></tr>');
 });
 
   //Index getter
@@ -56,6 +59,7 @@ function checkItemSelected(){
    var imageLinks = document.getElementsByClassName("imageLink");
    var prodIds = document.getElementsByClassName("id");
    var oid = document.getElementsByClassName("oid");
+   var cshmkrids = document.getElementsByClassName("hiddenShmkrId");
    var prodNames = document.getElementsByClassName("shoename cart-col2");
    var prodPrices = document.getElementsByClassName("price");
    var prodColors = document.getElementsByClassName("color-value");
@@ -90,12 +94,13 @@ function checkItemSelected(){
       var cProdSize = prodSizes[count].innerHTML;
       var cProdColor = prodColors[count].innerHTML;
       var shmkrName = cshmkrNames[count].innerHTML;
+      var shmkrId = cshmkrids.toString();
   
       console.log("Item #" + count + " Name: " + cProdName);
-      
+
       firebase
       .database()
-      .ref("users/" + userID + "/orders/" + orderid)
+      .ref("orders/" + orderid)
       .set({
         userID: userID,
         orderID: orderid,
@@ -108,6 +113,8 @@ function checkItemSelected(){
         prodColor: cProdColor.trim(),
         prodQty: parseInt(orderQuantity.trim()),
         shoemakerName: shmkrName.trim(),
+        shoemakerId: shmkrId,
+        
         status: "Pending",
         orderType: "RTW"
       });
@@ -129,12 +136,13 @@ function checkItemSelected(){
       var cProdSize = prodSizes[productChecked].innerHTML;
       var cProdColor = prodColors[productChecked].innerHTML;
       var shmkrName = cshmkrNames[productChecked].innerHTML;
+      var shmkrId = cshmkrids.toString();
   
       console.log("Item #" + productChecked + " Name: " + cProdName);
       
       firebase
        .database()
-       .ref("users/" + userID + "/orders/" + orderid)
+       .ref("orders/" + orderid)
        .set({
          userID: userID,
          orderID: savedOrderID,
@@ -147,7 +155,7 @@ function checkItemSelected(){
          prodColor: cProdColor.trim(),
          prodQty: parseInt(orderQuantity.trim()),
          shoemakerName: shmkrName.trim(),
-         shoemakerId: shmkrid,
+         shoemakerId: shmkrId, 
          status: "Pending",
          orderType: "RTW"
        });
@@ -155,7 +163,6 @@ function checkItemSelected(){
 
        var orderReference = firebase.database().ref().child("users/" + userID + "/cart/" + currOrderID)
        orderReference.remove();
-       //does not add yet to shoemakers Orders
        location.reload();
   }
 }
